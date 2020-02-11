@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { withStyles } from '@material-ui/core/styles';
+
 import Icon from './Icon';
 
 const Nav = styled.nav`
@@ -11,12 +13,12 @@ const Nav = styled.nav`
   /* background-color: ${({ theme }) => theme.color.section}; */
   background-color: ${({ theme }) => theme.color.secondary};
   color: ${({ theme }) => theme.textColor.primary};
-  box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
   transition: all .2s;
 
   &:hover {
     /* background-color: ${({ theme }) => theme.color.section}; */
-    box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px -1px 6px 0px rgba(0,0,0,0.75);
   }
 `
 
@@ -72,7 +74,17 @@ const Basket = styled.span`
   margin: 0 3rem 0 auto;;
 `
 
+const StyledBadge = withStyles(theme => ({
+  badge: {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}))(Badge);
+
 function Navbar() {
+  // keep menu items in array
   return (
     <Nav>
       <Logo>
@@ -89,9 +101,9 @@ function Navbar() {
       </List>
       <Basket>
         <IconButton aria-label="cart">
-          <Badge badgeContent={4} color="secondary">
+          <StyledBadge badgeContent={7} color="secondary">
             <ShoppingCartIcon />
-          </Badge>
+          </StyledBadge>
         </IconButton>
       </Basket>
     </Nav>
