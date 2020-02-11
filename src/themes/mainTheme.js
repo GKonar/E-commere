@@ -1,6 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-
-const theme = createMuiTheme({
+const theme = {
   padding: {
     small: '8px',
     default: '16px',
@@ -26,7 +24,6 @@ const theme = createMuiTheme({
   color: {
     primary: '#009432',
     secondary: '#f1f2f6',
-    // transparent: `rgba(242, 242, 242, 0.67)`,
     delete: '#FF4242',
     offDelete: '#FF7575',
     warning: '#FFCA44',
@@ -53,6 +50,6 @@ const theme = createMuiTheme({
     border: '1px solid #dedede',
     borderRadius: '4px',
   },
-});
+};
 
 export default theme;
