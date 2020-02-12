@@ -92,8 +92,8 @@ function Navbar() {
       <List>
         <ListItem>For Him</ListItem>
         <ListItem>For Her</ListItem>
-        <ListItem>For Kids</ListItem>
         <ListItem>For Home</ListItem>
+        <ListItem>Toys</ListItem>
         <ListItem>Shop</ListItem>
         <ListItem>Contact</ListItem>
         <ListItem>About</ListItem>
