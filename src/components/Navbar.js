@@ -15,6 +15,10 @@ const Nav = styled.nav`
   color: ${({ theme }) => theme.textColor.primary};
   box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
   transition: all .2s;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  top: 0;
 
   &:hover {
     /* background-color: ${({ theme }) => theme.color.section}; */
@@ -32,7 +36,7 @@ const ListItem = styled.li`
   list-style: none;
   margin:  ${({ theme }) => theme.margin.default}; 
   position: relative;
-  font-weight: 400;
+  font-weight: 500;
   font-size: ${({ theme }) => theme.textSize.readable};
   
   &::after {
