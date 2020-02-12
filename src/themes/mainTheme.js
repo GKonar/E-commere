@@ -36,11 +36,14 @@ const theme = {
 
   textColor: {
     primary: '#192a56',
-    secondary: '#009432',
+    secondary: '#f1f2f6',
     white: '#FFFFFF',
   },
 
   textSize: {
+    huge: '50px',
+    big: '24px',
+    default: '16px',
     readable: '14px',
     secondary: '12px',
     tiny: '10px',
