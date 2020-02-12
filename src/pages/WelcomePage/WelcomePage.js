@@ -1,12 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import BigDescription from '../../components/BigDescription';
 
 import Navbar from '../../components/Navbar';
 import handcraftedImage from '../../assets/images/handcrafted.jpeg';
-
 
 const Container = styled.div`
   background-image: url(${handcraftedImage});
@@ -17,14 +16,22 @@ const Container = styled.div`
   overflow: hidden;
 `
 
+const Image = styled.img`
+  width: 100%;
+`
+
+const ProductContainer = styled.div`
+  padding-top: 10px;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+`
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
+    padding: "0 1rem",
+    margin: '0'
   },
 }));
 
@@ -37,35 +44,25 @@ function WelcomePage() {
       <Navbar />
       <div className={classes.root}>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
+          <Grid item xs={12} sm={8}>
+            <ProductContainer>
+              <Image src="https://images.unsplash.com/photo-1581388223946-3015f5ecab0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="my-img" />
+              <BigDescription
+                header="Awesome toys"
+                description="For small and big"
+              />
+            </ProductContainer>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
+          <Grid item xs={12} sm={4}>
+            <ProductContainer>
+              <Image src="https://images.unsplash.com/photo-1550171839-27415be90690?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="my-img" />
+              <BigDescription
+                right="150px"
+                top="45%"
+                header="Rusty style"
+                description="Rusty charm for Your garden"
+              />
+            </ProductContainer>
           </Grid>
         </Grid>
       </div>
