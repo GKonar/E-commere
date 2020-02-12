@@ -84,7 +84,6 @@ const StyledBadge = withStyles(theme => ({
 }))(Badge);
 
 function Navbar() {
-  // keep menu items in array
   return (
     <Nav>
       <Logo>
