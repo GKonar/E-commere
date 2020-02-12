@@ -61,6 +61,7 @@ function WelcomePage() {
                 top="45%"
                 header="Rusty style"
                 description="Rusty charm for Your garden"
+                setBackground
               />
             </ProductContainer>
           </Grid>

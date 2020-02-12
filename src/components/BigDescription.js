@@ -5,7 +5,7 @@ const Description = styled.div`
   position: absolute;
   color: ${({ theme }) => theme.textColor.secondary};
   padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.40);
+  background-color: rgba(0, 0, 0, 0.2);
 `
 const DescriptionHeadaer = styled.h1`
   font-size: ${({ theme }) => theme.textSize.huge};
@@ -24,11 +24,17 @@ function BigDescription({
   top = '5%',
   right = '100px',
   left,
-  bottom
+  bottom,
+  background,
+  setBackground
 }) {
+  setBackground ?
+    background = 'rgba(0, 0, 0, 0.3)' :
+    background = 'transparent';
+
   return (
     <Description
-      style={{ top, right, left, bottom }}>
+      style={{ top, right, left, bottom, background }}>
       <DescriptionHeadaer>{header}</DescriptionHeadaer>
       <DescriptionParagraph>{description}</DescriptionParagraph>
     </Description>
