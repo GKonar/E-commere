@@ -67,8 +67,148 @@ function WelcomePage() {
           </Grid>
         </Grid>
       </div>
+            // <Grid item xs={12} sm={4}>
+            //   <ProductContainer>
+            //     <ImageContainer>
+            //       <SmallDescritpion>Hello</SmallDescritpion>
+            //       <Image src={woodenshelves} alt="my-img" />
+            //     </ImageContainer>
+            //   </ProductContainer>
+            // </Grid>
+            // <Grid item xs={12} sm={4}>
+            //   <ProductContainer>
+            //     <ImageContainer>
+            //       <SmallDescritpion>Hello</SmallDescritpion>
+            //       <Image src={sweater} alt="my-img" />
+            //     </ImageContainer>
+            //   </ProductContainer>
+            // </Grid>
+            // <Grid item xs={12} sm={4}>
+            //   <ProductContainer>
+            //     <ImageContainer>
+            //       <SmallDescritpion>Hello</SmallDescritpion>
+            //       <Image src={trumpet_man} alt="my-img" />
+            //     </ImageContainer>
+            //   </ProductContainer>
+            // </Grid>
+            // <Grid item xs={12} sm={4}>
+            //   <ProductContainer>
+            //     <ImageContainer>
+            //       <SmallDescritpion>Hello</SmallDescritpion>
+            //       <Image src={octopus_toys} alt="my-img" />
+            //     </ImageContainer>
+            //   </ProductContainer>
+            // </Grid>
+            // <Grid item xs={12} sm={4}>
+            //   <ProductContainer>
+            //     <ImageContainer>
+            //       <SmallDescritpion>Hello</SmallDescritpion>
+            //       <Image src={zootoys} alt="my-img" />
+            //     </ImageContainer>
+            //   </ProductContainer>
+            // </Grid>
+            // <Grid item xs={12} sm={4}>
+            //   <ProductContainer>
+            //     <ImageContainer> <SmallDescritpion>Hello</SmallDescritpion>
+            //       <Image src={wallet} alt="my-img" />
+            //     </ImageContainer>
+            //   </ProductContainer>
+            // </Grid>
+          }
+
+        </Grid>
+      </NewestProducts>
     </Container>
   )
 }
 
 export default WelcomePage;
+
+
+{
+  /*
+         
+  */
+  // <ImageContainer>
+  //   <Image src={beads} alt="my-img" />
+  // </ImageContainer>
+  //   <ImageContainer>
+  //     <Image src={mask} alt="my-img" />
+  //   </ImageContainer>
+  //   <ImageContainer>
+  //     <Image src={purse} alt="my-img" />
+  //   </ImageContainer>
+  //   <ImageContainer>
+  //     <Image src={sweater} alt="my-img" />
+  //   </ImageContainer>
+  //   <ImageContainer>
+  //     <Image src={woodenshelves} alt="my-img" />
+  //   </ImageContainer>
+  //   <ImageContainer>
+  //     <Image src={trumpet_man} alt="my-img" />
+  //   </ImageContainer>
+  //   <ImageContainer>
+  //     <Image src={octopus_toys} alt="my-img" />
+  //   </ImageContainer>
+  //   <ImageContainer>
+  //     <Image src={zootoys} alt="my-img" />
+  //   </ImageContainer>
+  //   <ImageContainer>
+  //     <Image src={wallet} alt="my-img" />
+  //   </ImageContainer>
+
+
+  // <div className={classes.root}>
+  //         <Grid container spacing={3}>
+  //           {
+  //             // LOOP HERE 
+  //             // DATA FROM FIREBASE
+  //           }
+  //           <Grid item xs={12} sm={4}>
+  //             <ProductContainer>
+  //               <Image src={beads} alt="my-img" />
+  //             </ProductContainer>
+  //           </Grid>
+  //           <Grid item xs={12} sm={4}>
+  //             <ProductContainer>
+  //               <Image src={mask} alt="my-img" />
+  //             </ProductContainer>
+  //           </Grid>
+  //           <Grid item xs={12} sm={4}>
+  //             <ProductContainer>
+  //               <Image src={purse} alt="my-img" />
+  //             </ProductContainer>
+  //           </Grid>
+  //           <Grid item xs={12} sm={4}>
+  //             <ProductContainer>
+  //               <Image src={sweater} alt="my-img" />
+  //             </ProductContainer>
+  //           </Grid>
+  //           <Grid item xs={12} sm={4}>
+  //             <ProductContainer>
+  //               <Image src={woodenshelves} alt="my-img" />
+  //             </ProductContainer>
+  //           </Grid>
+  //           <Grid item xs={12} sm={4}>
+  //             <ProductContainer>
+  //               <Image src={trumpet_man} alt="my-img" />
+  //             </ProductContainer>
+  //           </Grid>
+  //           <Grid item xs={12} sm={4}>
+  //             <ProductContainer>
+  //               <Image src={octopus_toys} alt="my-img" />
+  //             </ProductContainer>
+  //           </Grid>
+  //           <Grid item xs={12} sm={4}>
+  //             <ProductContainer>
+  //               <Image src={wallet} alt="my-img" />
+  //             </ProductContainer>
+  //           </Grid>
+  //           <Grid item xs={12} sm={4}>
+  //             <ProductContainer>
+  //               <Image src={zootoys} alt="my-img" />
+  //             </ProductContainer>
+  //           </Grid>
+  //         </Grid>
+  //       </div>
+}
