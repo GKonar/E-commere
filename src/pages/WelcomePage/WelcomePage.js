@@ -25,28 +25,82 @@ const Container = styled.div`
   background-size: cover;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
 `
 
 const Image = styled.img`
   width: 100%;
 `
 
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+`
+
 const ProductContainer = styled.div`
-  padding-top: 10px;
+  padding: 1rem;
+  padding-top: 2rem;
+  position: relative;
+  height: 100%; 
+
+  /*  Place image in the middle   */
+  display: flex;
+  justify-content: center;
+  align-items: center;    
+
+  &:hover .product-name {
+    transform: translateX(0);
+  }
+`
+
+const HeaderProductContainer = styled.div`
   border-radius: 0;
   position: relative;
   overflow: hidden;
+`
+
+const NewestProducts = styled.div`
+  background-color: ${({ theme }) => theme.color.secondary};
+  margin-top: ${({ theme }) => theme.margin.medium};
+  overflow: hidden;
+`
+
+const ProductsHeader = styled.h1`
+  text-align: center; 
+  color: ${({ theme }) => theme.textColor.primary};
+  margin-bottom: 0;
+`
+
+const SmallDescritpion = styled.span`
+  position: absolute;
+  overflow: hidden;
+`
+
+const Price = styled.p`
+  margin: 1rem;
+  margin-bottom: 0;
+  display: inline-flex;
+  background-color: ${({ theme }) => theme.color.secondary};
+  padding: .8rem;
+`
+
+const ProductName = styled.p`
+  position: relative;
+  top: -10px;
+  background-color: ${({ theme }) => theme.color.secondary};
+  padding: .8rem;
+  margin: 1rem;
+  margin-top: 0;
+  transition: .3s;
+  transform: translateX(-200px);
 `
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     padding: "0 1rem",
-    margin: '0'
+    margin: '0',
   },
 }));
-
 
 function WelcomePage() {
   const classes = useStyles();
@@ -57,16 +111,17 @@ function WelcomePage() {
       <div className={classes.root}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={8}>
-            <ProductContainer>
+            <HeaderProductContainer>
               <Image src="https://images.unsplash.com/photo-1581388223946-3015f5ecab0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="my-img" />
               <BigDescription
                 header="Awesome toys"
                 description="For small and big"
+                top="10%"
               />
-            </ProductContainer>
+            </HeaderProductContainer>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <ProductContainer>
+            <HeaderProductContainer>
               <Image src="https://images.unsplash.com/photo-1550171839-27415be90690?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="my-img" />
               <BigDescription
                 right="150px"
@@ -75,10 +130,51 @@ function WelcomePage() {
                 description="Rusty charm for Your garden"
                 setBackground
               />
-            </ProductContainer>
+            </HeaderProductContainer>
           </Grid>
         </Grid>
       </div>
+      <NewestProducts>
+        {
+          // Render in a loop with data from firebase
+        }
+
+        <ProductsHeader>Newest Products</ProductsHeader>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={4}>
+            <ProductContainer>
+              <ImageContainer>
+                <SmallDescritpion>
+                  <Price>30$</Price>
+                  <ProductName className="product-name">Colorful beds</ProductName>
+                </SmallDescritpion>
+                <Image src={beads} alt="my-img" />
+              </ImageContainer>
+            </ProductContainer>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <ProductContainer>
+              <ImageContainer>
+                <SmallDescritpion>
+                  <Price>55$</Price>
+                  <ProductName className="product-name">Custom masks</ProductName>
+                </SmallDescritpion>
+                <Image src={mask} alt="my-img" />
+              </ImageContainer>
+            </ProductContainer>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <ProductContainer>
+              <ImageContainer>
+                <SmallDescritpion>
+                  <Price>25$</Price>
+                  <ProductName className="product-name">Maroccan purse</ProductName>
+                </SmallDescritpion>
+                <Image src={purse} alt="my-img" />
+              </ImageContainer>
+            </ProductContainer>
+          </Grid>
+          {
             // <Grid item xs={12} sm={4}>
             //   <ProductContainer>
             //     <ImageContainer>
