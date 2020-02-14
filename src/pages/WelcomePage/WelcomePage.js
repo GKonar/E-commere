@@ -7,6 +7,18 @@ import BigDescription from '../../components/BigDescription';
 import Navbar from '../../components/Navbar';
 import handcraftedImage from '../../assets/images/handcrafted.jpeg';
 
+// images for testing
+import beads from '../../assets/images/beads.jpeg';
+import mask from '../../assets/images/mask.jpeg';
+import purse from '../../assets/images/purse.jpeg';
+import sweater from '../../assets/images/sweater.jpeg';
+import woodenshelves from '../../assets/images/woodenshelves.jpeg';
+import trumpet_man from '../../assets/images/trumpet_man.jpeg';
+import octopus_toys from '../../assets/images/octopus_toys.jpeg';
+import wallet from '../../assets/images/wallet.jpeg';
+import zootoys from '../../assets/images/zootoys.jpeg';
+
+
 const Container = styled.div`
   background-image: url(${handcraftedImage});
   background-position: center;
