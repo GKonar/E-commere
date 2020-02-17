@@ -10,7 +10,6 @@ import Icon from './Icon';
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  /* background-color: ${({ theme }) => theme.color.section}; */
   background-color: ${({ theme }) => theme.color.secondary};
   color: ${({ theme }) => theme.textColor.primary};
   box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
@@ -21,7 +20,6 @@ const Nav = styled.nav`
   top: 0;
 
   &:hover {
-    /* background-color: ${({ theme }) => theme.color.section}; */
     box-shadow: 0px -1px 6px 0px rgba(0,0,0,0.75);
   }
 `
