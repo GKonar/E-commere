@@ -19,7 +19,19 @@ firebase.initializeApp(firebaseConfig);
 
 // access to all database features
 const database = firebase.database();
-const storage = firebase.storage();
+// const storage = firebase.storage();
+
+database.ref('products')
+  .once('value')
+  .then((snapshot) => {
+    const products = [];
+    snapshot.forEach(product => {
+      products.push(product.val());
+    })
+    console.log('Products array: ', products);
+  });
+
+
 
 // get download_url for the image
 // storage.ref('images/basket.jpeg').getDownloadURL()
