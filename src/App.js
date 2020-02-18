@@ -1,13 +1,16 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import { Switch, Route, Link } from "react-router-dom";
 
 import mainTheme from './themes/mainTheme';
 import theme from './themes/theme';
 
-import WelcomePage from './pages/WelcomePage/WelcomePage'
-import ProductPage from './pages/ProductPage/ProductPage'
+
+
+import Routes from './Routes';
+
+//DEV
+import { products } from './testContent';
 
 function App() {
   return (
@@ -15,11 +18,7 @@ function App() {
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={mainTheme}>
           <div className="App">
-
-            <Switch>
-              <Route exact path="/" component={WelcomePage} />
-              <Route exact path="/product" component={ProductPage} />
-            </Switch>
+            <Routes products={products} />
           </div>
         </ThemeProvider>
       </MuiThemeProvider>
