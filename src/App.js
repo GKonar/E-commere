@@ -5,8 +5,6 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import mainTheme from './themes/mainTheme';
 import theme from './themes/theme';
 
-
-
 import Routes from './Routes';
 
 //DEV

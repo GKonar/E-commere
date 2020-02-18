@@ -50,7 +50,7 @@ const Image = styled.img`
   width: 100%;
 `
 
-function ProductPage({ price, name, image }) {
+function Product({ price, name, image }) {
   return (
     <ProductContainer>
       <ImageContainer>
@@ -64,4 +64,4 @@ function ProductPage({ price, name, image }) {
   )
 }
 
-export default ProductPage
+export default Product
