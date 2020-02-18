@@ -19,10 +19,6 @@ const Nav = styled.nav`
   width: 100%;
   z-index: 1000;
   top: 0;
-
-  &:hover {
-    box-shadow: 0px -1px 6px 0px rgba(0,0,0,0.75);
-  }
 `
 
 const List = styled.ul`
@@ -67,19 +63,31 @@ const ListItem = styled.li`
 const Logo = styled.span`
   font-weight: 600;
   margin-left: ${({ theme }) => theme.margin.medium};
-  display:flex; 
-  justify-content: center;
-  align-items: center;
+
+  a {
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
 `
 
 const LogoText = styled.span`
-  /* margin-right: ${({ theme }) => theme.margin.small}; */
   margin-right: 2px;
   letter-spacing: 1px;
 `
 
 const Basket = styled.span`
-  margin: 0 3rem 0 auto;;
+  margin: 0 3rem 0 auto;
+  transition: .3s;
+  a {
+    color: inherit;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+
 `
 
 const StyledBadge = withStyles(theme => ({
@@ -95,7 +103,11 @@ function Navbar() {
   return (
     <Nav>
       <Logo>
-        <LogoText>hand</LogoText><Icon icon={'WOOL'} color='#e55039' size={30} /> <LogoText>crafted</LogoText>
+        <Link to='/'>
+          <LogoText>hand</LogoText>
+          <Icon icon={'WOOL'} color='#e55039' size={30} />
+          <LogoText>crafted</LogoText>
+        </Link>
       </Logo>
       <List>
         <ListItem><Link to="/for-him">For Him</Link></ListItem>
@@ -107,11 +119,13 @@ function Navbar() {
         <ListItem><Link to="/about">About</Link></ListItem>
       </List>
       <Basket>
-        <IconButton aria-label="cart">
-          <StyledBadge badgeContent={7} color="secondary">
-            <ShoppingCartIcon />
-          </StyledBadge>
-        </IconButton>
+        <Link to='/basket'>
+          <IconButton aria-label="cart">
+            <StyledBadge badgeContent={7} color="secondary">
+              <ShoppingCartIcon />
+            </StyledBadge>
+          </IconButton>
+        </Link>
       </Basket>
     </Nav>
   )
