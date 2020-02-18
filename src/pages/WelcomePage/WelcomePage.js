@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
@@ -7,17 +9,7 @@ import BigDescription from '../../components/BigDescription';
 import Navbar from '../../components/Navbar';
 import handcraftedImage from '../../assets/images/handcrafted.jpeg';
 
-// images for testing
-import beads from '../../assets/images/beads.jpeg';
-import mask from '../../assets/images/mask.jpeg';
-import purse from '../../assets/images/purse.jpeg';
-import sweater from '../../assets/images/sweater.jpeg';
-import woodenshelves from '../../assets/images/woodenshelves.jpeg';
-import trumpet_man from '../../assets/images/trumpet_man.jpeg';
-import octopus_toys from '../../assets/images/octopus_toys.jpeg';
-import wallet from '../../assets/images/wallet.jpeg';
-import zootoys from '../../assets/images/zootoys.jpeg';
-
+import Product from '../../components/Product';
 
 const Container = styled.div`
   background-image: url(${handcraftedImage});
@@ -25,31 +17,6 @@ const Container = styled.div`
   background-size: cover;
   width: 100%;
   height: 100vh;
-`
-
-const Image = styled.img`
-  width: 100%;
-`
-
-const ImageContainer = styled.div`
-  position: relative;
-  width: 100%;
-`
-
-const ProductContainer = styled.div`
-  padding: 1rem;
-  padding-top: 2rem;
-  position: relative;
-  height: 100%; 
-
-  /*  Place image in the middle   */
-  display: flex;
-  justify-content: center;
-  align-items: center;    
-
-  &:hover .product-name {
-    transform: translateX(0);
-  }
 `
 
 const HeaderProductContainer = styled.div`
@@ -70,28 +37,8 @@ const ProductsHeader = styled.h1`
   margin-bottom: 0;
 `
 
-const SmallDescritpion = styled.span`
-  position: absolute;
-  overflow: hidden;
-`
-
-const Price = styled.p`
-  margin: 1rem;
-  margin-bottom: 0;
-  display: inline-flex;
-  background-color: ${({ theme }) => theme.color.secondary};
-  padding: .8rem;
-`
-
-const ProductName = styled.p`
-  position: relative;
-  top: -10px;
-  background-color: ${({ theme }) => theme.color.secondary};
-  padding: .8rem;
-  margin: 1rem;
-  margin-top: 0;
-  transition: .3s;
-  transform: translateX(-200px);
+const Image = styled.img`
+  width: 100%;
 `
 
 const useStyles = makeStyles(theme => ({
@@ -102,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function WelcomePage() {
+function WelcomePage({ products }) {
   const classes = useStyles();
 
   return (
@@ -135,93 +82,9 @@ function WelcomePage() {
         </Grid>
       </div>
       <NewestProducts>
-        {
-          // Render in a loop with data from firebase
-        }
-
         <ProductsHeader>Newest Products</ProductsHeader>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={4}>
-            <ProductContainer>
-              <ImageContainer>
-                <SmallDescritpion>
-                  <Price>30$</Price>
-                  <ProductName className="product-name">Colorful beds</ProductName>
-                </SmallDescritpion>
-                <Image src={beads} alt="my-img" />
-              </ImageContainer>
-            </ProductContainer>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <ProductContainer>
-              <ImageContainer>
-                <SmallDescritpion>
-                  <Price>55$</Price>
-                  <ProductName className="product-name">Custom masks</ProductName>
-                </SmallDescritpion>
-                <Image src={mask} alt="my-img" />
-              </ImageContainer>
-            </ProductContainer>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <ProductContainer>
-              <ImageContainer>
-                <SmallDescritpion>
-                  <Price>25$</Price>
-                  <ProductName className="product-name">Maroccan purse</ProductName>
-                </SmallDescritpion>
-                <Image src={purse} alt="my-img" />
-              </ImageContainer>
-            </ProductContainer>
-          </Grid>
           {
-            // <Grid item xs={12} sm={4}>
-            //   <ProductContainer>
-            //     <ImageContainer>
-            //       <SmallDescritpion>Hello</SmallDescritpion>
-            //       <Image src={woodenshelves} alt="my-img" />
-            //     </ImageContainer>
-            //   </ProductContainer>
-            // </Grid>
-            // <Grid item xs={12} sm={4}>
-            //   <ProductContainer>
-            //     <ImageContainer>
-            //       <SmallDescritpion>Hello</SmallDescritpion>
-            //       <Image src={sweater} alt="my-img" />
-            //     </ImageContainer>
-            //   </ProductContainer>
-            // </Grid>
-            // <Grid item xs={12} sm={4}>
-            //   <ProductContainer>
-            //     <ImageContainer>
-            //       <SmallDescritpion>Hello</SmallDescritpion>
-            //       <Image src={trumpet_man} alt="my-img" />
-            //     </ImageContainer>
-            //   </ProductContainer>
-            // </Grid>
-            // <Grid item xs={12} sm={4}>
-            //   <ProductContainer>
-            //     <ImageContainer>
-            //       <SmallDescritpion>Hello</SmallDescritpion>
-            //       <Image src={octopus_toys} alt="my-img" />
-            //     </ImageContainer>
-            //   </ProductContainer>
-            // </Grid>
-            // <Grid item xs={12} sm={4}>
-            //   <ProductContainer>
-            //     <ImageContainer>
-            //       <SmallDescritpion>Hello</SmallDescritpion>
-            //       <Image src={zootoys} alt="my-img" />
-            //     </ImageContainer>
-            //   </ProductContainer>
-            // </Grid>
-            // <Grid item xs={12} sm={4}>
-            //   <ProductContainer>
-            //     <ImageContainer> <SmallDescritpion>Hello</SmallDescritpion>
-            //       <Image src={wallet} alt="my-img" />
-            //     </ImageContainer>
-            //   </ProductContainer>
-            // </Grid>
             products.map(product => (
               <Grid key={product.id} item xs={12} sm={4}>
                 <Link to={`/product/${product.id}`}>
@@ -233,100 +96,10 @@ function WelcomePage() {
               </Grid>
             ))
           }
-
         </Grid>
       </NewestProducts>
-    </Container>
+    </Container >
   )
 }
 
 export default WelcomePage;
-
-
-{
-  /*
-         
-  */
-  // <ImageContainer>
-  //   <Image src={beads} alt="my-img" />
-  // </ImageContainer>
-  //   <ImageContainer>
-  //     <Image src={mask} alt="my-img" />
-  //   </ImageContainer>
-  //   <ImageContainer>
-  //     <Image src={purse} alt="my-img" />
-  //   </ImageContainer>
-  //   <ImageContainer>
-  //     <Image src={sweater} alt="my-img" />
-  //   </ImageContainer>
-  //   <ImageContainer>
-  //     <Image src={woodenshelves} alt="my-img" />
-  //   </ImageContainer>
-  //   <ImageContainer>
-  //     <Image src={trumpet_man} alt="my-img" />
-  //   </ImageContainer>
-  //   <ImageContainer>
-  //     <Image src={octopus_toys} alt="my-img" />
-  //   </ImageContainer>
-  //   <ImageContainer>
-  //     <Image src={zootoys} alt="my-img" />
-  //   </ImageContainer>
-  //   <ImageContainer>
-  //     <Image src={wallet} alt="my-img" />
-  //   </ImageContainer>
-
-
-  // <div className={classes.root}>
-  //         <Grid container spacing={3}>
-  //           {
-  //             // LOOP HERE 
-  //             // DATA FROM FIREBASE
-  //           }
-  //           <Grid item xs={12} sm={4}>
-  //             <ProductContainer>
-  //               <Image src={beads} alt="my-img" />
-  //             </ProductContainer>
-  //           </Grid>
-  //           <Grid item xs={12} sm={4}>
-  //             <ProductContainer>
-  //               <Image src={mask} alt="my-img" />
-  //             </ProductContainer>
-  //           </Grid>
-  //           <Grid item xs={12} sm={4}>
-  //             <ProductContainer>
-  //               <Image src={purse} alt="my-img" />
-  //             </ProductContainer>
-  //           </Grid>
-  //           <Grid item xs={12} sm={4}>
-  //             <ProductContainer>
-  //               <Image src={sweater} alt="my-img" />
-  //             </ProductContainer>
-  //           </Grid>
-  //           <Grid item xs={12} sm={4}>
-  //             <ProductContainer>
-  //               <Image src={woodenshelves} alt="my-img" />
-  //             </ProductContainer>
-  //           </Grid>
-  //           <Grid item xs={12} sm={4}>
-  //             <ProductContainer>
-  //               <Image src={trumpet_man} alt="my-img" />
-  //             </ProductContainer>
-  //           </Grid>
-  //           <Grid item xs={12} sm={4}>
-  //             <ProductContainer>
-  //               <Image src={octopus_toys} alt="my-img" />
-  //             </ProductContainer>
-  //           </Grid>
-  //           <Grid item xs={12} sm={4}>
-  //             <ProductContainer>
-  //               <Image src={wallet} alt="my-img" />
-  //             </ProductContainer>
-  //           </Grid>
-  //           <Grid item xs={12} sm={4}>
-  //             <ProductContainer>
-  //               <Image src={zootoys} alt="my-img" />
-  //             </ProductContainer>
-  //           </Grid>
-  //         </Grid>
-  //       </div>
-}
