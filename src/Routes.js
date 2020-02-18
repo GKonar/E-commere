@@ -10,6 +10,7 @@ import ContactPage from './pages/ContactPage/ContactPage';
 import ShopPage from './pages/ShopPage/ShopPage';
 import ToysPage from './pages/ToysPage/ToysPage';
 import ForHomePage from './pages/ForHomePage/ForHomePage';
+import BasketPage from './pages/BasketPage/BasketPage';
 
 function Routes({ products }) {
   return (
@@ -58,6 +59,11 @@ function Routes({ products }) {
         exact
         path="/product/:id"
         render={(routeProps) => <ProductPage {...routeProps} products={products} />}
+      />
+      <Route
+        exact
+        path="/basket"
+        render={() => <BasketPage />}
       />
       {/* Last resort path */}
       <Route render={() => <h1>PAGE NOT FOUND :/ Sorry bro</h1>} />}/>
