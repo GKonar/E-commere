@@ -6,6 +6,7 @@ import mainTheme from './themes/mainTheme';
 import theme from './themes/theme';
 
 import Routes from './Routes';
+import Navbar from './components/Navbar';
 
 //DEV
 import { products } from './testContent';
@@ -15,13 +16,13 @@ function App() {
     <div>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={mainTheme}>
-          <div className="App">
+          <Navbar />
+          <div className="App" style={{ marginTop: '64px' }}>
             <Routes products={products} />
           </div>
         </ThemeProvider>
       </MuiThemeProvider>
     </div>
-
   );
 }
 
