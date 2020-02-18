@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
@@ -36,6 +37,11 @@ const ListItem = styled.li`
   position: relative;
   font-weight: 500;
   font-size: ${({ theme }) => theme.textSize.readable};
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   
   &::after {
     content: "";
@@ -92,13 +98,13 @@ function Navbar() {
         <LogoText>hand</LogoText><Icon icon={'WOOL'} color='#e55039' size={30} /> <LogoText>crafted</LogoText>
       </Logo>
       <List>
-        <ListItem>For Him</ListItem>
-        <ListItem>For Her</ListItem>
-        <ListItem>For Home</ListItem>
-        <ListItem>Toys</ListItem>
-        <ListItem>Shop</ListItem>
-        <ListItem>Contact</ListItem>
-        <ListItem>About</ListItem>
+        <ListItem><Link to="/for-him">For Him</Link></ListItem>
+        <ListItem><Link to="/for-her">For Her</Link></ListItem>
+        <ListItem><Link to="/for-home">For Home</Link></ListItem>
+        <ListItem><Link to="/toys">Toys</Link></ListItem>
+        <ListItem><Link to="/shop">Shop</Link></ListItem>
+        <ListItem><Link to="/contact">Contact</Link></ListItem>
+        <ListItem><Link to="/about">About</Link></ListItem>
       </List>
       <Basket>
         <IconButton aria-label="cart">
