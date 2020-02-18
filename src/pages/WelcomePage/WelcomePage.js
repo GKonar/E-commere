@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import BigDescription from '../../components/BigDescription';
 
-import Navbar from '../../components/Navbar';
 import handcraftedImage from '../../assets/images/handcrafted.jpeg';
 
 import Product from '../../components/Product';
@@ -54,7 +53,6 @@ function WelcomePage({ products }) {
 
   return (
     <Container>
-      <Navbar />
       <div className={classes.root}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={8}>
