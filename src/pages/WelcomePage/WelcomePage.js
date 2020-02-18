@@ -222,6 +222,16 @@ function WelcomePage() {
             //     </ImageContainer>
             //   </ProductContainer>
             // </Grid>
+            products.map(product => (
+              <Grid key={product.id} item xs={12} sm={4}>
+                <Link to={`/product/${product.id}`}>
+                  <Product
+                    name={product.name}
+                    price={product.price}
+                    image={product.images[0]} />
+                </Link>
+              </Grid>
+            ))
           }
 
         </Grid>
