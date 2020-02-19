@@ -1,5 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
@@ -26,12 +28,12 @@ const StyledBadge = withStyles(theme => ({
   },
 }))(Badge);
 
-function Basket() {
+function Basket({ basketItems }) {
   return (
     <Container>
       <Link to='/basket'>
         <IconButton aria-label="cart">
-          <StyledBadge badgeContent={7} color="secondary">
+          <StyledBadge badgeContent={basketItems.length === 0 ? '0' : basketItems.length} color="secondary">
             <ShoppingCartIcon />
           </StyledBadge>
         </IconButton>
@@ -40,4 +42,10 @@ function Basket() {
   )
 }
 
-export default Basket;
+const mapStateToProps = state => {
+  return {
+    basketItems: state.basketItems
+  }
+}
+
+export default connect(mapStateToProps)(Basket);
