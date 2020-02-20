@@ -21,8 +21,6 @@ function App() {
   const [shopItems, setShopItems] = useState();
 
   useEffect(() => {
-
-
     database.ref('shopItems').on('value', snapshot => {
       const items = [];
       snapshot.forEach(item => {

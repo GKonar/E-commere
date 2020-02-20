@@ -6,7 +6,6 @@ import ExpensionPanel from '../../components/ExpansionPanel';
 
 import AssignmentReturnIcon from '@material-ui/icons/AssignmentReturn';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
-// curbside pick up 
 import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 
 import dotGrid from '../../assets/images/dot-grid.png';
@@ -50,10 +49,6 @@ const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-`
-
-const ProductName = styled.h1`
-  color: ${({ theme }) => theme.color.main};
 `
 
 const IconsContainer = styled.div`
