@@ -54,7 +54,22 @@ const ProductName = styled.h1`
 
 const IconsContainer = styled.div`
   width: 100%;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-around;
+`
+
+const IconWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const IconDescripton = styled.p`
+  width: 120px;
+  text-align: center;
+  font-size: ${({ theme }) => theme.textSize.secondary};
 `
 
 function ProductPage(props) {
@@ -76,10 +91,18 @@ function ProductPage(props) {
           <Divider light variant="middle" />
           <ExpensionPanel product={product} />
           <IconsContainer>
-
-            <AssignmentReturnIcon style={{ fontSize: 50 }} />
-            <LocalShippingIcon style={{ fontSize: 50 }} />
-            <EmojiTransportationIcon style={{ fontSize: 50 }} />
+            <IconWrapper>
+              <AssignmentReturnIcon style={{ fontSize: 60 }} />
+              <IconDescripton>Free shipping from 100$</IconDescripton>
+            </IconWrapper>
+            <IconWrapper>
+              <LocalShippingIcon style={{ fontSize: 60 }} />
+              <IconDescripton>365 days to change Your mind</IconDescripton>
+            </IconWrapper>
+            <IconWrapper>
+              <EmojiTransportationIcon style={{ fontSize: 60 }} />
+              <IconDescripton>Free curbside pick up </IconDescripton>
+            </IconWrapper>
           </IconsContainer>
           <CustomButton>Add to basket</CustomButton>
         </DescriptionContainer>
