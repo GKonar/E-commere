@@ -3,9 +3,15 @@ import Button from "@material-ui/core/Button";
 
 export default styled(Button)`
   && {
-    color: white;
-    background-color: blue;
-    height: 80px;
+    color: ${({ theme }) => theme.textColor.primary};
+    background-color: ${({ theme }) => theme.textColor.secondary};
+    padding: 1rem;
+    width: 100%;
+
+    &:hover {
+      background-color: #F59486;
+      color: ${({ theme }) => theme.textColor.secondary};
+    }
   }
 `;
 
