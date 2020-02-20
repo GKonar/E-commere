@@ -13,7 +13,7 @@ import Navbar from './components/Navbar';
 import './firebase/firebase'; // connection to firebase
 
 //DEV
-// import { products } from './testContent';
+// import { products } from './dbContent';
 import database from './firebase/firebase'
 
 
@@ -21,6 +21,8 @@ function App() {
   const [shopItems, setShopItems] = useState();
 
   useEffect(() => {
+
+
     database.ref('shopItems').on('value', snapshot => {
       const items = [];
       snapshot.forEach(item => {
@@ -41,6 +43,7 @@ function App() {
           <Navbar />
           <div className="App" style={{ marginTop: '80px' }}>
             {
+              console.log(shopItems),
               shopItems !== undefined ? <Routes products={shopItems} /> : null
             }
           </div>
