@@ -4,14 +4,17 @@ import styled from 'styled-components';
 import CustomButton from '../../components/CustomButton';
 import ExpensionPanel from '../../components/ExpansionPanel';
 
-import Divider from '@material-ui/core/Divider';
 import AssignmentReturnIcon from '@material-ui/icons/AssignmentReturn';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 // curbside pick up 
 import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 
+import dotGrid from '../../assets/images/dot-grid.png';
+
+
 const SectionContainer = styled.section`
   color: ${({ theme }) => theme.textColor.primary};
+  background-image: url(${dotGrid});
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,6 +27,7 @@ const ProductContainer = styled.div`
   align-items: center;
   width: 70%;
   min-height: calc(100vh - 66px);
+  background-color: ${({ theme }) => theme.color.white};
 `
 
 const ImagesContainer = styled.div`
@@ -49,7 +53,7 @@ const DescriptionContainer = styled.div`
 `
 
 const ProductName = styled.h1`
-  color: #F59486;
+  color: ${({ theme }) => theme.color.main};
 `
 
 const IconsContainer = styled.div`
@@ -88,7 +92,6 @@ function ProductPage(props) {
             <ProductName>{product.name}</ProductName>
             <h2>{product.price}</h2>
           </div>
-          <Divider light variant="middle" />
           <ExpensionPanel product={product} />
           <IconsContainer>
             <IconWrapper>

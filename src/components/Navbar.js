@@ -5,10 +5,13 @@ import styled from 'styled-components';
 import Icon from './Icon';
 import Basket from './Basket';
 
+import hipSquare from '../assets/images/hip-square.png';
+
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  background-color: ${({ theme }) => theme.color.secondary};
+  background-image: url(${hipSquare});
+  background-repeat: repeat;
   color: ${({ theme }) => theme.textColor.primary};
   transition: all .2s;
   position: fixed;
@@ -28,7 +31,7 @@ const ListItem = styled.li`
   margin:  ${({ theme }) => theme.margin.default}; 
   position: relative;
   font-weight: 500;
-  font-size: ${({ theme }) => theme.textSize.readable};
+  font-size: ${({ theme }) => theme.textSize.default};
   
   a {
     text-decoration: none;

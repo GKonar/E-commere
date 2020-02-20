@@ -6,13 +6,13 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import BigDescription from '../../components/BigDescription';
 
-import handcraftedImage from '../../assets/images/handcrafted.jpeg';
+import hipSquare from '../../assets/images/hip-square.png';
+import dotGrid from '../../assets/images/dot-grid.png';
 
 import Product from '../../components/Product';
 
 const Container = styled.div`
-  background-position: center;
-  background-size: cover;
+  background-image: url(${hipSquare});
   width: 100%; 
   a {
     color: inherit;
@@ -26,7 +26,7 @@ const HeaderProductContainer = styled.div`
 `
 
 const NewestProducts = styled.div`
-  background-color: ${({ theme }) => theme.color.secondary};
+  background-image: url(${dotGrid});
   margin-top: ${({ theme }) => theme.margin.medium};
   overflow: hidden;
 `
