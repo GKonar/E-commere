@@ -7,6 +7,7 @@ export default styled(Button)`
     background-color: ${({ theme }) => theme.textColor.secondary};
     padding: 1rem;
     width: 100%;
+    margin: 0;
 
     &:hover {
       background-color: #F59486;

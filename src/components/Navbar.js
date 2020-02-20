@@ -10,7 +10,6 @@ const Nav = styled.nav`
   align-items: center;
   background-color: ${({ theme }) => theme.color.secondary};
   color: ${({ theme }) => theme.textColor.primary};
-  /* box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75); */
   transition: all .2s;
   position: fixed;
   width: 100%;
@@ -21,7 +20,7 @@ const Nav = styled.nav`
 const List = styled.ul`
   display: flex;  
   position: relative; 
-  margin: ${({ theme }) => theme.margin.small};
+  margin: ${({ theme }) => theme.margin.default};
 `
 
 const ListItem = styled.li`

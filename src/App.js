@@ -39,7 +39,7 @@ function App() {
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={mainTheme}>
           <Navbar />
-          <div className="App" style={{ marginTop: '64px' }}>
+          <div className="App" style={{ marginTop: '80px' }}>
             {
               shopItems !== undefined ? <Routes products={shopItems} /> : null
             }
