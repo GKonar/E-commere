@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import CustomButton from '../../components/CustomButton';
 import ExpensionPanel from '../../components/ExpansionPanel';
+import ImageDialog from '../../components/ImageDialog';
+import H1 from '../../components/H1';
+import H3 from '../../components/H3';
 
 import AssignmentReturnIcon from '@material-ui/icons/AssignmentReturn';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
@@ -35,6 +38,7 @@ const ImagesContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
+  cursor: pointer;
 `
 
 const Image = styled.img`
@@ -73,15 +77,17 @@ const IconDescripton = styled.p`
 
 function ProductPage(props) {
   let product = props.products.find(product => product.id === props.match.params.id);
+  const [toggle, setToggle] = useState(false);
 
   return (
     <SectionContainer>
       <ProductContainer>
         <ImagesContainer>
           {/* DEV */}
-          <Image src={product.image} alt='dupa' />
-          <Image src={product.image} alt='dupa' />
+          <Image onClick={() => setToggle(!toggle)} src={product.image} alt='dupa' />
+          <Image onClick={() => setToggle(!toggle)} src={product.image} alt='dupa' />
         </ImagesContainer>
+        <ImageDialog toggle={toggle} setToggle={setToggle} imageSrc={product.image} />
         <DescriptionContainer>
           <div>
             <H1>{product.name}</H1>
