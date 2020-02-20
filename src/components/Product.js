@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const ProductContainer = styled.div`
   padding: 1rem;
-  padding-top: 2rem;
   position: relative;
   height: 100%; 
 

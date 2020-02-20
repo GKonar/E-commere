@@ -3,14 +3,15 @@ import Button from "@material-ui/core/Button";
 
 export default styled(Button)`
   && {
-    color: ${({ theme }) => theme.textColor.primary};
-    background-color: ${({ theme }) => theme.textColor.secondary};
+    color: ${({ theme }) => theme.color.main};;
+    background-color: ${({ theme }) => theme.color.white};
+    border: 1px solid #F59486;
     padding: 1rem;
     width: 100%;
     margin: 0;
 
     &:hover {
-      background-color: #F59486;
+      background-color: ${({ theme }) => theme.color.main};
       color: ${({ theme }) => theme.textColor.secondary};
     }
   }
