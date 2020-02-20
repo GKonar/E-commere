@@ -22,8 +22,11 @@ const theme = {
   indentation: 50,
 
   color: {
-    primary: '#009432',
+    main: '#F59486',
+    primary: '#2f3542',
     secondary: '#f1f2f6',
+    white: '#FFFFFF',
+
   },
 
   textColor: {
