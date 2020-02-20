@@ -10,7 +10,7 @@ const Nav = styled.nav`
   align-items: center;
   background-color: ${({ theme }) => theme.color.secondary};
   color: ${({ theme }) => theme.textColor.primary};
-  box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75);
+  /* box-shadow: 0px -1px 8px 0px rgba(0,0,0,0.75); */
   transition: all .2s;
   position: fixed;
   width: 100%;
@@ -81,7 +81,7 @@ function Navbar() {
       <Logo>
         <Link to='/'>
           <LogoText>hand</LogoText>
-          <Icon icon={'WOOL'} color='#e55039' size={30} />
+          <Icon icon={'WOOL'} color='#F59486' size={30} />
           <LogoText>crafted</LogoText>
         </Link>
       </Logo>

@@ -11,11 +11,12 @@ import handcraftedImage from '../../assets/images/handcrafted.jpeg';
 import Product from '../../components/Product';
 
 const Container = styled.div`
-  background-image: url(${handcraftedImage});
   background-position: center;
   background-size: cover;
-  width: 100%;
-  height: 100vh;
+  width: 100%; 
+  a {
+    color: inherit;
+  } 
 `
 
 const HeaderProductContainer = styled.div`
@@ -89,7 +90,7 @@ function WelcomePage({ products }) {
                   <Product
                     name={product.name}
                     price={product.price}
-                    image={product.images[0]} />
+                    image={product.image} />
                 </Link>
               </Grid>
             ))
