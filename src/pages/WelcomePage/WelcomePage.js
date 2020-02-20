@@ -10,6 +10,7 @@ import hipSquare from '../../assets/images/hip-square.png';
 import dotGrid from '../../assets/images/dot-grid.png';
 
 import Product from '../../components/Product';
+import H1 from '../../components/H1';
 
 const Container = styled.div`
   background-image: url(${hipSquare});
@@ -31,10 +32,25 @@ const NewestProducts = styled.div`
   overflow: hidden;
 `
 
-const ProductsHeader = styled.h1`
-  text-align: center; 
-  color: ${({ theme }) => theme.textColor.primary};
-  margin-bottom: 0;
+const ProductsHeader = styled(H1)`
+  && {
+    margin-bottom: 0;
+    margin-top: ${({ theme }) => theme.margin.medium};
+    justify-content: center;
+    position: relative;
+  }
+  &::after {
+      content: "";
+      display: flex;
+      background-color: ${({ theme }) => theme.color.main};
+      width: 25%;
+      height: 2px;
+      position: absolute;
+      top: 110%;
+      z-index: 1;
+      transition: all .1s;
+      text-align: center;
+    }
 `
 
 const Image = styled.img`

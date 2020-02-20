@@ -84,8 +84,8 @@ function ProductPage(props) {
         </ImagesContainer>
         <DescriptionContainer>
           <div>
-            <ProductName>{product.name}</ProductName>
-            <h2>{product.price}</h2>
+            <H1>{product.name}</H1>
+            <H3>{product.price}</H3>
           </div>
           <ExpensionPanel product={product} />
           <IconsContainer>
