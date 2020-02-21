@@ -3,10 +3,18 @@ import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
+import styled from 'styled-components';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+const ImageContainer = styled.div`
+  width: 100%;
+  img {
+    width: 100%;
+  }
+`
 
 const DialogContent = withStyles(theme => ({
   root: {
@@ -16,6 +24,7 @@ const DialogContent = withStyles(theme => ({
     alignItems: 'center',
     '&:first-child': {
       paddingTop: theme.spacing(1),
+      paddingBottom: theme.spacing(.5),
     }
   },
 }))(MuiDialogContent);
@@ -28,7 +37,9 @@ function ImageDialog({ imageSrc, toggle, setToggle }) {
     <div>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={toggle} TransitionComponent={Transition}>
         <DialogContent>
-          <img src={imageSrc} alt="product" />
+          <ImageContainer>
+            <img src={imageSrc} alt="product" />
+          </ImageContainer>
         </DialogContent>
       </Dialog>
     </div>
