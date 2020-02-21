@@ -10,18 +10,14 @@ import theme from './themes/theme';
 import Routes from './Routes';
 import Navbar from './components/Navbar';
 
-import './firebase/firebase'; // connection to firebase
-
-//DEV
-// import { products } from './dbContent';
 import database from './firebase/firebase'
-
 
 function App() {
   const [shopItems, setShopItems] = useState();
 
+  // Gonna be moved to Redux
   useEffect(() => {
-    database.ref('shopItems').on('value', snapshot => {
+    database.ref('products/forHome').on('value', snapshot => {
       const items = [];
       snapshot.forEach(item => {
         items.push({
@@ -29,8 +25,8 @@ function App() {
           ...item.val()
         });
       })
-      setShopItems(items)
       console.log(items)
+      setShopItems(items)
     })
   }, [])
 
@@ -41,7 +37,6 @@ function App() {
           <Navbar />
           <div className="App" style={{ marginTop: '80px' }}>
             {
-              console.log(shopItems),
               shopItems !== undefined ? <Routes products={shopItems} /> : null
             }
           </div>
