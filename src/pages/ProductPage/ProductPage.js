@@ -39,11 +39,32 @@ const ImagesContainer = styled.div`
   flex-direction: column;
   width: 50%;
   cursor: pointer;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+ 
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+ 
+  ::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.color.main};;
+    outline: 1px solid slategrey;
+    border-radius: 5px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
 `
 
 const Image = styled.img`
-  padding: 1rem 0;
   width: 100%; 
+  padding: 1rem 0;
+  &:first-child {
+    padding-top: 0;
+  }
+  &:last-child {
+    padding-bottom: 0;
+  }
 `
 
 const DescriptionContainer = styled.div`
@@ -78,16 +99,27 @@ const IconDescripton = styled.p`
 function ProductPage(props) {
   let product = props.products.find(product => product.id === props.match.params.id);
   const [toggle, setToggle] = useState(false);
+  const [dialogImage, setDialogImage] = useState('')
 
   return (
     <SectionContainer>
       <ProductContainer>
         <ImagesContainer>
-          {/* DEV */}
-          <Image onClick={() => setToggle(!toggle)} src={product.image} alt='dupa' />
-          <Image onClick={() => setToggle(!toggle)} src={product.image} alt='dupa' />
+          {
+            product.images.map((image) => {
+              return (
+                <Image
+                  key={uuid()}
+                  onClick={() => {
+                    setToggle(!toggle)
+                    setDialogImage(image)
+                  }}
+                  src={image} alt={product.name} />
+              )
+            })
+          }
         </ImagesContainer>
-        <ImageDialog toggle={toggle} setToggle={setToggle} imageSrc={product.image} />
+        <ImageDialog toggle={toggle} setToggle={setToggle} imageSrc={dialogImage} />
         <DescriptionContainer>
           <div>
             <H1>{product.name}</H1>
