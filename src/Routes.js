@@ -13,6 +13,7 @@ import ForHomePage from './pages/ForHomePage/ForHomePage';
 import BasketPage from './pages/BasketPage/BasketPage';
 
 function Routes({ products }) {
+  console.log('PRODUCTS: ', products);
   return (
     <Switch>
       <Route
@@ -71,4 +72,4 @@ function Routes({ products }) {
   )
 }
 
-export default Routes
+export default Routes;

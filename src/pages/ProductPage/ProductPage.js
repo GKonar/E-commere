@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import uuid from 'uuid';
 
 import CustomButton from '../../components/CustomButton';
 import ExpensionPanel from '../../components/ExpansionPanel';
@@ -12,7 +13,6 @@ import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 
 import dotGrid from '../../assets/images/dot-grid.png';
-
 
 const SectionContainer = styled.section`
   color: ${({ theme }) => theme.textColor.primary};
@@ -28,12 +28,12 @@ const ProductContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 70%;
-  min-height: calc(100vh - 66px);
+  min-height: calc(100vh - 90px);
   background-color: ${({ theme }) => theme.color.white};
 `
 
 const ImagesContainer = styled.div`
-  max-height: 400px;
+  max-height: 500px;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;

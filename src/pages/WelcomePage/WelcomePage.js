@@ -106,7 +106,7 @@ function WelcomePage({ products }) {
                   <Product
                     name={product.name}
                     price={product.price}
-                    image={product.image} />
+                    image={product.images[0]} />
                 </Link>
               </Grid>
             ))

@@ -3,16 +3,6 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/storage';
 
-// import beads from '../assets/images/beads.jpeg';
-// import mask from '../assets/images/mask.jpeg';
-// import purse from '../assets/images/purse.jpeg';
-// // import sweater from '../assets/images/sweater.jpeg';
-// import woodenshelves from '../assets/images/woodenshelves.jpeg';
-// import trumpet_man from '../assets/images/trumpet_man.jpeg';
-// // import octopus_toys from './assets/images/octopus_toys.jpeg';
-// import wallet from '../assets/images/wallet.jpeg';
-// import zootoys from '../assets/images/zootoys.jpeg';
-
 //**  Firebase config 
 const firebaseConfig = {
   apiKey: "AIzaSyAnecAp8bG-KwhlHm_a0AaQFaGLkhiZakc",
@@ -30,26 +20,22 @@ firebase.initializeApp(firebaseConfig);
 //**  access to all database features
 const database = firebase.database();
 
-
-
 export default database;
+
 
 
 // ***** USERS MANUAL *****
 
 // ** PUSH ITEMS TO FIREBASE
-// shopItems.forEach((item) => {
-//   database.ref('shopItems').push({
-//     name: item.name,
-//     description: item.description,
-//     price: item.price,
-//     image: item.image,
-//     inStock: item.inStock
+// toys.forEach((product) => {
+//   database.ref('products/toys').push({
+//     name: product.name,
+//     description: product.description,
+//     price: product.price,
+//     images: product.images,
+//     inStock: product.inStock
 //   })
 // })
-
-
-
 
 // ** UPDATE ELEMENTS 
 // database.ref('shopItems/-M0U43_MGWd8v3bdb8ud').update({
@@ -82,51 +68,3 @@ export default database;
 //   })
 //   console.log(shopItems);
 // })
-
-
-// const shopItems = [
-
-//   // FOR HIM:
-//   {
-//     name: 'Wallet',
-//     price: '140$',
-//     image: wallet,
-//     description: 'Wallet Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!',
-//     inStock: true
-//   },
-//   {
-//     name: 'Purse',
-//     price: '100$',
-//     image: purse,
-//     description: 'Sweater Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!',
-//     inStock: true
-//   },
-//   {
-//     name: 'Trumpet man',
-//     price: '35$',
-//     image: trumpet_man,
-//     description: 'This fancy cap Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!',
-//     inStock: true
-//   },
-//   {
-//     name: 'Custom mask',
-//     price: '25$',
-//     image: mask,
-//     description: 'Socks Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!',
-//     inStock: true
-//   },
-//   {
-//     name: 'Beads',
-//     price: '35$',
-//     image: beads,
-//     description: 'Gloves Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!',
-//     inStock: true
-//   },
-//   {
-//     name: 'Wooden shelves',
-//     price: '40$',
-//     image: woodenshelves,
-//     description: 'T-shirt Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!',
-//     inStock: true
-//   },
-// ]
