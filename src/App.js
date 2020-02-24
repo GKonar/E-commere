@@ -61,7 +61,8 @@ function App() {
           }
         });
         setShopItems(items);
-      });
+      })
+      .catch(err => console.log(err));
   }, []);
 
   return (
