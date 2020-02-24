@@ -25,6 +25,7 @@ function App() {
   });
   const items = {}
 
+  // porbably gonna be moved to actionCreators
   useEffect(() => {
     axios.get('/products.json')
       .then(res => {
