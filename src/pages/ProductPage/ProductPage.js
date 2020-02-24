@@ -97,54 +97,56 @@ const IconDescripton = styled.p`
 `
 
 function ProductPage(props) {
-  console.log(props)
   let product = props.products.find(product => product.id === props.match.params.id);
-  // console.log('PRODUCT: ', product);
   const [toggle, setToggle] = useState(false);
   const [dialogImage, setDialogImage] = useState('')
 
   return (
     <SectionContainer>
-      <ProductContainer>
-        <ImagesContainer>
-          {
-            product.images.map((image) => {
-              return (
-                <Image
-                  key={uuid()}
-                  onClick={() => {
-                    setToggle(!toggle)
-                    setDialogImage(image)
-                  }}
-                  src={image} alt={product.name} />
-              )
-            })
-          }
-        </ImagesContainer>
-        <ImageDialog toggle={toggle} setToggle={setToggle} imageSrc={dialogImage} />
-        <DescriptionContainer>
-          <div>
-            <H1>{product.name}</H1>
-            <H3>{product.price}</H3>
-          </div>
-          <ExpensionPanel product={product} />
-          <IconsContainer>
-            <IconWrapper>
-              <AssignmentReturnIcon style={{ fontSize: 60 }} />
-              <IconDescripton>Free shipping from 100$</IconDescripton>
-            </IconWrapper>
-            <IconWrapper>
-              <LocalShippingIcon style={{ fontSize: 60 }} />
-              <IconDescripton>365 days to change Your mind</IconDescripton>
-            </IconWrapper>
-            <IconWrapper>
-              <EmojiTransportationIcon style={{ fontSize: 60 }} />
-              <IconDescripton>Free curbside pick up </IconDescripton>
-            </IconWrapper>
-          </IconsContainer>
-          <CustomButton>Add to basket</CustomButton>
-        </DescriptionContainer>
-      </ProductContainer>
+      {
+        product !== undefined ? (
+          <ProductContainer>
+            <ImagesContainer>
+              {
+                product.images.map((image) => {
+                  return (
+                    <Image
+                      key={uuid()}
+                      onClick={() => {
+                        setToggle(!toggle)
+                        setDialogImage(image)
+                      }}
+                      src={image} alt={product.name} />
+                  )
+                })
+              }
+            </ImagesContainer>
+            <ImageDialog toggle={toggle} setToggle={setToggle} imageSrc={dialogImage} />
+            <DescriptionContainer>
+              <div>
+                <H1>{product.name}</H1>
+                <H3>{product.price}</H3>
+              </div>
+              <ExpensionPanel product={product} />
+              <IconsContainer>
+                <IconWrapper>
+                  <AssignmentReturnIcon style={{ fontSize: 60 }} />
+                  <IconDescripton>Free shipping from 100$</IconDescripton>
+                </IconWrapper>
+                <IconWrapper>
+                  <LocalShippingIcon style={{ fontSize: 60 }} />
+                  <IconDescripton>365 days to change Your mind</IconDescripton>
+                </IconWrapper>
+                <IconWrapper>
+                  <EmojiTransportationIcon style={{ fontSize: 60 }} />
+                  <IconDescripton>Free curbside pick up </IconDescripton>
+                </IconWrapper>
+              </IconsContainer>
+              <CustomButton>Add to basket</CustomButton>
+            </DescriptionContainer>
+          </ProductContainer>
+        ) : null // Set ridirecting link to hompage TODO
+      }
     </SectionContainer>
   )
 }
