@@ -295,3 +295,35 @@ const newest = [
     inStock: true
   },
 ]
+
+// FETCHING DATA FROM DB :
+ // Gonna be moved to Redux
+  // useEffect(() => {
+  //   database.ref('products/forHome').on('value', snapshot => {
+  //     const items = [];
+  //     snapshot.forEach(item => {
+  //       items.push({
+  //         id: item.key,
+  //         ...item.val()
+  //       });
+  //     })
+  //     // console.log('DATABASE REF: ', items)
+  //     setShopItems(items)
+  //   })
+  // }, []);
+
+  // Same as above but by using axios
+  // useEffect(() => {
+  //   axios.get('/products/forHome.json')
+  //     .then(response => {
+  //       const products = Object.entries(response.data);
+  //       const productsArray = products.map(p => {
+  //         return {
+  //           id: p[0],
+  //           ...p[1]
+  //         }
+  //       })
+  //       setShopItems(productsArray);
+  //       console.log(productsArray);
+  //     });
+  // }, []);

@@ -97,7 +97,9 @@ const IconDescripton = styled.p`
 `
 
 function ProductPage(props) {
+  console.log(props)
   let product = props.products.find(product => product.id === props.match.params.id);
+  // console.log('PRODUCT: ', product);
   const [toggle, setToggle] = useState(false);
   const [dialogImage, setDialogImage] = useState('')
 

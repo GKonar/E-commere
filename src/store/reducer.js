@@ -1,5 +1,8 @@
 const initialState = {
-  shopItems: [],
+  forHer: [],
+  forHim: [],
+  forHome: [],
+
   basketItems: [],
   basketValue: '',
   numOfBasketItems: ''
