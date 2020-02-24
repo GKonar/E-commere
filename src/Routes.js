@@ -13,13 +13,15 @@ import ForHomePage from './pages/ForHomePage/ForHomePage';
 import BasketPage from './pages/BasketPage/BasketPage';
 
 function Routes({ products }) {
-  console.log('PRODUCTS: ', products); //DEV
+  const { newest, forHer, forHim, forHome, toys, hottest } = products;
+  const allProducts = [...newest, ...forHer, ...forHim, ...forHome, ...toys, ...hottest];
+  const welcomePageProducts = [...newest, ...hottest];
   return (
     <Switch>
       <Route
         exact
         path="/"
-        render={() => <WelcomePage products={products.newest} />}
+        render={() => <WelcomePage products={welcomePageProducts} />}
       />
       <Route
         exact
@@ -59,7 +61,7 @@ function Routes({ products }) {
       <Route
         exact
         path="/product/:id"
-        render={(routeProps) => <ProductPage {...routeProps} products={products.newest} />}
+        render={(routeProps) => <ProductPage {...routeProps} products={allProducts} />}
       />
       <Route
         exact
