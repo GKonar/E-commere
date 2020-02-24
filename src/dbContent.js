@@ -1,3 +1,5 @@
+// Data from Firebase.
+
 const forHim = [
   // FOR HIM:
   {
