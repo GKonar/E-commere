@@ -10,25 +10,59 @@ import theme from './themes/theme';
 import Routes from './Routes';
 import Navbar from './components/Navbar';
 
-import database from './firebase/firebase'
+import axios from './axios';
+// import database from './firebase/firebase';
 
 function App() {
-  const [shopItems, setShopItems] = useState();
 
-  // Gonna be moved to Redux
+  const [shopItems, setShopItems] = useState({
+    forHer: [],
+    forHim: [],
+    forHome: [],
+    toys: [],
+    newest: [],
+    hottest: []
+  });
+  const items = {}
+
   useEffect(() => {
-    database.ref('products/forHome').on('value', snapshot => {
-      const items = [];
-      snapshot.forEach(item => {
-        items.push({
-          id: item.key,
-          ...item.val()
+    axios.get('/products.json')
+      .then(res => {
+        let products = res.data;
+        products = Object.entries(products);
+        products = products.map(p => {
+          return {
+            category: p[0],
+            productsInCategory: Object.entries(p[1])
+              .map(p => {
+                return {
+                  id: p[0],
+                  ...p[1]
+                }
+              })
+          }
+        })
+
+        products.forEach(p => {
+          switch (p.category) {
+            case 'forHer': items.forHer = p.productsInCategory;
+              break;
+            case 'forHim': items.forHim = p.productsInCategory;
+              break;
+            case 'forHome': items.forHome = p.productsInCategory;
+              break;
+            case 'newest': items.newest = p.productsInCategory;
+              break;
+            case 'toys': items.toys = p.productsInCategory;
+              break;
+            case 'hottest': items.hottest = p.productsInCategory;
+              break;
+            default: return
+          }
         });
-      })
-      console.log(items)
-      setShopItems(items)
-    })
-  }, [])
+        setShopItems(items);
+      });
+  }, []);
 
   return (
     <div>
@@ -37,6 +71,7 @@ function App() {
           <Navbar />
           <div className="App" style={{ marginTop: '80px' }}>
             {
+              // add spinner while waiting for the products or lazy loading ??
               shopItems !== undefined ? <Routes products={shopItems} /> : null
             }
           </div>

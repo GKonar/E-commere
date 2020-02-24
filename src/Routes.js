@@ -13,33 +13,33 @@ import ForHomePage from './pages/ForHomePage/ForHomePage';
 import BasketPage from './pages/BasketPage/BasketPage';
 
 function Routes({ products }) {
-  console.log('PRODUCTS: ', products);
+  console.log('PRODUCTS: ', products); //DEV
   return (
     <Switch>
       <Route
         exact
         path="/"
-        render={() => <WelcomePage products={products} />}
+        render={() => <WelcomePage products={products.newest} />}
       />
       <Route
         exact
         path="/for-him"
-        render={() => <ForHimPage products={products} />}
+        render={() => <ForHimPage products={products.forHim} />}
       />
       <Route
         exact
         path="/for-her"
-        render={() => <ForHerPage products={products} />}
+        render={() => <ForHerPage products={products.forHer} />}
       />
       <Route
         exact
         path="/for-home"
-        render={() => <ForHomePage products={products} />}
+        render={() => <ForHomePage products={products.forHome} />}
       />
       <Route
         exact
         path="/toys"
-        render={() => <ToysPage products={products} />}
+        render={() => <ToysPage products={products.toys} />}
       />
       <Route
         exact
@@ -59,7 +59,7 @@ function Routes({ products }) {
       <Route
         exact
         path="/product/:id"
-        render={(routeProps) => <ProductPage {...routeProps} products={products} />}
+        render={(routeProps) => <ProductPage {...routeProps} products={products.newest} />}
       />
       <Route
         exact
