@@ -1,4 +1,4 @@
-import { FETCH_ITEMS } from '../actions/actions';
+import { FETCH_ITEMS, ADD_ITEM } from '../actions/actions';
 
 const initialState = {
   forHer: [],
@@ -9,7 +9,7 @@ const initialState = {
   newest: [],
   basketItems: [],
   basketValue: '',
-  numOfBasketItems: ''
+  numOfBasketItems: 0
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +24,13 @@ const reducer = (state = initialState, action) => {
         newest: action.data.newest,
         hottest: action.data.hottest,
       }
+    case ADD_ITEM:
+      return {
+        ...state,
+        basketItems: [...state.basketItems, action.item],
+        numOfBasketItems: state.basketItems.length + 1
+      }
+
     default: return state;
   }
 }

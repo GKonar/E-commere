@@ -1,9 +1,10 @@
 import axios from '../../axios';
-
 // actions identifires 
 export const FETCH_ITEMS = 'FETCH_ITEMS';
+export const ADD_ITEM = 'ADD_ITEM';
+export const REMOVE_ITEM = 'REMOVE_ITEM'
 
-// action creators 
+// sync action creators 
 const saveItems = (data) => {
   return {
     type: FETCH_ITEMS,
@@ -11,7 +12,21 @@ const saveItems = (data) => {
   }
 }
 
-// redux thunk - ASYNC action creator
+export const addItem = (item) => {
+  return {
+    type: ADD_ITEM,
+    item
+  }
+}
+
+// basket funcionality DEV
+export const removeItem = (itemId) => {
+  return {
+    type: REMOVE_ITEM,
+  }
+}
+
+// async action creators
 export const fetchItems = (data) => {
   return dispatch => {
     let items = {}
