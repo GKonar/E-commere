@@ -14,6 +14,10 @@ import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 
 import dotGrid from '../../assets/images/dot-grid.png';
 
+//REDUX 
+import { connect } from 'react-redux';
+import { addItem } from '../../store/actions/actions';
+
 const SectionContainer = styled.section`
   color: ${({ theme }) => theme.textColor.primary};
   background-image: url(${dotGrid});
@@ -144,7 +148,7 @@ function ProductPage(props) {
                   <IconDescripton>Free curbside pick up </IconDescripton>
                 </IconWrapper>
               </IconsContainer>
-              <CustomButton>Add to basket</CustomButton>
+              <CustomButton onClick={() => props.onAddItem(product)}>Add to basket</CustomButton>
             </DescriptionContainer>
           </ProductContainer>
         ) : null // Set ridirecting link to hompage TODO
@@ -153,4 +157,10 @@ function ProductPage(props) {
   )
 }
 
-export default ProductPage
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddItem: (item) => dispatch(addItem(item))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ProductPage)
