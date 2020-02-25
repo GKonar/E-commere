@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
 
 import { ThemeProvider } from 'styled-components';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
@@ -10,61 +9,24 @@ import theme from './themes/theme';
 import Routes from './Routes';
 import Navbar from './components/Navbar';
 
-import axios from './axios';
-// import database from './firebase/firebase';
+// REDUX
+import { fetchItems } from './store/actions/actions';
+import { connect } from 'react-redux';
 
-function App() {
+function App(props) {
+  const { forHer, forHim, forHome, toys, hottest, newest } = props;
+  const shopItems = {
+    forHim,
+    forHer,
+    forHome,
+    toys,
+    hottest,
+    newest
+  }
 
-  const [shopItems, setShopItems] = useState({
-    forHer: [],
-    forHim: [],
-    forHome: [],
-    toys: [],
-    newest: [],
-    hottest: []
-  });
-  const items = {}
-
-  // porbably gonna be moved to actionCreators
   useEffect(() => {
-    axios.get('/products.json')
-      .then(res => {
-        let products = res.data;
-        products = Object.entries(products);
-        products = products.map(p => {
-          return {
-            category: p[0],
-            productsInCategory: Object.entries(p[1])
-              .map(p => {
-                return {
-                  id: p[0],
-                  ...p[1]
-                }
-              })
-          }
-        })
-
-        products.forEach(p => {
-          switch (p.category) {
-            case 'forHer': items.forHer = p.productsInCategory;
-              break;
-            case 'forHim': items.forHim = p.productsInCategory;
-              break;
-            case 'forHome': items.forHome = p.productsInCategory;
-              break;
-            case 'newest': items.newest = p.productsInCategory;
-              break;
-            case 'toys': items.toys = p.productsInCategory;
-              break;
-            case 'hottest': items.hottest = p.productsInCategory;
-              break;
-            default: return
-          }
-        });
-        setShopItems(items);
-      })
-      .catch(err => console.log(err));
-  }, []);
+    props.onFetchItems()
+  }, [])
 
   return (
     <div>
@@ -85,8 +47,21 @@ function App() {
 
 const mapStateToProps = state => {
   return {
-    basketItems: state.basketItems
+    forHer: state.forHer,
+    forHim: state.forHim,
+    forHome: state.forHome,
+    toys: state.toys,
+    hottest: state.hottest,
+    newest: state.newest
   }
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchItems: () => dispatch(fetchItems())
+  }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
