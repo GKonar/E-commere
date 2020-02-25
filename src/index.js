@@ -12,21 +12,21 @@ import reducer from './store/reducers/reducer';
 import thunk from 'redux-thunk';
 
 // Custom middleware
-const logger = store => {
-  return next => {
-    return action => {
-      console.log('[Middleware] Dispatching ', action);
-      const result = next(action);
-      console.log('[Middleware] next state ', store.getState())
-      return result;
-    }
-  }
-};
+// const logger = store => {
+//   return next => {
+//     return action => {
+//       console.log('[Middleware] Dispatching ', action);
+//       const result = next(action);
+//       console.log('[Middleware] next state ', store.getState())
+//       return result;
+//     }
+//   }
+// };
 
 // React Devtools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, composeEnhancers(applyMiddleware(logger, thunk)));
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <BrowserRouter>

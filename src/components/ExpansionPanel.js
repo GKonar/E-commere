@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
 
 function DescriptionExpensionPanel({ product }) {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <ExpansionPanel>

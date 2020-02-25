@@ -96,12 +96,14 @@ const IconDescripton = styled.p`
   font-size: ${({ theme }) => theme.textSize.secondary};
 `
 
+
+
 function ProductPage(props) {
   let product = props.products.find(product => product.id === props.match.params.id);
   const [toggle, setToggle] = useState(false);
   const [dialogImage, setDialogImage] = useState('')
-
   return (
+
     <SectionContainer>
       {
         product !== undefined ? (

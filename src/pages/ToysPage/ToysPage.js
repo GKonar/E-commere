@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 import Product from '../../components/Product';
 
-import hipSquare from '../../assets/images/hip-square.png';
+// import hipSquare from '../../assets/images/hip-square.png';
 import dotGrid from '../../assets/images/dot-grid.png';
 
 const Container = styled.div`
