@@ -1,12 +1,25 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import H1 from '../../components/H1';
 import styled from 'styled-components';
-
 import CustomButton from '../../components/CustomButton';
+import MoneyOffIcon from '@material-ui/icons/MoneyOff';
 
 import dotGrid from '../../assets/images/dot-grid.png';
 
-import MoneyOffIcon from '@material-ui/icons/MoneyOff';
+const Container = styled.section`
+  background-image: url(${dotGrid});
+  padding: ${({ theme }) => theme.padding.medium};
+  height: 100vh; /* DEV */
+    a {
+      color: inherit;
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
+    } 
+`
 
 const Heading = styled(H1)`
   && {
@@ -15,19 +28,10 @@ const Heading = styled(H1)`
   }
 `
 
-const Container = styled.section`
-  background-image: url(${dotGrid});
-    padding: ${({ theme }) => theme.padding.medium};
-    a {
-      color: inherit;
-    } 
-`
-
 const BasketHeader = styled.div`
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
-
 `
 const HeaderLeft = styled.div`
   display: flex;
@@ -40,11 +44,11 @@ const FreeDeliveryCount = styled.div`
   font-size: ${({ theme }) => theme.textSize.medium};
   display: flex;  
   align-items: center;
-  margin-right: ${({ theme }) => theme.margin.medium}; 
+  margin-right: ${({ theme }) => theme.margin.default}; 
   color: ${({ theme }) => theme.textColor.gold};
   font-weight: 600;
   letter-spacing: 1px;
-  transform: rotate(2deg);
+  /* transform: rotate(2deg); */
 `
 
 const NavigationButtons = styled.div`
@@ -71,23 +75,111 @@ const CheckoutButton = styled(CustomButton)`
   }
 `
 
-function BasketPage() {
+// BASKET LIST
+const BasketItemsContainer = styled.div`
+
+`
+const BasketItemsList = styled.ul`
+  
+`
+
+const BasketListItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+`
+
+// ITEM
+const ImageContainer = styled.div`
+  width: 200px;
+  height: 200px;
+`
+
+const ItemImage = styled.img`
+  width: 100%;
+  height: 100%;
+`
+
+const ItemName = styled.div`
+
+`
+
+const ItemPrice = styled.div`
+
+`
+const RemoveItemBtn = styled.span`
+
+`
+const Increment = styled.span`
+
+`
+
+const Decrement = styled.span`
+
+`
+
+const Quantity = styled.span`
+
+`
+
+
+
+function BasketPage({ toFreeDelivery, basketItems }) {
+  console.log('BASKET ITEMS: ', basketItems);
   return (
     <Container>
       <BasketHeader>
         <HeaderLeft>
           <Heading>Your Basket</Heading>
-          <FreeDeliveryCount>
-            <MoneyOffIcon fontSize="large" /> &nbsp; &nbsp;spend {'NUM'} more for free delivery
-          </FreeDeliveryCount>
+          {toFreeDelivery > 0 ? (
+            <FreeDeliveryCount>
+              <MoneyOffIcon fontSize="large" /> &nbsp; &nbsp;spend {`${toFreeDelivery}$`} more for free delivery
+              </FreeDeliveryCount>
+          ) : (
+              <FreeDeliveryCount>You get free shipping !</FreeDeliveryCount>
+            )}
         </HeaderLeft>
         <NavigationButtons>
-          <ContinueShoppingButton>Continue Shopping</ContinueShoppingButton>
+          <ContinueShoppingButton><Link to='/'>Continue Shopping</Link></ContinueShoppingButton>
           <CheckoutButton>Checkout Now</CheckoutButton>
         </NavigationButtons>
       </BasketHeader>
+      <BasketItemsContainer>
+        <BasketItemsList>
+          {
+            basketItems.map(item => {
+              return (
+                <BasketListItem>
+                  <ImageContainer>
+                    <ItemImage src={item.images[0]} alt="test" />
+                  </ImageContainer>
+                  <ItemName>{item.name}</ItemName>
+                  <ItemPrice>Price {item.price}</ItemPrice>
+                  <RemoveItemBtn>X</RemoveItemBtn>
+                  <Increment>+</Increment>
+                  <Quantity>Quantity: 0</Quantity>
+                  <Decrement>-</Decrement>
+                </BasketListItem>
+              )
+            })
+          }
+        </BasketItemsList>
+      </BasketItemsContainer>
     </Container>
   )
 }
 
-export default BasketPage
+const mapStateToProps = state => {
+  return {
+    toFreeDelivery: state.toFreeDelivery,
+    basketItems: state.basketItems
+  }
+}
+
+export default connect(mapStateToProps)(BasketPage)
+
+// ITEM SHAPE // DEV
+// description: "Figure Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!"
+// images: Array(3)
+// inStock: true
+// name: "Figure"
+// price: "60$"
