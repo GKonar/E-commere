@@ -11,6 +11,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const ImageContainer = styled.div`
   width: 100%;
+  max-height: 500px;
   img {
     width: 100%;
   }
@@ -24,7 +25,7 @@ const DialogContent = withStyles(theme => ({
     alignItems: 'center',
     '&:first-child': {
       paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(.5),
+      paddingBottom: theme.spacing(1),
     }
   },
 }))(MuiDialogContent);
