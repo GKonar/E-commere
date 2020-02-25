@@ -30,14 +30,18 @@ const theme = {
   },
 
   textColor: {
+    main: '#F59486',
     primary: '#2f3542',
     secondary: '#f1f2f6',
     white: '#FFFFFF',
+
+    gold: '#F9A602'
   },
 
   textSize: {
     huge: '50px',
     big: '24px',
+    medium: '20px',
     default: '16px',
     readable: '14px',
     secondary: '12px',
