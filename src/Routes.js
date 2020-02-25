@@ -26,22 +26,22 @@ function Routes({ products }) {
       <Route
         exact
         path="/for-him"
-        render={() => <ForHimPage products={products.forHim} />}
+        render={() => <ForHimPage products={forHim} />}
       />
       <Route
         exact
         path="/for-her"
-        render={() => <ForHerPage products={products.forHer} />}
+        render={() => <ForHerPage products={forHer} />}
       />
       <Route
         exact
         path="/for-home"
-        render={() => <ForHomePage products={products.forHome} />}
+        render={() => <ForHomePage products={forHome} />}
       />
       <Route
         exact
         path="/toys"
-        render={() => <ToysPage products={products.toys} />}
+        render={() => <ToysPage products={toys} />}
       />
       <Route
         exact
