@@ -41,7 +41,7 @@ const ImagesContainer = styled.div`
   cursor: pointer;
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
   }
  
   ::-webkit-scrollbar-track {

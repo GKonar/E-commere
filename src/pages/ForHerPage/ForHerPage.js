@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ForHerPage() {
+function ForHerPage({ products }) {
   return (
     <div>
       FOR HER

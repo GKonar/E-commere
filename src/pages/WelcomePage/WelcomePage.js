@@ -67,7 +67,6 @@ const useStyles = makeStyles(theme => ({
 
 function WelcomePage({ products }) {
   const classes = useStyles();
-
   return (
     <Container>
       <div className={classes.root}>
