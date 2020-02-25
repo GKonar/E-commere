@@ -26,6 +26,7 @@ function App(props) {
 
   useEffect(() => {
     props.onFetchItems()
+    // eslint-disable-next-line
   }, [])
 
   return (

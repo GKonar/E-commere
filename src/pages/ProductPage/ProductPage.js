@@ -137,7 +137,7 @@ function ProductPage(props) {
               <IconsContainer>
                 <IconWrapper>
                   <AssignmentReturnIcon style={{ fontSize: 60 }} />
-                  <IconDescripton>Free shipping from 100$</IconDescripton>
+                  <IconDescripton>Free shipping from 150$</IconDescripton>
                 </IconWrapper>
                 <IconWrapper>
                   <LocalShippingIcon style={{ fontSize: 60 }} />
