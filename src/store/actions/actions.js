@@ -46,8 +46,9 @@ export const fetchItems = (data) => {
               })
           }
         })
+
         products.forEach(p => {
-          // cerating an object category: category-items[]
+          // Cerating an items object with shape: categoryName: category-items[]
           switch (p.category) {
             case 'forHer': items.forHer = p.productsInCategory;
               break;

@@ -9,13 +9,14 @@ const initialState = {
   newest: [],
   basketItems: [
     {
-      id: "-M0bVB86ErBtkKWOG9Xb",
+      id: "-M0bVB86EddrBtkKWOG9Xb",
       description: " Quis iure eligendi ab, Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!",
       images: ["https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279889/Handcrafted/for-her/beads/beads1_tzw3fh.jpg"],
       inStock: true,
-      name: "Colorful beds",
-      price: "30$"
-    }
+      name: "Colorful beds [ test ]",
+      price: "30$",
+      qty: 1
+    },
   ],
   basketValue: '',
   numOfBasketItems: 0,

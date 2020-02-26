@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import H1 from '../../components/H1';
 import styled from 'styled-components';
 import CustomButton from '../../components/CustomButton';
+
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
 
 import dotGrid from '../../assets/images/dot-grid.png';
@@ -31,7 +32,6 @@ const Heading = styled(H1)`
 const BasketHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
 `
 const HeaderLeft = styled.div`
   display: flex;
@@ -74,13 +74,9 @@ const CheckoutButton = styled(CustomButton)`
     }
   }
 `
+const BasketItemsContainer = styled.div``
 
-// BASKET LIST
-const BasketItemsContainer = styled.div`
-
-`
 const BasketItemsList = styled.ul`
-  
 `
 
 const BasketListItem = styled.li`
@@ -177,9 +173,3 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps)(BasketPage)
 
-// ITEM SHAPE // DEV
-// description: "Figure Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!"
-// images: Array(3)
-// inStock: true
-// name: "Figure"
-// price: "60$"
