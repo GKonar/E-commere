@@ -2,7 +2,10 @@ import axios from '../../axios';
 // actions identifires 
 export const FETCH_ITEMS = 'FETCH_ITEMS';
 export const ADD_ITEM = 'ADD_ITEM';
-export const REMOVE_ITEM = 'REMOVE_ITEM'
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const UPDATE_BASKET = 'UPDATE_BASKET';
+export const INCREMENT_ITEM_QUANTITY = 'INCREMENT_ITEM_QUANTITY';
+export const DECREMENT_ITEM_QUANTITY = 'DECREMENT_ITEM_QUANTITY';
 
 // sync action creators 
 const saveItems = (data) => {
@@ -19,10 +22,31 @@ export const addItem = (item) => {
   }
 }
 
-// basket funcionality DEV
-export const removeItem = (itemId) => {
+export const removeItem = (item) => {
   return {
     type: REMOVE_ITEM,
+    item
+  }
+}
+
+export const incrementItemQuantity = (item) => {
+  return {
+    type: INCREMENT_ITEM_QUANTITY,
+    item
+  }
+}
+
+export const decrementItemQuantity = (item) => {
+  return {
+    type: DECREMENT_ITEM_QUANTITY,
+    item
+  }
+}
+
+export const updateBasket = (item) => {
+  return {
+    type: UPDATE_BASKET,
+    item
   }
 }
 

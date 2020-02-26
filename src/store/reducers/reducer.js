@@ -1,4 +1,4 @@
-import { FETCH_ITEMS, ADD_ITEM } from '../actions/actions';
+import { FETCH_ITEMS, ADD_ITEM, REMOVE_ITEM, UPDATE_BASKET, INCREMENT_ITEM_QUANTITY, DECREMENT_ITEM_QUANTITY } from '../actions/actions';
 
 const initialState = {
   forHer: [],
@@ -24,23 +24,52 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
+  const { forHim, forHer, forHome, toys, hottest, newest, basketItems, basketValue, numOfBasketItems, toFreeDelivery } = state;
   switch (action.type) {
     case FETCH_ITEMS:
+      const { forHim, forHer, forHome, toys, newest, hottest } = action.data;
       return {
         ...state,
-        forHer: action.data.forHer,
-        forHim: action.data.forHim,
-        forHome: action.data.forHome,
-        toys: action.data.toys,
-        newest: action.data.newest,
-        hottest: action.data.hottest,
+        forHer,
+        forHim,
+        forHome,
+        toys,
+        newest,
+        hottest
       }
     case ADD_ITEM:
       return {
         ...state,
-        basketItems: [...state.basketItems, action.item],
-        numOfBasketItems: state.basketItems.length + 1,
-        toFreeDelivery: state.toFreeDelivery - parseInt(action.item.price)
+        basketItems: [...basketItems, action.item],
+        numOfBasketItems: basketItems.length + 1,
+        toFreeDelivery: toFreeDelivery - parseInt(action.item.price)
+      }
+    case REMOVE_ITEM:
+      return {
+        ...state,
+        basketItems: basketItems.filter(item => item.id !== action.item.id),
+        numOfBasketItems: basketItems.length - 1,
+        toFreeDelivery: toFreeDelivery + parseInt(action.item.price)
+      }
+    case INCREMENT_ITEM_QUANTITY:
+      console.log('Incrementing...');
+      const item = basketItems.find(item => item.id === action.item.id);
+      item.qty += 1;
+      return {
+        ...state,
+        basketItems: [...basketItems],
+        numOfBasketItems: state.numOfBasketItems + 1
+      }
+    case DECREMENT_ITEM_QUANTITY:
+      console.log('Decrementing...', action.item);
+      return {
+        ...state
+      }
+
+    case UPDATE_BASKET:
+      console.log('Update basket !');
+      return {
+        ...state
       }
 
     default: return state;
