@@ -13,8 +13,7 @@ import Navbar from './components/Navbar';
 import { fetchItems } from './store/actions/actions';
 import { connect } from 'react-redux';
 
-function App(props) {
-  const { forHer, forHim, forHome, toys, hottest, newest } = props;
+function App({ forHer, forHim, forHome, toys, hottest, newest, onFetchItems }) {
   const shopItems = {
     forHim,
     forHer,
@@ -25,7 +24,7 @@ function App(props) {
   }
 
   useEffect(() => {
-    props.onFetchItems()
+    onFetchItems()
     // eslint-disable-next-line
   }, [])
 
