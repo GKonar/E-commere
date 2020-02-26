@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import uuid from 'uuid';
 
 import CustomButton from '../../components/CustomButton';
-import ExpensionPanel from '../../components/ExpansionPanel';
-import ImageDialog from '../../components/ImageDialog';
+import ExpensionPanel from './ExpansionPanel';
+import ImageDialog from './ImageDialog';
 import H1 from '../../components/H1';
 import H3 from '../../components/H3';
 
