@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import LazyLoad from 'react-lazy-load';
+
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
@@ -73,7 +75,12 @@ function WelcomePage({ products }) {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={8}>
             <HeaderProductContainer>
-              <Image src="https://images.unsplash.com/photo-1581388223946-3015f5ecab0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="my-img" />
+              <LazyLoad
+                debounce={false}
+                offsetVertical={500}
+              >
+                <Image src="https://images.unsplash.com/photo-1581388223946-3015f5ecab0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="my-img" />
+              </LazyLoad>
               <BigDescription
                 header="Awesome toys"
                 description="For small and big"
@@ -83,7 +90,12 @@ function WelcomePage({ products }) {
           </Grid>
           <Grid item xs={12} sm={4}>
             <HeaderProductContainer>
-              <Image src="https://images.unsplash.com/photo-1550171839-27415be90690?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="my-img" />
+              <LazyLoad
+                debounce={false}
+                offsetVertical={500}
+              >
+                <Image src="https://images.unsplash.com/photo-1550171839-27415be90690?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="my-img" />
+              </LazyLoad>
               <BigDescription
                 right="150px"
                 top="45%"
