@@ -2,17 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import H1 from '../../components/H1';
 import styled from 'styled-components';
+import H1 from '../../components/H1';
+import H3 from '../../components/H3';
 import CustomButton from '../../components/CustomButton';
 
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
+import Divider from '@material-ui/core/Divider';
 
 import dotGrid from '../../assets/images/dot-grid.png';
+
+import { removeItem, incrementItemQuantity, decrementItemQuantity } from '../../store/actions/actions';
+
+import BasketListItem from './BasketListItem';
 
 const Container = styled.section`
   background-image: url(${dotGrid});
   padding: ${({ theme }) => theme.padding.medium};
+  color: ${({ theme }) => theme.textColor.primary};
   height: 100vh; /* DEV */
     a {
       color: inherit;
@@ -48,7 +55,7 @@ const FreeDeliveryCount = styled.div`
   color: ${({ theme }) => theme.textColor.gold};
   font-weight: 600;
   letter-spacing: 1px;
-  /* transform: rotate(2deg); */
+  transform: rotate(2deg);
 `
 
 const NavigationButtons = styled.div`
@@ -77,50 +84,30 @@ const CheckoutButton = styled(CustomButton)`
 const BasketItemsContainer = styled.div``
 
 const BasketItemsList = styled.ul`
+  padding: ${({ theme }) => theme.padding.medium};
 `
 
-const BasketListItem = styled.li`
+const ItemListHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: ${({ theme }) => theme.padding.medium};
+  background-color: ${({ theme }) => theme.color.white};
 `
 
-// ITEM
-const ImageContainer = styled.div`
-  width: 200px;
-  height: 200px;
+const HeaderH3 = styled(H3)`
+  && {
+    margin: 0
+  }
 `
 
-const ItemImage = styled.img`
-  width: 100%;
-  height: 100%;
-`
-
-const ItemName = styled.div`
-
-`
-
-const ItemPrice = styled.div`
-
-`
-const RemoveItemBtn = styled.span`
-
-`
-const Increment = styled.span`
-
-`
-
-const Decrement = styled.span`
-
-`
-
-const Quantity = styled.span`
-
-`
-
-
-
-function BasketPage({ toFreeDelivery, basketItems }) {
-  console.log('BASKET ITEMS: ', basketItems);
+function BasketPage({
+  toFreeDelivery,
+  basketItems,
+  onItemRemove,
+  onDecrementItemQuantity,
+  onIncrementItemQuantity
+}) {
+  console.log('BASKET ITEMS: ', basketItems.length); // DEV
   return (
     <Container>
       <BasketHeader>
@@ -141,20 +128,24 @@ function BasketPage({ toFreeDelivery, basketItems }) {
       </BasketHeader>
       <BasketItemsContainer>
         <BasketItemsList>
+          <Divider />
+          <ItemListHeader>
+            <HeaderH3>item description</HeaderH3>
+            <HeaderH3>price</HeaderH3>
+          </ItemListHeader>
+          {
+            basketItems.length === 0 ? <Divider /> : null
+          }
           {
             basketItems.map(item => {
               return (
-                <BasketListItem>
-                  <ImageContainer>
-                    <ItemImage src={item.images[0]} alt="test" />
-                  </ImageContainer>
-                  <ItemName>{item.name}</ItemName>
-                  <ItemPrice>Price {item.price}</ItemPrice>
-                  <RemoveItemBtn>X</RemoveItemBtn>
-                  <Increment>+</Increment>
-                  <Quantity>Quantity: 0</Quantity>
-                  <Decrement>-</Decrement>
-                </BasketListItem>
+                <BasketListItem
+                  key={item.id}
+                  item={item}
+                  onItemRemove={onItemRemove}
+                  increment={onIncrementItemQuantity}
+                  decrement={onDecrementItemQuantity}
+                />
               )
             })
           }
@@ -167,9 +158,16 @@ function BasketPage({ toFreeDelivery, basketItems }) {
 const mapStateToProps = state => {
   return {
     toFreeDelivery: state.toFreeDelivery,
-    basketItems: state.basketItems
+    basketItems: state.basketItems,
   }
 }
 
-export default connect(mapStateToProps)(BasketPage)
+const mapDispatchToProps = dispatch => {
+  return {
+    onItemRemove: (item) => dispatch(removeItem(item)),
+    onIncrementItemQuantity: (item) => dispatch(incrementItemQuantity(item)),
+    onDecrementItemQuantity: (item) => dispatch(decrementItemQuantity(item))
+  }
+}
 
+export default connect(mapStateToProps, mapDispatchToProps)(BasketPage)
