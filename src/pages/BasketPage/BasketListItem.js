@@ -104,7 +104,7 @@ function BasketListItem({ item, onItemRemove, increment, decrement }) {
           <DescriptonContainer>
             <ItemName>{item.name}</ItemName>
             <QuantityWrapper>
-              <Decrement onClick={() => decrement(item)} size="small" aria-label="remove">
+              <Decrement disabled={item.qty <= 1 ? true : false} onClick={() => decrement(item)} size="small" aria-label="remove">
                 <RemoveIcon />
               </Decrement>
               <Quantity>Qty: {item.qty}</Quantity>
