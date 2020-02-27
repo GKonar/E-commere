@@ -45,12 +45,23 @@ const HeaderH3 = styled(H3)`
   }
 `
 
+const Subtotal = styled.div`
+  background-color: ${({ theme }) => theme.color.white};
+  padding: ${({ theme }) => theme.padding.medium};
+  display: flex;
+  justify-content: flex-end;
+  h3 {
+    margin: 0;
+  }
+`
+
 function BasketPage({
   toFreeDelivery,
   basketItems,
   onItemRemove,
   onDecrementItemQuantity,
   onIncrementItemQuantity
+  basketValue
 }) {
   console.log('BASKET ITEMS: ', basketItems.length); // DEV
   return (
@@ -79,6 +90,9 @@ function BasketPage({
               )
             })
           }
+          <Subtotal>
+            <H3>subtotal {basketValue}$</H3>
+          </Subtotal>
         </BasketItemsList>
       </BasketItemsContainer>
     </Container>
@@ -89,6 +103,7 @@ const mapStateToProps = state => {
   return {
     toFreeDelivery: state.toFreeDelivery,
     basketItems: state.basketItems,
+    basketValue: state.basketValue
   }
 }
 
