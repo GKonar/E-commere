@@ -69,35 +69,29 @@ function BasketPage({
       <BasketItemsContainer>
         <BasketItemsList>
           <Divider />
-          {
-            basketItems.length !== 0 ? (
+          {basketItems.length !== 0 ? (
+            <ItemListHeader>
+              <HeaderH3>item description</HeaderH3>
+              <HeaderH3>price</HeaderH3>
+            </ItemListHeader>
+          ) : (
               <ItemListHeader>
-                <HeaderH3>item description</HeaderH3>
-                <HeaderH3>price</HeaderH3>
+                <HeaderH3>no items</HeaderH3>
               </ItemListHeader>
-            ) : (
-                <ItemListHeader>
-                  <HeaderH3>no items</HeaderH3>
-                </ItemListHeader>
-              )
-          }
-          {
-            basketItems.length === 0 ? <Divider /> : null
-          }
-          {
-            basketItems.map(item => {
-              return (
-                <BasketListItem
-                  key={item.id}
-                  item={item}
-                  onItemRemove={onItemRemove}
-                  increment={onIncrementItemQuantity}
-                  decrement={onDecrementItemQuantity}
-                  toFreeDelivery={toFreeDelivery}
-                />
-              )
-            })
-          }
+            )}
+          {basketItems.length === 0 ? <Divider /> : null}
+          {basketItems.map(item => {
+            return (
+              <BasketListItem
+                key={item.id}
+                item={item}
+                onItemRemove={onItemRemove}
+                increment={onIncrementItemQuantity}
+                decrement={onDecrementItemQuantity}
+                toFreeDelivery={toFreeDelivery}
+              />
+            )
+          })}
           <Subtotal>
             <H3>subtotal {basketValue}$</H3>
           </Subtotal>
