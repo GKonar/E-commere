@@ -28,12 +28,13 @@ const StyledBadge = withStyles(theme => ({
   },
 }))(Badge);
 
-function Basket({ basketItems }) {
+function Basket({ numOfBasketItems }) {
   return (
     <Container>
       <Link to='/basket'>
         <IconButton aria-label="cart">
-          <StyledBadge badgeContent={basketItems.length === 0 ? '0' : basketItems.length} color="secondary">
+          {/* MaterialUI badge accepts string */}
+          <StyledBadge badgeContent={numOfBasketItems + ''} color="secondary">
             <ShoppingCartIcon />
           </StyledBadge>
         </IconButton>
@@ -44,7 +45,8 @@ function Basket({ basketItems }) {
 
 const mapStateToProps = state => {
   return {
-    basketItems: state.basketItems
+    basketItems: state.basketItems,
+    numOfBasketItems: state.numOfBasketItems
   }
 }
 
