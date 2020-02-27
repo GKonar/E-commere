@@ -60,20 +60,27 @@ function BasketPage({
   basketItems,
   onItemRemove,
   onDecrementItemQuantity,
-  onIncrementItemQuantity
+  onIncrementItemQuantity,
   basketValue
 }) {
-  console.log('BASKET ITEMS: ', basketItems.length); // DEV
   return (
     <Container>
       <BasketHeader toFreeDelivery={toFreeDelivery} />
       <BasketItemsContainer>
         <BasketItemsList>
           <Divider />
-          <ItemListHeader>
-            <HeaderH3>item description</HeaderH3>
-            <HeaderH3>price</HeaderH3>
-          </ItemListHeader>
+          {
+            basketItems.length !== 0 ? (
+              <ItemListHeader>
+                <HeaderH3>item description</HeaderH3>
+                <HeaderH3>price</HeaderH3>
+              </ItemListHeader>
+            ) : (
+                <ItemListHeader>
+                  <HeaderH3>no items</HeaderH3>
+                </ItemListHeader>
+              )
+          }
           {
             basketItems.length === 0 ? <Divider /> : null
           }
@@ -86,6 +93,7 @@ function BasketPage({
                   onItemRemove={onItemRemove}
                   increment={onIncrementItemQuantity}
                   decrement={onDecrementItemQuantity}
+                  toFreeDelivery={toFreeDelivery}
                 />
               )
             })
@@ -103,6 +111,7 @@ const mapStateToProps = state => {
   return {
     toFreeDelivery: state.toFreeDelivery,
     basketItems: state.basketItems,
+    numOfBasketItems: state.numOfBasketItems,
     basketValue: state.basketValue
   }
 }
