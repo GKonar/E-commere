@@ -38,32 +38,52 @@ const reducer = (state = initialState, action) => {
         hottest
       }
     case ADD_ITEM:
+      // return different state when item is already in basket 
+      const duplicate = basketItems.find(item => item.id === action.item.id)
+
+      if (duplicate) {
+        duplicate.qty += 1
+        return {
+          ...state,
+          numOfBasketItems: numOfBasketItems + 1,
+          toFreeDelivery: toFreeDelivery - action.item.price,
+          basketValue: basketValue + action.item.price
+        }
+      }
       return {
         ...state,
         basketItems: [...basketItems, action.item],
-        numOfBasketItems: basketItems.length + 1,
-        toFreeDelivery: toFreeDelivery - parseInt(action.item.price)
+        numOfBasketItems: numOfBasketItems + 1,
+        toFreeDelivery: toFreeDelivery - action.item.price,
+        basketValue: basketValue + action.item.price
       }
     case REMOVE_ITEM:
       return {
         ...state,
         basketItems: basketItems.filter(item => item.id !== action.item.id),
-        numOfBasketItems: basketItems.length - 1,
-        toFreeDelivery: toFreeDelivery + parseInt(action.item.price)
+        numOfBasketItems: numOfBasketItems - (1 * action.item.qty),
+        toFreeDelivery: toFreeDelivery + (action.item.price * action.item.qty),
+        basketValue: basketValue - action.item.price
       }
     case INCREMENT_ITEM_QUANTITY:
-      console.log('Incrementing...');
-      const item = basketItems.find(item => item.id === action.item.id);
-      item.qty += 1;
+      const itemToIncrement = basketItems.find(item => item.id === action.item.id);
+      itemToIncrement.qty += 1;
       return {
         ...state,
         basketItems: [...basketItems],
-        numOfBasketItems: state.numOfBasketItems + 1
+        numOfBasketItems: numOfBasketItems + 1,
+        toFreeDelivery: toFreeDelivery - action.item.price,
+        basketValue: basketValue + action.item.price
       }
     case DECREMENT_ITEM_QUANTITY:
-      console.log('Decrementing...', action.item);
+      const itemToDecrement = basketItems.find(item => item.id === action.item.id);
+      itemToDecrement.qty -= 1;
       return {
-        ...state
+        ...state,
+        basketItems: [...basketItems],
+        numOfBasketItems: numOfBasketItems - 1,
+        toFreeDelivery: toFreeDelivery + action.item.price,
+        basketValue: basketValue - action.item.price
       }
     case UPDATE_BASKET:
       console.log('Update basket !');
