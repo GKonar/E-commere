@@ -18,13 +18,13 @@ const initialState = {
     //   qty: 1
     // },
   ],
-  basketValue: '',
+  basketValue: 0,
   numOfBasketItems: 0,
   toFreeDelivery: 150,
 }
 
 const reducer = (state = initialState, action) => {
-  const { forHim, forHer, forHome, toys, hottest, newest, basketItems, basketValue, numOfBasketItems, toFreeDelivery } = state;
+  const { basketItems, basketValue, numOfBasketItems, toFreeDelivery } = state;
   switch (action.type) {
     case FETCH_ITEMS:
       const { forHim, forHer, forHome, toys, newest, hottest } = action.data;
