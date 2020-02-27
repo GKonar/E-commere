@@ -54,7 +54,7 @@ function Product({ price, name, image }) {
     <ProductContainer>
       <ImageContainer>
         <SmallDescritpion>
-          <Price>{price}</Price>
+          <Price>{price}$</Price>
           <ProductName className="product-name">{name}</ProductName>
         </SmallDescritpion>
         <Image src={image} alt="my-img" />

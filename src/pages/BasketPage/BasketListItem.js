@@ -118,7 +118,7 @@ function BasketListItem({ item, onItemRemove, increment, decrement }) {
             </RemoveItemBtn>
           </DescriptonContainer>
         </LeftSideWrapper>
-        <ItemPrice>{item.price}</ItemPrice>
+        <ItemPrice>{item.price}$</ItemPrice>
       </ListItem>
       <Divider />
     </div>
