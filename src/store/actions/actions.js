@@ -70,7 +70,6 @@ export const fetchItems = (data) => {
               })
           }
         })
-
         products.forEach(p => {
           // Cerating an items object with shape: categoryName: category-items[]
           switch (p.category) {
