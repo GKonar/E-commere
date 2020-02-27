@@ -1,13 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import styled from 'styled-components';
-import H1 from '../../components/H1';
 import H3 from '../../components/H3';
-import CustomButton from '../../components/CustomButton';
 
-import MoneyOffIcon from '@material-ui/icons/MoneyOff';
 import Divider from '@material-ui/core/Divider';
 
 import dotGrid from '../../assets/images/dot-grid.png';
@@ -15,6 +11,7 @@ import dotGrid from '../../assets/images/dot-grid.png';
 import { removeItem, incrementItemQuantity, decrementItemQuantity } from '../../store/actions/actions';
 
 import BasketListItem from './BasketListItem';
+import BasketHeader from './BasketHeader';
 
 const Container = styled.section`
   background-image: url(${dotGrid});
@@ -29,58 +26,6 @@ const Container = styled.section`
     } 
 `
 
-const Heading = styled(H1)`
-  && {
-    margin: 0;
-    margin-left: ${({ theme }) => theme.margin.medium};
-  }
-`
-
-const BasketHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-const HeaderLeft = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 60%;
-`
-
-const FreeDeliveryCount = styled.div`
-  font-size: ${({ theme }) => theme.textSize.medium};
-  display: flex;  
-  align-items: center;
-  margin-right: ${({ theme }) => theme.margin.default}; 
-  color: ${({ theme }) => theme.textColor.gold};
-  font-weight: 600;
-  letter-spacing: 1px;
-  transform: rotate(2deg);
-`
-
-const NavigationButtons = styled.div`
-  width: 40%;
-  display: flex;
-`
-
-const ContinueShoppingButton = styled(CustomButton)`
-  && {
-    margin: 0 2rem;
-  }
-`
-
-const CheckoutButton = styled(CustomButton)`
-  && {
-    color: ${({ theme }) => theme.textColor.secondary};
-    background-color: ${({ theme }) => theme.color.primary};
-    border: 1px solid #2f3542;
-    margin: 0 2rem;
-    &:hover {
-      background-color: ${({ theme }) => theme.color.white};
-      color: ${({ theme }) => theme.textColor.primary};
-    }
-  }
-`
 const BasketItemsContainer = styled.div``
 
 const BasketItemsList = styled.ul`
@@ -110,22 +55,7 @@ function BasketPage({
   console.log('BASKET ITEMS: ', basketItems.length); // DEV
   return (
     <Container>
-      <BasketHeader>
-        <HeaderLeft>
-          <Heading>Your Basket</Heading>
-          {toFreeDelivery > 0 ? (
-            <FreeDeliveryCount>
-              <MoneyOffIcon fontSize="large" /> &nbsp; &nbsp;spend {`${toFreeDelivery}$`} more for free delivery
-              </FreeDeliveryCount>
-          ) : (
-              <FreeDeliveryCount>You get free shipping !</FreeDeliveryCount>
-            )}
-        </HeaderLeft>
-        <NavigationButtons>
-          <ContinueShoppingButton><Link to='/'>Continue Shopping</Link></ContinueShoppingButton>
-          <CheckoutButton>Checkout Now</CheckoutButton>
-        </NavigationButtons>
-      </BasketHeader>
+      <BasketHeader toFreeDelivery={toFreeDelivery} />
       <BasketItemsContainer>
         <BasketItemsList>
           <Divider />
