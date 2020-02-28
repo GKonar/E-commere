@@ -6,6 +6,7 @@ export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const UPDATE_BASKET = 'UPDATE_BASKET';
 export const INCREMENT_ITEM_QUANTITY = 'INCREMENT_ITEM_QUANTITY';
 export const DECREMENT_ITEM_QUANTITY = 'DECREMENT_ITEM_QUANTITY';
+export const SET_DISCOUNT = 'SET_DISCOUNT';
 
 // sync action creators 
 const saveItems = (data) => {
@@ -40,6 +41,13 @@ export const decrementItemQuantity = (item) => {
   return {
     type: DECREMENT_ITEM_QUANTITY,
     item
+  }
+}
+
+export const setDiscount = (basketValue) => {
+  return {
+    type: SET_DISCOUNT,
+    basketValue
   }
 }
 

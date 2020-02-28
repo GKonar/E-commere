@@ -1,4 +1,4 @@
-import { FETCH_ITEMS, ADD_ITEM, REMOVE_ITEM, UPDATE_BASKET, INCREMENT_ITEM_QUANTITY, DECREMENT_ITEM_QUANTITY } from '../actions/actions';
+import { FETCH_ITEMS, ADD_ITEM, REMOVE_ITEM, UPDATE_BASKET, INCREMENT_ITEM_QUANTITY, DECREMENT_ITEM_QUANTITY, SET_DISCOUNT } from '../actions/actions';
 
 const initialState = {
   forHer: [],
@@ -63,7 +63,7 @@ const reducer = (state = initialState, action) => {
         basketItems: basketItems.filter(item => item.id !== action.item.id),
         numOfBasketItems: numOfBasketItems - (1 * action.item.qty),
         toFreeDelivery: toFreeDelivery + (action.item.price * action.item.qty),
-        basketValue: basketValue - action.item.price
+        basketValue: basketValue - (action.item.price * action.item.qty)
       }
     case INCREMENT_ITEM_QUANTITY:
       const itemToIncrement = basketItems.find(item => item.id === action.item.id);
@@ -85,6 +85,12 @@ const reducer = (state = initialState, action) => {
         toFreeDelivery: toFreeDelivery + action.item.price,
         basketValue: basketValue - action.item.price
       }
+    case SET_DISCOUNT:
+      return {
+        ...state,
+        basketValue: basketValue * .8
+      }
+
     case UPDATE_BASKET:
       console.log('Update basket !');
       return {
