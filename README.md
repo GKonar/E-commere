@@ -12,7 +12,7 @@ Technologies used :
 -	React-Router
 -	React-Redux
 
-Note: App is in early stage. Currently ( 02. 2020 ) I am commiting to it every day. 
+Note: App in development. Currently ( 02. 2020 ) I commit almost every day. 
 
 ## Check it out, use it, feel free 💚
 
