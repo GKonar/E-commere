@@ -6,12 +6,12 @@ import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
 
 import Product from '../../components/Product';
+import ProductsHeader from '../../components/ProductsHeader';
 
 // import hipSquare from '../../assets/images/hip-square.png';
 import dotGrid from '../../assets/images/dot-grid.png';
 
 const Container = styled.div`
-  background-image: url(${dotGrid});
   width: 100%; 
   height: 100%;
   a {
@@ -20,9 +20,10 @@ const Container = styled.div`
 `
 const useStyles = makeStyles(theme => ({
   root: {
+    backgroundImage: `url(${dotGrid})`,
     flexGrow: 1,
-    padding: "0 1rem",
-    margin: '0',
+    padding: "1rem 1rem",
+    marginTop: '',
   },
 }));
 
@@ -32,6 +33,7 @@ function ToysPage({ products }) {
   return (
     <div className={classes.root}>
       <Container>
+        <ProductsHeader>Toys</ProductsHeader>
         <Grid container spacing={4}>
           {
             products.map(product => (
