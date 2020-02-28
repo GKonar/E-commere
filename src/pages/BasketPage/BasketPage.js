@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import styled from 'styled-components';
 import H3 from '../../components/H3';
+import CustomButton from '../../components/CustomButton';
 
+import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 
 import dotGrid from '../../assets/images/dot-grid.png';
 
-import { removeItem, incrementItemQuantity, decrementItemQuantity } from '../../store/actions/actions';
+import { removeItem, incrementItemQuantity, decrementItemQuantity, setDiscount } from '../../store/actions/actions';
 
 import BasketListItem from './BasketListItem';
 import BasketHeader from './BasketHeader';
+import NavigationButtons from './NavigationButtons';
 
 const Container = styled.section`
   background-image: url(${dotGrid});
   padding: ${({ theme }) => theme.padding.medium};
   color: ${({ theme }) => theme.textColor.primary};
-  height: 100vh; /* DEV */
+  height: 100%; /* DEV */
     a {
       color: inherit;
       text-decoration: none;
@@ -55,14 +58,75 @@ const Subtotal = styled.div`
   }
 `
 
+const BasketSummary = styled.div`
+  background-color: ${({ theme }) => theme.color.white};
+  padding: ${({ theme }) => theme.padding.medium};
+  padding-top: ${({ theme }) => theme.padding.default};
+`
+
+const SummaryWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`
+
+const DiscountCodes = styled.div`
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+  padding: ${({ theme }) => theme.padding.default} 0;
+  margin-right: ${({ theme }) => theme.padding.medium};
+`
+
+const DiscountCodesForm = styled.form`
+  display: flex;
+  align-items: center;
+`
+
+const TextLabel = styled.label`
+  font-size: ${({ theme }) => theme.textSize.default};
+  font-weight: 600;
+  width: 50%;
+`
+
+const SubmitButton = styled(CustomButton)`
+  && {
+    margin-left: ${({ theme }) => theme.margin.default};
+    width: 30%;
+  }
+`
+
 function BasketPage({
   toFreeDelivery,
   basketItems,
   onItemRemove,
   onDecrementItemQuantity,
   onIncrementItemQuantity,
-  basketValue
+  basketValue,
+  onSetDiscount,
+  numOfBasketItems
 }) {
+  let discountCodes = ['relax', 'yougotthis', 'miakalifa', 'rokko']; // DEV
+
+  const [inputValue, setInputValue] = useState('');
+  const [inputState, setInputState] = useState('');
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  }
+
+  const handleDiscount = (e) => {
+    e.preventDefault();
+    if (discountCodes.includes(inputValue)) {
+      onSetDiscount(basketValue);
+      setInputValue('');
+      setInputState('disabled');
+    } else {
+      setInputState('error');
+    }
+  }
+
   return (
     <Container>
       <BasketHeader toFreeDelivery={toFreeDelivery} />
@@ -95,6 +159,35 @@ function BasketPage({
           <Subtotal>
             <H3>subtotal {basketValue}$</H3>
           </Subtotal>
+          <Divider />
+          <BasketSummary>
+            <SummaryWrapper>
+              <Subtotal>
+                <H3>grand total: {basketValue}$</H3>
+              </Subtotal>
+              <DiscountCodes>
+                <DiscountCodesForm onSubmit={handleDiscount}>
+                  <TextLabel htmlFor="dicscount-code" >
+                    Discount code:
+                  </TextLabel>
+                  <TextField
+                    onChange={handleChange}
+                    value={inputValue}
+                    id="discount-code"
+                    variant="outlined"
+                    error={inputState === 'error' ? true : false}
+                    disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false}
+                  />
+                  <SubmitButton
+                    disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false}
+                    type="submit">Use
+                  </SubmitButton>
+                </DiscountCodesForm>
+              </DiscountCodes>
+              <NavigationButtons />
+            </SummaryWrapper>
+          </BasketSummary>
+          <Divider />
         </BasketItemsList>
       </BasketItemsContainer>
     </Container>
@@ -114,7 +207,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onItemRemove: (item) => dispatch(removeItem(item)),
     onIncrementItemQuantity: (item) => dispatch(incrementItemQuantity(item)),
-    onDecrementItemQuantity: (item) => dispatch(decrementItemQuantity(item))
+    onDecrementItemQuantity: (item) => dispatch(decrementItemQuantity(item)),
+    onSetDiscount: (basketValue) => dispatch(setDiscount(basketValue))
   }
 }
 
