@@ -58,12 +58,13 @@ function WelcomePage({ products }) {
                 debounce={false}
                 offsetVertical={500}
               >
-                <Image src="https://images.unsplash.com/photo-1581388223946-3015f5ecab0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="my-img" />
+                <Image src="https://images.pexels.com/photos/981588/pexels-photo-981588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="my-img" />
               </LazyLoad>
               <BigDescription
                 header="Awesome toys"
                 description="For small and big"
                 top="10%"
+                setBackground
               />
             </HeaderProductContainer>
           </Grid>
@@ -73,13 +74,13 @@ function WelcomePage({ products }) {
                 debounce={false}
                 offsetVertical={500}
               >
-                <Image src="https://images.unsplash.com/photo-1550171839-27415be90690?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="my-img" />
+                <Image src="https://images.pexels.com/photos/2826787/pexels-photo-2826787.jpeg?cs=srgb&dl=rectangular-white-and-black-wooden-display-rack-beside-green-2826787.jpg&fm=jpg" alt="my-img" />
               </LazyLoad>
               <BigDescription
                 right="150px"
-                top="45%"
-                header="Rusty style"
-                description="Rusty charm for Your garden"
+                top="30%"
+                header="Decorations"
+                description="Uniqe detailing for Your home"
                 setBackground
               />
             </HeaderProductContainer>
