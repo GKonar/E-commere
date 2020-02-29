@@ -75,8 +75,10 @@ const DiscountCodes = styled.div`
   width: 40%;
   display: flex;
   justify-content: flex-end;
-  padding: ${({ theme }) => theme.padding.default} 0;
+  padding: ${({ theme }) => theme.padding.medium} 0;
+  padding-bottom: 0;
   margin-right: ${({ theme }) => theme.padding.medium};
+  margin-bottom: ${({ theme }) => theme.padding.medium};
 `
 
 const DiscountCodesForm = styled.form`
@@ -177,10 +179,12 @@ function BasketPage({
                     variant="outlined"
                     error={inputState === 'error' ? true : false}
                     disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false}
+                    placeholder="provide code"
                   />
                   <SubmitButton
                     disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false}
-                    type="submit">Use
+                    type="submit">
+                    Use
                   </SubmitButton>
                 </DiscountCodesForm>
               </DiscountCodes>
