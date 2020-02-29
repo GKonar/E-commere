@@ -21,10 +21,11 @@ const Container = styled.span`
 
 const StyledBadge = withStyles(theme => ({
   badge: {
-    right: -3,
-    top: 13,
+    right: -1,
+    top: 27,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 4px',
+    borderRadius: '50%',
+    padding: '12px 9px',
   },
 }))(Badge);
 
@@ -35,7 +36,7 @@ function Basket({ numOfBasketItems }) {
         <IconButton aria-label="cart">
           {/* MaterialUI badge accepts string */}
           <StyledBadge badgeContent={numOfBasketItems + ''} color="secondary">
-            <ShoppingCartIcon />
+            <ShoppingCartIcon fontSize="large" />
           </StyledBadge>
         </IconButton>
       </Link>
