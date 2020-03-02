@@ -114,7 +114,8 @@ function WelcomePage({ onFetchPageItems, products }) {
           }
         </Grid>
       </NewestProducts>
-    </Container >
+      {console.log(products)}
+    </Container>
   )
 }
 
