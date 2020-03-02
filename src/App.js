@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { ThemeProvider } from 'styled-components';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
@@ -10,10 +10,9 @@ import Routes from './Routes';
 import Navbar from './components/Navbar';
 
 // REDUX
-import { fetchItems } from './store/actions/actions';
 import { connect } from 'react-redux';
 
-function App({ forHer, forHim, forHome, toys, hottest, newest, onFetchItems }) {
+function App({ forHer, forHim, forHome, toys, hottest, newest }) {
   const shopItems = {
     forHim,
     forHer,
@@ -23,21 +22,13 @@ function App({ forHer, forHim, forHome, toys, hottest, newest, onFetchItems }) {
     newest
   }
 
-  useEffect(() => {
-    onFetchItems()
-    // eslint-disable-next-line
-  }, [])
-
   return (
     <div>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={mainTheme}>
           <Navbar />
           <div className="App" style={{ marginTop: '80px' }}>
-            {
-              // add spinner while waiting for the products or lazy loading ??
-              shopItems !== undefined ? <Routes products={shopItems} /> : null
-            }
+            <Routes products={shopItems} />
           </div>
         </ThemeProvider>
       </MuiThemeProvider>
@@ -56,10 +47,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onFetchItems: () => dispatch(fetchItems())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);

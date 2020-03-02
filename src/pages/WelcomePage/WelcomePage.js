@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import LazyLoad from 'react-lazy-load';
@@ -13,6 +13,10 @@ import dotGrid from '../../assets/images/dot-grid.png';
 
 import Product from '../../components/Product';
 import ProductsHeader from '../../components/ProductsHeader';
+
+//REDUX 
+import { connect } from 'react-redux';
+import { fetchPageItems } from '../../store/actions/actions'
 
 const Container = styled.div`
   background-image: url(${hipSquare});
@@ -46,8 +50,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function WelcomePage({ products }) {
+function WelcomePage({ onFetchPageItems, products }) {
   const classes = useStyles();
+  useEffect(() => {
+    console.log('hello from WelcomePage');
+    onFetchPageItems('hottest')
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <Container>
       <div className={classes.root}>
@@ -108,4 +118,17 @@ function WelcomePage({ products }) {
   )
 }
 
-export default WelcomePage;
+const mapStateToProps = state => {
+  return {
+    products: state.hottest
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchPageItems: (page) => dispatch(fetchPageItems(page))
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomePage);

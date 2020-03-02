@@ -1,6 +1,7 @@
 import axios from '../../axios';
+
 // actions identifires 
-export const FETCH_ITEMS = 'FETCH_ITEMS';
+export const FETCH_PAGE_ITEMS = 'FETCH_PAGE_ITEMS';
 export const ADD_ITEM = 'ADD_ITEM';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const UPDATE_BASKET = 'UPDATE_BASKET';
@@ -9,10 +10,11 @@ export const DECREMENT_ITEM_QUANTITY = 'DECREMENT_ITEM_QUANTITY';
 export const SET_DISCOUNT = 'SET_DISCOUNT';
 
 // sync action creators 
-const saveItems = (data) => {
+const savePageItems = (data, page) => {
   return {
-    type: FETCH_ITEMS,
-    data
+    type: FETCH_PAGE_ITEMS,
+    data,
+    page
   }
 }
 
@@ -59,45 +61,19 @@ export const updateBasket = (item) => {
 }
 
 // async action creators
-export const fetchItems = (data) => {
+export const fetchPageItems = (page) => {
   return dispatch => {
-    let items = {}
-    axios.get('/products.json')
+    axios.get(`/products/${page}.json`)
       .then(res => {
-        let products = res.data;
-        products = Object.entries(products);
-        products = products.map(p => {
+        let pageProducts = res.data;
+        pageProducts = Object.entries(pageProducts);
+        pageProducts = pageProducts.map(p => {
           return {
-            category: p[0],
-            productsInCategory: Object.entries(p[1])
-              .map(p => {
-                return {
-                  id: p[0],
-                  ...p[1]
-                }
-              })
+            id: p[0],
+            ...p[1]
           }
         })
-        products.forEach(p => {
-          // Cerating an items object with shape: categoryName: category-items[]
-          switch (p.category) {
-            case 'forHer': items.forHer = p.productsInCategory;
-              break;
-            case 'forHim': items.forHim = p.productsInCategory;
-              break;
-            case 'forHome': items.forHome = p.productsInCategory;
-              break;
-            case 'newest': items.newest = p.productsInCategory;
-              break;
-            case 'toys': items.toys = p.productsInCategory;
-              break;
-            case 'hottest': items.hottest = p.productsInCategory;
-              break;
-            default: return
-          }
-        });
-        data = items;
-        dispatch(saveItems(data));
+        dispatch(savePageItems(pageProducts, page));
       })
       .catch(err => console.log(err));
   }

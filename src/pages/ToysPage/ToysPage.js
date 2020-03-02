@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -8,8 +9,9 @@ import styled from 'styled-components';
 import Product from '../../components/Product';
 import ProductsHeader from '../../components/ProductsHeader';
 
-// import hipSquare from '../../assets/images/hip-square.png';
 import dotGrid from '../../assets/images/dot-grid.png';
+
+import { fetchPageItems } from '../../store/actions/actions'
 
 const Container = styled.div`
   width: 100%; 
@@ -28,8 +30,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-function ToysPage({ products }) {
+function ToysPage({ products, onFetchPageItems }) {
   const classes = useStyles();
+
+  useEffect(() => {
+    onFetchPageItems('toys');
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <div className={classes.root}>
       <Container>
@@ -53,4 +61,16 @@ function ToysPage({ products }) {
   )
 }
 
-export default ToysPage
+const mapStateToProps = state => {
+  return {
+    products: state.toys
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchPageItems: (page) => dispatch(fetchPageItems(page))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToysPage);
+
