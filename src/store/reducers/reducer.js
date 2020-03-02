@@ -11,13 +11,27 @@ const initialState = {
   basketValue: 0,
   numOfBasketItems: 0,
   toFreeDelivery: 150,
-  hasDiscount: false
+  hasDiscount: false,
 }
 
 const reducer = (state = initialState, action) => {
-  const { basketItems, basketValue, numOfBasketItems, toFreeDelivery } = state;
+  const { basketItems, basketValue, numOfBasketItems, toFreeDelivery, hasDiscount } = state;
   switch (action.type) {
     case FETCH_PAGE_ITEMS:
+      // handle discount codes
+      if (hasDiscount) {
+        const dataAfterDiscount = action.data.map(item => {
+          return {
+            ...item,
+            price: Math.round(item.price * 0.8)
+          }
+        })
+        return {
+          ...state,
+          [action.page]: dataAfterDiscount,
+          toFreeDelivery: 0,
+        }
+      }
       return {
         ...state,
         [action.page]: action.data
@@ -40,7 +54,16 @@ const reducer = (state = initialState, action) => {
           numOfBasketItems: numOfBasketItems + 1,
           toFreeDelivery: toFreeDelivery - action.item.price,
           basketValue: basketValue + action.item.price,
-          basketItems: updatedItems
+          basketItems: updatedItems,
+        }
+      }
+      if (hasDiscount) {
+        return {
+          ...state,
+          basketItems: [...basketItems, action.item],
+          numOfBasketItems: numOfBasketItems + 1,
+          toFreeDelivery: toFreeDelivery - action.item.price,
+          basketValue: basketValue + action.item.price * 0.8
         }
       }
       return {
@@ -58,6 +81,17 @@ const reducer = (state = initialState, action) => {
           return basketValue - (action.item.price * action.item.qty)
         }
       }
+      // handle discount
+      if (hasDiscount) {
+        return {
+          ...state,
+          basketItems: basketItems.filter(item => item.id !== action.item.id),
+          numOfBasketItems: numOfBasketItems - (1 * action.item.qty),
+          toFreeDelivery: 0,
+          basketValue: setBasketValue(),
+        }
+      }
+
       return {
         ...state,
         basketItems: basketItems.filter(item => item.id !== action.item.id),
@@ -100,10 +134,6 @@ const reducer = (state = initialState, action) => {
         basketValue: basketValue - action.item.price
       }
     case SET_DISCOUNT:
-      // When setting discount change prices to all shop items, and after checkout reset it again
-      const allItems = [...state.forHim, ...state.forHome, ...state.forHer, ...state.toys, ...state.hottest, ...state.newest]; // DEV
-      console.log(allItems); // DEV
-
       const basketItemsAfterDiscount = basketItems.map(item => {
         return {
           ...item,

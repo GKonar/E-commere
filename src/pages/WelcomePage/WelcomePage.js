@@ -50,11 +50,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function WelcomePage({ onFetchPageItems, products }) {
+function WelcomePage({ onFetchPageItems, hottest, newest }) {
   const classes = useStyles();
   useEffect(() => {
     console.log('hello from WelcomePage');
-    onFetchPageItems('hottest')
+    onFetchPageItems('hottest');
+    onFetchPageItems('newest');
     // eslint-disable-next-line
   }, [])
 
@@ -98,10 +99,27 @@ function WelcomePage({ onFetchPageItems, products }) {
         </Grid>
       </div>
       <NewestProducts>
+        {/* Render newest products */}
         <ProductsHeader>Newest Products</ProductsHeader>
         <Grid container spacing={3}>
           {
-            products.map(product => (
+            hottest.map(product => (
+              <Grid key={product.id} item xs={12} sm={4}>
+                <Link to={`/product/${product.id}`}>
+                  <Product
+                    name={product.name}
+                    price={product.price}
+                    image={product.images[0]} />
+                </Link>
+              </Grid>
+            ))
+          }
+        </Grid>
+        {/* Render hottest products */}
+        <ProductsHeader>Hottest Items</ProductsHeader>
+        <Grid container spacing={3}>
+          {
+            newest.map(product => (
               <Grid key={product.id} item xs={12} sm={4}>
                 <Link to={`/product/${product.id}`}>
                   <Product
@@ -114,14 +132,14 @@ function WelcomePage({ onFetchPageItems, products }) {
           }
         </Grid>
       </NewestProducts>
-      {console.log(products)}
     </Container>
   )
 }
 
 const mapStateToProps = state => {
   return {
-    products: state.hottest
+    hottest: state.hottest,
+    newest: state.newest
   }
 }
 
