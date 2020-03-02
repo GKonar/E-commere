@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import H3 from '../../components/H3';
 import CustomButton from '../../components/CustomButton';
+import Snackbar from '../../components/Snackbar';
 
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
@@ -107,12 +108,14 @@ function BasketPage({
   onIncrementItemQuantity,
   basketValue,
   onSetDiscount,
-  numOfBasketItems
+  numOfBasketItems,
+  hasDiscount
 }) {
-  let discountCodes = ['relax', 'yougotthis', 'miakalifa', 'rokko']; // DEV
+  let discountCodes = ['relax', 'yougotthis', 'miakalifa', 'rokko']; // DEV gonna come oryginally from database
 
   const [inputValue, setInputValue] = useState('');
   const [inputState, setInputState] = useState('');
+  const [isSnackbarOpen, setSnackbarOpen] = useState(false);
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -124,6 +127,7 @@ function BasketPage({
       onSetDiscount(basketValue);
       setInputValue('');
       setInputState('disabled');
+      setSnackbarOpen(true);
     } else {
       setInputState('error');
     }
@@ -178,11 +182,11 @@ function BasketPage({
                     id="discount-code"
                     variant="outlined"
                     error={inputState === 'error' ? true : false}
-                    disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false}
-                    placeholder="provide code"
+                    disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false || hasDiscount}
+                    placeholder={hasDiscount ? 'discount added' : 'provide code'}
                   />
                   <SubmitButton
-                    disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false}
+                    disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false || hasDiscount}
                     type="submit">
                     Use
                   </SubmitButton>
@@ -194,6 +198,14 @@ function BasketPage({
           <Divider />
         </BasketItemsList>
       </BasketItemsContainer>
+      {/* Snackbar component */}
+      <Snackbar
+        isSnackbarOpen={isSnackbarOpen}
+        setSnackbarOpen={setSnackbarOpen}
+        message={"You got discount!"}
+        variant='success'
+        time={2500}
+      />
     </Container>
   )
 }
@@ -203,7 +215,8 @@ const mapStateToProps = state => {
     toFreeDelivery: state.toFreeDelivery,
     basketItems: state.basketItems,
     numOfBasketItems: state.numOfBasketItems,
-    basketValue: state.basketValue
+    basketValue: state.basketValue,
+    hasDiscount: state.hasDiscount
   }
 }
 
