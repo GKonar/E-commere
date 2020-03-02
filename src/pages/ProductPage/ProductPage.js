@@ -7,6 +7,7 @@ import ExpensionPanel from './ExpansionPanel';
 import ImageDialog from './ImageDialog';
 import H1 from '../../components/H1';
 import H3 from '../../components/H3';
+import Snackbar from '../../components/Snackbar';
 
 import AssignmentReturnIcon from '@material-ui/icons/AssignmentReturn';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
@@ -100,14 +101,18 @@ const IconDescripton = styled.p`
   font-size: ${({ theme }) => theme.textSize.secondary};
 `
 
-
-
 function ProductPage(props) {
   let product = props.products.find(product => product.id === props.match.params.id);
   const [toggle, setToggle] = useState(false);
-  const [dialogImage, setDialogImage] = useState('')
-  return (
+  const [dialogImage, setDialogImage] = useState('');
+  const [isSnackbarOpen, setSnackbarOpen] = useState(false);
 
+  const handleAddItem = () => {
+    props.onAddItem(product);
+    setSnackbarOpen(true);
+  }
+
+  return (
     <SectionContainer>
       {
         product !== undefined ? (
@@ -148,8 +153,15 @@ function ProductPage(props) {
                   <IconDescripton>Free curbside pick up </IconDescripton>
                 </IconWrapper>
               </IconsContainer>
-              <CustomButton onClick={() => props.onAddItem(product)}>Add to basket</CustomButton>
+              <CustomButton onClick={handleAddItem}>Add to basket</CustomButton>
             </DescriptionContainer>
+            <Snackbar
+              isSnackbarOpen={isSnackbarOpen}
+              setSnackbarOpen={setSnackbarOpen}
+              message={"Item Added"}
+              variant='success'
+              time={500}
+            />
           </ProductContainer>
         ) : null // Set ridirecting link to hompage TODO
       }

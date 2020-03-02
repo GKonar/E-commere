@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from "react-router-dom";
 
 import WelcomePage from './pages/WelcomePage/WelcomePage';
-import ProductPage from './pages/ProductPage/ProductPage';
+import ProductPage from './pages/ProductPage/ProductPage'; // to add after whole refactor
 import AboutPage from './pages/AboutPage/AboutPage';
 import ForHimPage from './pages/ForHimPage/ForHimPage';
 import ForHerPage from './pages/ForHerPage/ForHerPage';
@@ -13,35 +13,34 @@ import ForHomePage from './pages/ForHomePage/ForHomePage';
 import BasketPage from './pages/BasketPage/BasketPage';
 
 function Routes({ products }) {
-  const { newest, forHer, forHim, forHome, toys, hottest } = products;
-  const allProducts = [...newest, ...forHer, ...forHim, ...forHome, ...toys, ...hottest];
-  const welcomePageProducts = [...newest, ...hottest];
+  const { forHer, forHim, forHome, toys, newest, hottest } = products;
+  const pageProducts = [...newest, ...forHer, ...forHim, ...forHome, ...toys, ...hottest];
   return (
     <Switch>
       <Route
         exact
         path="/"
-        render={() => <WelcomePage products={welcomePageProducts} />}
+        render={() => <WelcomePage />}
       />
       <Route
         exact
         path="/for-him"
-        render={() => <ForHimPage products={forHim} />}
+        render={() => <ForHimPage />}
       />
       <Route
         exact
         path="/for-her"
-        render={() => <ForHerPage products={forHer} />}
+        render={() => <ForHerPage />}
       />
       <Route
         exact
         path="/for-home"
-        render={() => <ForHomePage products={forHome} />}
+        render={() => <ForHomePage />}
       />
       <Route
         exact
         path="/toys"
-        render={() => <ToysPage products={toys} />}
+        render={() => <ToysPage />}
       />
       <Route
         exact
@@ -61,7 +60,7 @@ function Routes({ products }) {
       <Route
         exact
         path="/product/:id"
-        render={(routeProps) => <ProductPage {...routeProps} products={allProducts} />}
+        render={(routeProps) => <ProductPage {...routeProps} products={pageProducts} />}
       />
       <Route
         exact
