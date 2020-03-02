@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import H3 from '../../components/H3';
 import CustomButton from '../../components/CustomButton';
 import Snackbar from '../../components/Snackbar';
+import Tooltip from '../../components/Tooltip';
 
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
@@ -111,7 +112,7 @@ function BasketPage({
   numOfBasketItems,
   hasDiscount
 }) {
-  let discountCodes = ['relax', 'yougotthis', 'miakalifa', 'rokko']; // DEV gonna come oryginally from database
+  let discountCodes = ['relax', 'yougotthis', 'miakalifa', 'brunoise']; // DEV gonna come oryginally from database
 
   const [inputValue, setInputValue] = useState('');
   const [inputState, setInputState] = useState('');
@@ -163,33 +164,37 @@ function BasketPage({
             )
           })}
           <Subtotal>
-            <H3>subtotal {basketValue}$</H3>
+            <H3>subtotal {Math.round(basketValue)}$</H3>
           </Subtotal>
           <Divider />
           <BasketSummary>
             <SummaryWrapper>
               <Subtotal>
-                <H3>grand total: {basketValue}$</H3>
+                <H3>grand total: {Math.round(basketValue)}$</H3>
               </Subtotal>
               <DiscountCodes>
                 <DiscountCodesForm onSubmit={handleDiscount}>
                   <TextLabel htmlFor="dicscount-code" >
                     Discount code:
                   </TextLabel>
-                  <TextField
-                    onChange={handleChange}
-                    value={inputValue}
-                    id="discount-code"
-                    variant="outlined"
-                    error={inputState === 'error' ? true : false}
-                    disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false || hasDiscount}
-                    placeholder={hasDiscount ? 'discount added' : 'provide code'}
-                  />
-                  <SubmitButton
-                    disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false || hasDiscount}
-                    type="submit">
-                    Use
+                  <Tooltip>
+                    <TextField
+                      onChange={handleChange}
+                      value={inputValue}
+                      id="discount-code"
+                      variant="outlined"
+                      error={inputState === 'error' ? true : false}
+                      disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false || hasDiscount}
+                      placeholder={hasDiscount ? 'discount added' : 'provide code'}
+                    />
+                  </Tooltip>
+                  <Tooltip>
+                    <SubmitButton
+                      disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false || hasDiscount}
+                      type="submit">
+                      Use
                   </SubmitButton>
+                  </Tooltip>
                 </DiscountCodesForm>
               </DiscountCodes>
               <NavigationButtons />
