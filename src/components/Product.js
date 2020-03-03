@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 import LazyLoad from 'react-lazy-load';
-import ImageLoader from '../components/ImageLoader';
+import ImageLoader from './ImageLoader/ImageLoader';
 
 const ProductContainer = styled.div`
-  padding: 1rem;
+  /* padding: 1rem; */
   position: relative;
   height: 100%; 
 

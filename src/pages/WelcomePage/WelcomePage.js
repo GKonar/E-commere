@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import LazyLoad from 'react-lazy-load';
-import ImageLoader from '../../components/ImageLoader';
+import ImageLoader from '../../components/ImageLoader/ImageLoader';
 
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
@@ -36,7 +36,8 @@ const HeaderProductContainer = styled.div`
 const Products = styled.div`
   background-image: url(${dotGrid});
   margin-top: ${({ theme }) => theme.margin.medium};
-  padding-bottom: ${({ theme }) => theme.margin.medium};
+  padding: 0  ${({ theme }) => theme.padding.default};
+  padding-bottom: ${({ theme }) => theme.padding.medium};
   overflow: hidden;
 `
 
@@ -51,7 +52,6 @@ const useStyles = makeStyles(theme => ({
 function WelcomePage({ onFetchPageItems, hottest, newest }) {
   const classes = useStyles();
   useEffect(() => {
-    console.log('hello from WelcomePage');
     onFetchPageItems('hottest');
     onFetchPageItems('newest');
     // eslint-disable-next-line
