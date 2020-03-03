@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
+import LazyLoad from 'react-lazy-load';
+import ImageLoader from '../components/ImageLoader';
 
 const ProductContainer = styled.div`
   padding: 1rem;
@@ -61,9 +63,14 @@ function Product({ price, name, image }) {
           <Price>{price}$</Price>
           <ProductName className="product-name">{name}</ProductName>
         </SmallDescritpion>
-        <Image src={image} alt="my-img" />
+        <LazyLoad
+          debounce={false}
+          offsetVertical={100}
+        >
+          <ImageLoader src={image} alt="my-img" />
+        </LazyLoad>
       </ImageContainer>
-    </ProductContainer>
+    </ProductContainer >
   )
 }
 
