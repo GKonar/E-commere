@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
   const { basketItems, basketValue, numOfBasketItems, toFreeDelivery, hasDiscount } = state;
   switch (action.type) {
     case FETCH_PAGE_ITEMS:
-      // handle discount codes
+      // handle discount mode
       if (hasDiscount) {
         const dataAfterDiscount = action.data.map(item => {
           return {
@@ -57,6 +57,7 @@ const reducer = (state = initialState, action) => {
           basketItems: updatedItems,
         }
       }
+      // handle Discount mode
       if (hasDiscount) {
         return {
           ...state,
@@ -81,7 +82,7 @@ const reducer = (state = initialState, action) => {
           return basketValue - (action.item.price * action.item.qty)
         }
       }
-      // handle discount
+      // handle discount mode
       if (hasDiscount) {
         return {
           ...state,
