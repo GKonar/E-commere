@@ -189,11 +189,13 @@ function BasketPage({
                     />
                   </Tooltip>
                   <Tooltip>
-                    <SubmitButton
-                      disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false || hasDiscount}
-                      type="submit">
-                      Use
-                  </SubmitButton>
+                    <span>
+                      <SubmitButton
+                        disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false || hasDiscount}
+                        type="submit">
+                        Use
+                      </SubmitButton>
+                    </span>
                   </Tooltip>
                 </DiscountCodesForm>
               </DiscountCodes>
