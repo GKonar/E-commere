@@ -21,6 +21,7 @@ const Container = styled(H1)`
       transition: all .1s;
       text-align: center;
     } */
+  
 `
 
 function ProductsHeader({ children }) {
