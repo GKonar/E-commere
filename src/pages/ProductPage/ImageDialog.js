@@ -12,7 +12,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const ImageContainer = styled.div`
   display: flex;
   width: 100%;
-  max-height: 500px;
+  max-height: 800px;
   img {
     width: 100%;
   }

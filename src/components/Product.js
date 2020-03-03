@@ -19,14 +19,15 @@ const ProductContainer = styled.div`
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  /* height: 350px;  */
-  /* max-height: 350px; */
+  max-height: 350px;
+  height: 350px;
   overflow: hidden;
 `
 
 const SmallDescritpion = styled.span`
   position: absolute;
   overflow: hidden;
+  z-index: 100;
 `
 
 const Price = styled.p`
@@ -50,8 +51,6 @@ const ProductName = styled.p`
 
 const Image = styled.img`
   width: 100%;
-  /* position: absolute;
-  bottom: 0; */
 `
 
 function Product({ price, name, image }) {
