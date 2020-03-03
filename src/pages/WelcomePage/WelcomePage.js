@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import LazyLoad from 'react-lazy-load';
+import ImageLoader from '../../components/ImageLoader';
 
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
@@ -32,20 +33,17 @@ const HeaderProductContainer = styled.div`
   overflow: hidden;
 `
 
-const NewestProducts = styled.div`
+const Products = styled.div`
   background-image: url(${dotGrid});
   margin-top: ${({ theme }) => theme.margin.medium};
+  padding-bottom: ${({ theme }) => theme.margin.medium};
   overflow: hidden;
-`
-
-const Image = styled.img`
-  width: 100%;
 `
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    padding: "0 1rem",
+    padding: "0 1rem  ",
     margin: '0',
   },
 }));
@@ -67,9 +65,9 @@ function WelcomePage({ onFetchPageItems, hottest, newest }) {
             <HeaderProductContainer>
               <LazyLoad
                 debounce={false}
-                offsetVertical={500}
+                offsetVertical={0}
               >
-                <Image src="https://images.pexels.com/photos/981588/pexels-photo-981588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="my-img" />
+                <ImageLoader src="https://images.pexels.com/photos/981588/pexels-photo-981588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
               </LazyLoad>
               <BigDescription
                 header="Awesome toys"
@@ -83,9 +81,9 @@ function WelcomePage({ onFetchPageItems, hottest, newest }) {
             <HeaderProductContainer>
               <LazyLoad
                 debounce={false}
-                offsetVertical={500}
+                offsetVertical={0}
               >
-                <Image src="https://images.pexels.com/photos/2826787/pexels-photo-2826787.jpeg?cs=srgb&dl=rectangular-white-and-black-wooden-display-rack-beside-green-2826787.jpg&fm=jpg" alt="my-img" />
+                <ImageLoader src="https://images.pexels.com/photos/2826787/pexels-photo-2826787.jpeg?cs=srgb&dl=rectangular-white-and-black-wooden-display-rack-beside-green-2826787.jpg&fm=jpg" />
               </LazyLoad>
               <BigDescription
                 right="150px"
@@ -98,7 +96,7 @@ function WelcomePage({ onFetchPageItems, hottest, newest }) {
           </Grid>
         </Grid>
       </div>
-      <NewestProducts>
+      <Products>
         {/* Render newest products */}
         <ProductsHeader>Newest Products</ProductsHeader>
         <Grid container spacing={3}>
@@ -131,7 +129,7 @@ function WelcomePage({ onFetchPageItems, hottest, newest }) {
             ))
           }
         </Grid>
-      </NewestProducts>
+      </Products>
     </Container>
   )
 }

@@ -4,16 +4,18 @@ import H1 from './H1';
 
 const Container = styled(H1)`
   && {
-    margin-bottom: 0;
     margin-top: ${({ theme }) => theme.margin.medium};
+    margin-bottom: ${({ theme }) => theme.margin.default};
     justify-content: center;
     position: relative;
+    font-weight: 700;
+    letter-spacing: 1px;
   }
   /* &::after {
       content: "";
       display: flex;
       background-color: ${({ theme }) => theme.color.main};
-      width: 25%;
+      width: 100%;
       height: 2px;
       position: absolute;
       top: 110%;
@@ -21,6 +23,7 @@ const Container = styled(H1)`
       transition: all .1s;
       text-align: center;
     } */
+  
 `
 
 function ProductsHeader({ children }) {

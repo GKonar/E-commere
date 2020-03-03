@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
+import LazyLoad from 'react-lazy-load';
+import ImageLoader from '../components/ImageLoader';
 
 const ProductContainer = styled.div`
   padding: 1rem;
@@ -19,14 +21,15 @@ const ProductContainer = styled.div`
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  /* height: 350px;  */
-  /* max-height: 350px; */
+  max-height: 350px;
+  height: 350px;
   overflow: hidden;
 `
 
 const SmallDescritpion = styled.span`
   position: absolute;
   overflow: hidden;
+  z-index: 100;
 `
 
 const Price = styled.p`
@@ -48,12 +51,6 @@ const ProductName = styled.p`
   transform: translateX(-200px);
 `
 
-const Image = styled.img`
-  width: 100%;
-  /* position: absolute;
-  bottom: 0; */
-`
-
 function Product({ price, name, image }) {
   return (
     <ProductContainer>
@@ -62,9 +59,14 @@ function Product({ price, name, image }) {
           <Price>{price}$</Price>
           <ProductName className="product-name">{name}</ProductName>
         </SmallDescritpion>
-        <Image src={image} alt="my-img" />
+        <LazyLoad
+          debounce={false}
+          offsetVertical={100}
+        >
+          <ImageLoader src={image} alt="my-img" />
+        </LazyLoad>
       </ImageContainer>
-    </ProductContainer>
+    </ProductContainer >
   )
 }
 
