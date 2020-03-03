@@ -51,10 +51,6 @@ const ProductName = styled.p`
   transform: translateX(-200px);
 `
 
-const Image = styled.img`
-  width: 100%;
-`
-
 function Product({ price, name, image }) {
   return (
     <ProductContainer>

@@ -40,10 +40,6 @@ const Products = styled.div`
   overflow: hidden;
 `
 
-const Image = styled.img`
-  width: 100%;
-`
-
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
