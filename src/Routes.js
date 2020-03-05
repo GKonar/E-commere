@@ -11,6 +11,7 @@ import ShopPage from './pages/ShopPage/ShopPage';
 import ToysPage from './pages/ToysPage/ToysPage';
 import ForHomePage from './pages/ForHomePage/ForHomePage';
 import BasketPage from './pages/BasketPage/BasketPage';
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 
 function Routes({ products }) {
   const { forHer, forHim, forHome, toys, newest, hottest } = products;
@@ -66,6 +67,11 @@ function Routes({ products }) {
         exact
         path="/basket"
         render={() => <BasketPage />}
+      />
+      <Route
+        exact
+        path="/checkout"
+        render={() => <CheckoutPage />}
       />
       {/* Last resort path */}
       <Route render={() => <h1>PAGE NOT FOUND :/ Sorry bro</h1>} />}/>
