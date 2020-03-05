@@ -33,7 +33,7 @@ function NavigationButtons() {
   return (
     <Container>
       <ContinueShoppingButton><Link to='/'>Continue Shopping</Link></ContinueShoppingButton>
-      <CheckoutButton>Checkout Now</CheckoutButton>
+      <CheckoutButton><Link to='/checkout'>Checkout Now</Link></CheckoutButton>
     </Container>
   )
 }
