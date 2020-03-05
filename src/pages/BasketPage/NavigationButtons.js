@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import CustomButton from '../../components/CustomButton';
+import { ButtonStyled } from '../../components/CustomButton';
 
 const Container = styled.div`
   width: 40%;
   display: flex;
 `
 
-const ContinueShoppingButton = styled(CustomButton)`
+const ContinueShoppingButton = styled(ButtonStyled)`
   && {
     margin: 0 2rem;
   }
 `
 
-const CheckoutButton = styled(CustomButton)`
+const CheckoutButton = styled(ButtonStyled)`
   && {
     color: ${({ theme }) => theme.textColor.secondary};
     background-color: ${({ theme }) => theme.color.primary};
