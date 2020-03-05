@@ -1,7 +1,8 @@
+import React from 'react';
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 
-export default styled(Button)`
+const ButtonStyled = styled(Button)`
   && {
     color: ${({ theme }) => theme.color.main};;
     background-color: ${({ theme }) => theme.color.white};
@@ -17,4 +18,20 @@ export default styled(Button)`
   }
 `;
 
+
+function CustomButton({ children, isWorking, type, disabled }) {
+  return (
+    <>
+      <ButtonStyled
+        type={type}
+        disabled={disabled}>
+        {isWorking ? 'Lodaing...' : children}
+      </ButtonStyled>
+    </>
+  )
+}
+
+export default CustomButton
+
 // https://medium.com/sipios/use-styled-components-with-material-ui-react-e0759f9a15ce
+
