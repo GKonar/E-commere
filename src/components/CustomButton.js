@@ -39,13 +39,16 @@ export const ButtonStyled = styled(Button)`
 `;
 
 
-function CustomButton({ children, isWorking, type, disabled }) {
+function CustomButton({ children, isWorking, type, disabled, onClick }) {
   return (
     <>
       <ButtonStyled
         type={type}
-        disabled={disabled}>
+        disabled={disabled}
+        onClick={onClick}
+      >
         {isWorking ? 'Submitting...' : children}
+
       </ButtonStyled>
     </>
   )
