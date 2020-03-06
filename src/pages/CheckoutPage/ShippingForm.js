@@ -7,6 +7,7 @@ import countryList from 'react-select-country-list';
 import H1 from '../../components/H1';
 import CustomButton from '../../components/CustomButton';
 import H2 from '../../components/H2';
+import CredentialsError from '../../components/CredentialsError';
 
 // HOOKS 
 import useForm from '../../hooks/useForm';
@@ -82,13 +83,11 @@ function ShippingForm() {
     values,
     handleChange,
     handleSubmit,
-    errors, // pull out errors from form
+    errors, // pull out errors from form - need this for validation message
     submitting
-  } = useForm(initialValues, submit); // Add validation schema
+  } = useForm(initialValues, submit, schema); // Add validation schema
 
-  // console.log('FORM VALUES: ', values)
-  // console.log('FORM ERRORS: ', errors)
-
+  console.log('FORM ERRORS: ', errors);
   const changeCountry = value => {
     setCountry(value);
   }
@@ -102,6 +101,7 @@ function ShippingForm() {
           variant="outlined"
           label="Your Name"
           onChange={handleChange} />
+        <CredentialsError>{errors.name ? errors.name : ''}</CredentialsError>
       </Field>
       <Field>
         <TextField
@@ -118,6 +118,7 @@ function ShippingForm() {
           variant="outlined"
           label="Adresse"
           onChange={handleChange} />
+        <CredentialsError>{errors.adresse ? errors.adresse : ''}</CredentialsError>
       </Field>
       <CityState>
         <Field>
@@ -127,6 +128,7 @@ function ShippingForm() {
             variant="outlined"
             label="City"
             onChange={handleChange} />
+          <CredentialsError>{errors.city ? errors.city : ''}</CredentialsError>
         </Field>
         <Field>
           <TextField
@@ -135,15 +137,17 @@ function ShippingForm() {
             variant="outlined"
             label="State"
             onChange={handleChange} />
+          <CredentialsError>{errors.state ? errors.state : ''}</CredentialsError>
         </Field>
       </CityState>
       <Field>
         <TextField
           name="postal"
-          type="number"
+          type="text"
           variant="outlined"
           label="Postal/Zip-code"
           onChange={handleChange} />
+        <CredentialsError>{errors.postal ? errors.postal : ''}</CredentialsError>
       </Field>
       <Field>
         <Select
@@ -161,6 +165,7 @@ function ShippingForm() {
           variant="outlined"
           label="Phone"
           onChange={handleChange} />
+        <CredentialsError>{errors.number ? errors.number : ''}</CredentialsError>
       </Field>
       <Field>
         <TextField
@@ -169,14 +174,15 @@ function ShippingForm() {
           variant="outlined"
           label="E-mail"
           onChange={handleChange} />
+        <CredentialsError>{errors.email ? errors.email : ''}</CredentialsError>
       </Field>
-      <CustomButton
+      <Submit
         type='submit'
         isWorking={submitting}
         disabled={submitting}
       >
         Submit
-      </CustomButton>
+      </Submit>
     </Form>
   )
 }
