@@ -11,7 +11,6 @@ export default function useForm(initialValues, onSubmit, schema) {
 
   const handleChange = (event) => {
     event.persist();
-
     setState((prevState) => ({
       ...prevState,
       values: {
@@ -51,7 +50,7 @@ export default function useForm(initialValues, onSubmit, schema) {
             };
           });
         })
-      console.log(state.errors);
+      // console.log(state.errors); DEV
       // handleSubmit without schema
     } else if (onSubmit) {
       setSubmitting(true);
