@@ -7,6 +7,7 @@ import countryList from 'react-select-country-list';
 import H1 from '../../components/H1';
 import CustomButton from '../../components/CustomButton';
 import H2 from '../../components/H2';
+import { ButtonStyled } from '../../components/CustomButton';
 import CredentialsError from '../../components/CredentialsError';
 
 // HOOKS 
@@ -70,6 +71,18 @@ const initialValues = {
   email: ''
 }
 
+const Submit = styled(ButtonStyled)`
+  && {
+    color: ${({ theme }) => theme.textColor.secondary};
+    background-color: ${({ theme }) => theme.color.primary};
+    border: 1px solid #2f3542;
+    width:80%;
+    &:hover {
+      background-color: ${({ theme }) => theme.color.white};
+      color: ${({ theme }) => theme.textColor.primary};
+    }
+  }
+`
 
 function submit() {
   return Promise.resolve('Sucessfully Submitted!').then((value) => console.log(value));
