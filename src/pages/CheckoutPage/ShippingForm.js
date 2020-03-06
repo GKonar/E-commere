@@ -40,6 +40,8 @@ const customStyles = {
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: ${({ theme }) => theme.padding.default};
 `
 
@@ -48,9 +50,11 @@ const CityState = styled.div`
 
 `
 const Field = styled.div`
+width: 100%;
 display: flex;
 flex-direction: column;
-margin: ${({ theme }) => theme.margin.small} ${({ theme }) => theme.margin.medium};
+margin: ${({ theme }) => theme.margin.regular};
+position: relative;
 `
 
 const initialValues = {

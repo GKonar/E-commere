@@ -1,6 +1,7 @@
 const theme = {
   padding: {
     small: '8px',
+    regular: '12px',
     default: '16px',
     medium: '32px',
     large: '48px',
@@ -9,6 +10,7 @@ const theme = {
 
   margin: {
     small: '8px',
+    regular: '12px',
     default: '16px',
     medium: '32px',
     large: '48px',
@@ -26,7 +28,7 @@ const theme = {
     primary: '#2f3542',
     secondary: '#f1f2f6',
     white: '#FFFFFF',
-
+    error: '#e74c3c'
   },
 
   textColor: {
