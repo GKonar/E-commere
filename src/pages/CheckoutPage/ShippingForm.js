@@ -27,8 +27,6 @@ const customStyles = {
     borderRadius: '5px'
   }),
   singleValue: (provided, state) => {
-    // const opacity = state.isDisabled ? 0.5 : 1;
-    // const transition = 'opacity 300ms';
     const fontWeight = "500"
 
     return { ...provided, fontWeight };
@@ -91,7 +89,7 @@ function ShippingForm() {
     handleSubmit,
     errors, // pull out errors from form
     submitting
-  } = useForm(initialValues, submit, schema); // Create schema
+  } = useForm(initialValues, submit); // Add validation schema
 
   // console.log('FORM VALUES: ', values)
   // console.log('FORM ERRORS: ', errors)
