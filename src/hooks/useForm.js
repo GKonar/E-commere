@@ -22,7 +22,6 @@ export default function useForm(initialValues, onSubmit, schema) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // onSubmit();
     // handleSubmit with schema
     if (onSubmit && schema) {
       let errors = {}
@@ -50,7 +49,6 @@ export default function useForm(initialValues, onSubmit, schema) {
             };
           });
         })
-      // console.log(state.errors); DEV
       // handleSubmit without schema
     } else if (onSubmit) {
       setSubmitting(true);
