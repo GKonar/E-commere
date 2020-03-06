@@ -11,8 +11,8 @@ import H2 from '../../components/H2';
 // HOOKS 
 import useForm from '../../hooks/useForm';
 
-// YUP validation
-import * as yup from 'yup';
+//Validation
+import { schema } from '../../validation/shippingFormShema';
 
 const customStyles = {
   option: (provided, state) => ({
@@ -69,15 +69,6 @@ const initialValues = {
   email: ''
 }
 
-let schema = yup.object().shape({
-  name: yup.string().required(),
-  adresse: yup.string().required(),
-  city: yup.string().required(),
-  state: yup.string().required(),
-  postal: yup.number().required(),
-  number: yup.number().required().min(4),
-  email: yup.string().email().required(),
-});
 
 function submit() {
   return Promise.resolve('Sucessfully Submitted!').then((value) => console.log(value));
@@ -87,7 +78,6 @@ function ShippingForm() {
   // Country list select
   const options = countryList().getData();
   const [country, setCountry] = useState(null);
-
   const {
     values,
     handleChange,
