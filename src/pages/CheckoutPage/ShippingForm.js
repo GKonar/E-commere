@@ -6,6 +6,7 @@ import countryList from 'react-select-country-list';
 
 import H1 from '../../components/H1';
 import CustomButton from '../../components/CustomButton';
+import H2 from '../../components/H2';
 
 // HOOKS 
 import useForm from '../../hooks/useForm';
@@ -103,7 +104,7 @@ function ShippingForm() {
   }
   return (
     <Form onSubmit={handleSubmit}>
-      <H1>Who You Are</H1>
+      <H2>Who You Are</H2>
       <Field>
         <TextField
           name="name"

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
-import H1 from '../../components/H1';
+import H2 from '../../components/H2';
+
 import dotGrid from '../../assets/images/dot-grid.png';
 
 import ShippingForm from './ShippingForm';
@@ -29,12 +30,12 @@ function CheckoutPage() {
           <ShippingForm />
         </Paper>
         <Paper elevation={2}>
-          <H1>How You Will Pay</H1>
+          <H2> How You Will Pay</H2>
         </Paper>
       </ShippingAndPayment>
       <OrderOverview>
         <Paper>
-          <H1>Your Order Overview</H1>
+          <H2>Your Order Overview</H2>
         </Paper>
       </OrderOverview>
     </CheckoutContainer>
