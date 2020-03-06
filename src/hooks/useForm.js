@@ -3,7 +3,7 @@ import { useState } from 'react';
 export default function useForm(initialValues, onSubmit, schema) {
   const [state, setState] = useState({
     values: initialValues,
-    errors: { ...initialValues },
+    errors: {},
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -32,7 +32,7 @@ export default function useForm(initialValues, onSubmit, schema) {
             return {
               ...prevState,
               // clean error state
-              errors: initialValues
+              errors: {}
             };
           });
           onSubmit();
