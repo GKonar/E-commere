@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import countryList from 'react-select-country-list';
 
-import H1 from '../../components/H1';
-import CustomButton from '../../components/CustomButton';
 import H2 from '../../components/H2';
 import { ButtonStyled } from '../../components/CustomButton';
 import CredentialsError from '../../components/CredentialsError';
@@ -66,8 +64,8 @@ const initialValues = {
   adresse: '',
   city: '',
   state: '',
-  postal: 0,
-  number: 0,
+  postal: 10,
+  number: 10,
   email: ''
 }
 
