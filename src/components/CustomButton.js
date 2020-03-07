@@ -18,7 +18,6 @@ export const ButtonStyled = styled(Button)`
   }
 `;
 
-
 function CustomButton({ children, isWorking, type, disabled, onClick }) {
   return (
     <>
@@ -37,4 +36,4 @@ function CustomButton({ children, isWorking, type, disabled, onClick }) {
 
 export default CustomButton
 
-// https://medium.com/sipios/use-styled-components-with-material-ui-react-e0759f9a15ce
+/* https://medium.com/sipios/use-styled-components-with-material-ui-react-e0759f9a15ce */
