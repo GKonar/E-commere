@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import countryList from 'react-select-country-list';
 
 import H2 from '../../components/H2';
-import { ButtonStyled } from '../../components/CustomButton';
+import CustomButton from '../../components/CustomButton';
 import CredentialsError from '../../components/CredentialsError';
 
 // HOOKS 
@@ -43,7 +43,7 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: ${({ theme }) => theme.padding.default};
+  padding: ${({ theme }) => theme.padding.medium};
 `
 
 const CityState = styled.div`
@@ -69,19 +69,6 @@ const initialValues = {
   email: ''
 }
 
-const Submit = styled(ButtonStyled)`
-  && {
-    color: ${({ theme }) => theme.textColor.secondary};
-    background-color: ${({ theme }) => theme.color.primary};
-    border: 1px solid #2f3542;
-    width:80%;
-    &:hover {
-      background-color: ${({ theme }) => theme.color.white};
-      color: ${({ theme }) => theme.textColor.primary};
-    }
-  }
-`
-
 function submit() {
   return Promise.resolve('Sucessfully Submitted!').then((value) => console.log(value));
 }
@@ -98,7 +85,7 @@ function ShippingForm() {
     submitting
   } = useForm(initialValues, submit, schema); // Add validation schema
 
-  console.log('FORM ERRORS: ', errors);
+  // console.log('FORM ERRORS: ', errors); DEV
   const changeCountry = value => {
     setCountry(value);
   }
@@ -187,15 +174,17 @@ function ShippingForm() {
           onChange={handleChange} />
         <CredentialsError>{errors.email ? errors.email : ''}</CredentialsError>
       </Field>
-      <Submit
-        type='submit'
-        isWorking={submitting}
-        disabled={submitting}
-      >
-        Submit
-      </Submit>
     </Form>
   )
 }
 
-export default ShippingForm
+export default ShippingForm;
+
+ // <CustomButton
+      //   type='submit'
+      //   isWorking={submitting}
+      //   disabled={submitting}
+      //   variant
+      // >
+      //   Submit
+      // </CustomButton>
