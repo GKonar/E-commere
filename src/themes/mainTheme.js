@@ -36,7 +36,7 @@ const theme = {
     primary: '#2f3542',
     secondary: '#f1f2f6',
     white: '#FFFFFF',
-
+    smallcontrast: '#b2bec3',
     gold: '#F9A602'
   },
 
