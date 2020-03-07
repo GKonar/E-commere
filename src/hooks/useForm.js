@@ -3,7 +3,7 @@ import { useState } from 'react';
 export default function useForm(initialValues, onSubmit, schema) {
   const [state, setState] = useState({
     values: initialValues,
-    errors: { ...initialValues },
+    errors: {},
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -22,7 +22,6 @@ export default function useForm(initialValues, onSubmit, schema) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // onSubmit();
     // handleSubmit with schema
     if (onSubmit && schema) {
       let errors = {}
@@ -33,7 +32,7 @@ export default function useForm(initialValues, onSubmit, schema) {
             return {
               ...prevState,
               // clean error state
-              errors: initialValues
+              errors: {}
             };
           });
           onSubmit();
@@ -50,7 +49,6 @@ export default function useForm(initialValues, onSubmit, schema) {
             };
           });
         })
-      // console.log(state.errors); DEV
       // handleSubmit without schema
     } else if (onSubmit) {
       setSubmitting(true);

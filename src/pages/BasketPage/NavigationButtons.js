@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -29,13 +30,19 @@ const CheckoutButton = styled(ButtonStyled)`
   }
 `
 
-function NavigationButtons() {
+function NavigationButtons({ numOfBasketItems }) {
   return (
     <Container>
       <ContinueShoppingButton><Link to='/'>Continue Shopping</Link></ContinueShoppingButton>
-      <CheckoutButton><Link to='/checkout'>Checkout Now</Link></CheckoutButton>
+      <CheckoutButton disabled={numOfBasketItems === 0}><Link to='/checkout'>Checkout Now</Link></CheckoutButton>
     </Container>
   )
 }
 
-export default NavigationButtons
+const mapStateToProps = state => {
+  return {
+    numOfBasketItems: state.numOfBasketItems
+  }
+}
+
+export default connect(mapStateToProps)(NavigationButtons)

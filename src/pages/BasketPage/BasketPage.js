@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import styled from 'styled-components';
 import H3 from '../../components/H3';
-import CustomButton from '../../components/CustomButton';
-import Snackbar from '../../components/Snackbar';
-import Tooltip from '../../components/Tooltip';
 
-import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 
 import dotGrid from '../../assets/images/dot-grid.png';
@@ -17,6 +13,7 @@ import { removeItem, incrementItemQuantity, decrementItemQuantity, setDiscount }
 import BasketListItem from './BasketListItem';
 import BasketHeader from './BasketHeader';
 import NavigationButtons from './NavigationButtons';
+import DiscountCodesForm from './DiscountCodesForm';
 
 const Container = styled.section`
   background-image: url(${dotGrid});
@@ -83,24 +80,6 @@ const DiscountCodes = styled.div`
   margin-bottom: ${({ theme }) => theme.padding.medium};
 `
 
-const DiscountCodesForm = styled.form`
-  display: flex;
-  align-items: center;
-`
-
-const TextLabel = styled.label`
-  font-size: ${({ theme }) => theme.textSize.default};
-  font-weight: 600;
-  width: 50%;
-`
-
-const SubmitButton = styled(CustomButton)`
-  && {
-    margin-left: ${({ theme }) => theme.margin.default};
-    width: 30%;
-  }
-`
-
 function BasketPage({
   toFreeDelivery,
   basketItems,
@@ -108,31 +87,8 @@ function BasketPage({
   onDecrementItemQuantity,
   onIncrementItemQuantity,
   basketValue,
-  onSetDiscount,
   numOfBasketItems,
-  hasDiscount
 }) {
-  let discountCodes = ['relax', 'yougotthis', 'miakalifa', 'brunoise']; // DEV gonna come oryginally from database
-
-  const [inputValue, setInputValue] = useState('');
-  const [inputState, setInputState] = useState('');
-  const [isSnackbarOpen, setSnackbarOpen] = useState(false);
-
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
-  }
-
-  const handleDiscount = (e) => {
-    e.preventDefault();
-    if (discountCodes.includes(inputValue)) {
-      onSetDiscount(basketValue);
-      setInputValue('');
-      setInputState('disabled');
-      setSnackbarOpen(true);
-    } else {
-      setInputState('error');
-    }
-  }
 
   return (
     <Container>
@@ -173,46 +129,14 @@ function BasketPage({
                 <H3>grand total: {Math.round(basketValue)}$</H3>
               </Subtotal>
               <DiscountCodes>
-                <DiscountCodesForm onSubmit={handleDiscount}>
-                  <TextLabel htmlFor="dicscount-code" >
-                    Discount code:
-                  </TextLabel>
-                  <Tooltip>
-                    <TextField
-                      onChange={handleChange}
-                      value={inputValue}
-                      id="discount-code"
-                      variant="outlined"
-                      error={inputState === 'error' ? true : false}
-                      disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false || hasDiscount}
-                      placeholder={hasDiscount ? 'discount added' : 'provide code'}
-                    />
-                  </Tooltip>
-                  <Tooltip>
-                    <span>
-                      <SubmitButton
-                        disabled={inputState === 'disabled' || numOfBasketItems === 0 ? true : false || hasDiscount}
-                        type="submit">
-                        Use
-                      </SubmitButton>
-                    </span>
-                  </Tooltip>
-                </DiscountCodesForm>
+                <DiscountCodesForm />
               </DiscountCodes>
-              <NavigationButtons />
+              <NavigationButtons numOfBasketItems={numOfBasketItems} />
             </SummaryWrapper>
           </BasketSummary>
           <Divider />
         </BasketItemsList>
       </BasketItemsContainer>
-      {/* Snackbar component */}
-      <Snackbar
-        isSnackbarOpen={isSnackbarOpen}
-        setSnackbarOpen={setSnackbarOpen}
-        message={"You got discount!"}
-        variant='success'
-        time={2500}
-      />
     </Container>
   )
 }
@@ -236,4 +160,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BasketPage)
+export default connect(mapStateToProps, mapDispatchToProps)(BasketPage);

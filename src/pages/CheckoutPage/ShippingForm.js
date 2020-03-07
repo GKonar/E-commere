@@ -4,14 +4,15 @@ import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import countryList from 'react-select-country-list';
 
-import H1 from '../../components/H1';
+import H2 from '../../components/H2';
 import CustomButton from '../../components/CustomButton';
+import CredentialsError from '../../components/CredentialsError';
 
 // HOOKS 
 import useForm from '../../hooks/useForm';
 
-// YUP validation
-import * as yup from 'yup';
+//Validation
+import { schema } from '../../validation/shippingFormShema';
 
 const customStyles = {
   option: (provided, state) => ({
@@ -40,7 +41,9 @@ const customStyles = {
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  padding: ${({ theme }) => theme.padding.default};
+  justify-content: center;
+  align-items: center;
+  padding: ${({ theme }) => theme.padding.medium};
 `
 
 const CityState = styled.div`
@@ -48,9 +51,11 @@ const CityState = styled.div`
 
 `
 const Field = styled.div`
+width: 100%;
 display: flex;
 flex-direction: column;
-margin: ${({ theme }) => theme.margin.small} ${({ theme }) => theme.margin.medium};
+margin: ${({ theme }) => theme.margin.regular};
+position: relative;
 `
 
 const initialValues = {
@@ -59,20 +64,10 @@ const initialValues = {
   adresse: '',
   city: '',
   state: '',
-  postal: 0,
-  number: 0,
+  postal: 10,
+  number: 10,
   email: ''
 }
-
-let schema = yup.object().shape({
-  name: yup.string().required(),
-  adresse: yup.string().required(),
-  city: yup.string().required(),
-  state: yup.string().required(),
-  postal: yup.number().required(),
-  number: yup.number().required().min(4),
-  email: yup.string().email().required(),
-});
 
 function submit() {
   return Promise.resolve('Sucessfully Submitted!').then((value) => console.log(value));
@@ -82,24 +77,21 @@ function ShippingForm() {
   // Country list select
   const options = countryList().getData();
   const [country, setCountry] = useState(null);
-
   const {
     values,
     handleChange,
     handleSubmit,
-    errors, // pull out errors from form
+    errors, // pull out errors from form - need this for validation message
     submitting
-  } = useForm(initialValues, submit); // Add validation schema
+  } = useForm(initialValues, submit, schema); // Add validation schema
 
-  // console.log('FORM VALUES: ', values)
-  // console.log('FORM ERRORS: ', errors)
-
+  // console.log('FORM ERRORS: ', errors); DEV
   const changeCountry = value => {
     setCountry(value);
   }
   return (
     <Form onSubmit={handleSubmit}>
-      <H1>Who You Are</H1>
+      <H2>Who You Are</H2>
       <Field>
         <TextField
           name="name"
@@ -107,6 +99,7 @@ function ShippingForm() {
           variant="outlined"
           label="Your Name"
           onChange={handleChange} />
+        <CredentialsError>{errors.name ? errors.name : ''}</CredentialsError>
       </Field>
       <Field>
         <TextField
@@ -123,6 +116,7 @@ function ShippingForm() {
           variant="outlined"
           label="Adresse"
           onChange={handleChange} />
+        <CredentialsError>{errors.adresse ? errors.adresse : ''}</CredentialsError>
       </Field>
       <CityState>
         <Field>
@@ -132,6 +126,7 @@ function ShippingForm() {
             variant="outlined"
             label="City"
             onChange={handleChange} />
+          <CredentialsError>{errors.city ? errors.city : ''}</CredentialsError>
         </Field>
         <Field>
           <TextField
@@ -140,15 +135,17 @@ function ShippingForm() {
             variant="outlined"
             label="State"
             onChange={handleChange} />
+          <CredentialsError>{errors.state ? errors.state : ''}</CredentialsError>
         </Field>
       </CityState>
       <Field>
         <TextField
           name="postal"
-          type="number"
+          type="text"
           variant="outlined"
           label="Postal/Zip-code"
           onChange={handleChange} />
+        <CredentialsError>{errors.postal ? errors.postal : ''}</CredentialsError>
       </Field>
       <Field>
         <Select
@@ -166,6 +163,7 @@ function ShippingForm() {
           variant="outlined"
           label="Phone"
           onChange={handleChange} />
+        <CredentialsError>{errors.number ? errors.number : ''}</CredentialsError>
       </Field>
       <Field>
         <TextField
@@ -174,16 +172,19 @@ function ShippingForm() {
           variant="outlined"
           label="E-mail"
           onChange={handleChange} />
+        <CredentialsError>{errors.email ? errors.email : ''}</CredentialsError>
       </Field>
-      <CustomButton
-        type='submit'
-        isWorking={submitting}
-        disabled={submitting}
-      >
-        Submit
-      </CustomButton>
     </Form>
   )
 }
 
-export default ShippingForm
+export default ShippingForm;
+
+ // <CustomButton
+      //   type='submit'
+      //   isWorking={submitting}
+      //   disabled={submitting}
+      //   variant
+      // >
+      //   Submit
+      // </CustomButton>
