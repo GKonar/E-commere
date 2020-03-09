@@ -13,6 +13,7 @@ const Container = styled.div`
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundImage: `url(${dotGrid})`,
+    minHeight: 'calc(100vh - 90px)',
     flexGrow: 1,
     padding: "0rem 1rem",
     marginTop: '',
