@@ -4,15 +4,11 @@ import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import countryList from 'react-select-country-list';
 
-import H2 from '../../components/H2';
-import CustomButton from '../../components/CustomButton';
-import CredentialsError from '../../components/CredentialsError';
-
-// HOOKS 
-import useForm from '../../hooks/useForm';
+import H2 from '../../../components/H2';
+import CredentialsError from '../../../components/CredentialsError';
 
 //Validation
-import { schema } from '../../validation/shippingFormShema';
+import { Divider } from '@material-ui/core';
 
 const customStyles = {
   option: (provided, state) => ({
@@ -38,60 +34,37 @@ const customStyles = {
   }),
 }
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: ${({ theme }) => theme.padding.medium};
-`
-
 const CityState = styled.div`
   display: flex;
-
+  justify-content: space-around;
 `
+
 const Field = styled.div`
 width: 100%;
 display: flex;
 flex-direction: column;
-margin: ${({ theme }) => theme.margin.regular};
+margin: 22px 0;
 position: relative;
 `
 
-const initialValues = {
-  name: '',
-  company: '',
-  adresse: '',
-  city: '',
-  state: '',
-  postal: 10,
-  number: 10,
-  email: ''
-}
+const InnerField = styled.div`
+display: flex;
+margin: 0;
+`
 
-function submit() {
-  return Promise.resolve('Sucessfully Submitted!').then((value) => console.log(value));
-}
-
-function ShippingForm() {
+function CredentialsForm({ errors, handleChange }) {
   // Country list select
   const options = countryList().getData();
   const [country, setCountry] = useState(null);
-  const {
-    values,
-    handleChange,
-    handleSubmit,
-    errors, // pull out errors from form - need this for validation message
-    submitting
-  } = useForm(initialValues, submit, schema); // Add validation schema
 
-  // console.log('FORM ERRORS: ', errors); DEV
   const changeCountry = value => {
     setCountry(value);
   }
+
   return (
-    <Form onSubmit={handleSubmit}>
-      <H2>Who You Are</H2>
+    <>
+      <H2>2. Who You Are</H2>
+      <Divider />
       <Field>
         <TextField
           name="name"
@@ -119,7 +92,7 @@ function ShippingForm() {
         <CredentialsError>{errors.adresse ? errors.adresse : ''}</CredentialsError>
       </Field>
       <CityState>
-        <Field>
+        <InnerField>
           <TextField
             name="city"
             type="text"
@@ -127,8 +100,8 @@ function ShippingForm() {
             label="City"
             onChange={handleChange} />
           <CredentialsError>{errors.city ? errors.city : ''}</CredentialsError>
-        </Field>
-        <Field>
+        </InnerField>
+        <InnerField>
           <TextField
             name="state"
             type="text"
@@ -136,7 +109,7 @@ function ShippingForm() {
             label="State"
             onChange={handleChange} />
           <CredentialsError>{errors.state ? errors.state : ''}</CredentialsError>
-        </Field>
+        </InnerField>
       </CityState>
       <Field>
         <TextField
@@ -174,17 +147,8 @@ function ShippingForm() {
           onChange={handleChange} />
         <CredentialsError>{errors.email ? errors.email : ''}</CredentialsError>
       </Field>
-    </Form>
+    </>
   )
 }
 
-export default ShippingForm;
-
- // <CustomButton
-      //   type='submit'
-      //   isWorking={submitting}
-      //   disabled={submitting}
-      //   variant
-      // >
-      //   Submit
-      // </CustomButton>
+export default CredentialsForm
