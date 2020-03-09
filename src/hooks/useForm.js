@@ -35,6 +35,7 @@ export default function useForm(initialValues, onSubmit, schema) {
               errors: {}
             };
           });
+          setSubmitSuccess(true);
           onSubmit();
           setTimeout(() => setSubmitting(false), 500);
         })
@@ -59,6 +60,7 @@ export default function useForm(initialValues, onSubmit, schema) {
         console.log('Submit error: ', e);
       }
     }
+    console.log(state.errors)
   }
 
   return {

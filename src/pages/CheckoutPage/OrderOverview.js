@@ -9,11 +9,12 @@ import DiscountCodesForm from '../BasketPage/DiscountCodesForm';
 const OrderContainer = styled.div`
   position: fixed;
   margin-top: ${({ theme }) => theme.margin.default};
-  right: 20%;
+  right: 15%;
 `
 
 const Order = styled.div`
   padding: ${({ theme }) => theme.padding.medium};
+  padding-top: ${({ theme }) => theme.padding.default};
   font-weight: 500;
   min-width: 450px;
 `
@@ -86,7 +87,7 @@ function OrderOverview({ basketItems, basketValue, hasDiscount }) {
     <OrderContainer>
       <Paper elevation={1}>
         <Order>
-          <H2>Your Order Overview</H2>
+          <H2>1. Your Order Overview</H2>
           <Divider />
           <ItemsContainer>
             {
