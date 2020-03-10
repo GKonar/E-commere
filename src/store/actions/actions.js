@@ -8,6 +8,7 @@ export const UPDATE_BASKET = 'UPDATE_BASKET';
 export const INCREMENT_ITEM_QUANTITY = 'INCREMENT_ITEM_QUANTITY';
 export const DECREMENT_ITEM_QUANTITY = 'DECREMENT_ITEM_QUANTITY';
 export const SET_DISCOUNT = 'SET_DISCOUNT';
+export const CLEAR_BASKET = 'CLEAR_BASKET';
 
 // sync action creators 
 const savePageItems = (data, page) => {
@@ -57,6 +58,12 @@ export const updateBasket = (item) => {
   return {
     type: UPDATE_BASKET,
     item
+  }
+}
+
+export const clearBasket = () => {
+  return {
+    type: CLEAR_BASKET,
   }
 }
 
