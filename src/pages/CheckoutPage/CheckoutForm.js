@@ -48,11 +48,9 @@ function ShippingForm() {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   const handleFormSubmit = (e) => {
-    handleSubmit(e)
-    setPaymentSuccess(true);
+    handleSubmit(e) // DEV
+    setPaymentSuccess(true); // DEV comment this line to validate form  [ in progress ]
   }
-
-
 
   return (
     <Form onSubmit={handleFormSubmit}>
