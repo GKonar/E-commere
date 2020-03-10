@@ -12,6 +12,7 @@ import ToysPage from './pages/ToysPage/ToysPage';
 import ForHomePage from './pages/ForHomePage/ForHomePage';
 import BasketPage from './pages/BasketPage/BasketPage';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
+import PaymentSuccess from './pages/CheckoutPage/PaymentSuccess';
 
 function Routes({ products }) {
   const { forHer, forHim, forHome, toys, newest, hottest } = products;
@@ -72,6 +73,11 @@ function Routes({ products }) {
         exact
         path="/checkout"
         render={() => <CheckoutPage />}
+      />
+      <Route
+        exact
+        path="/payment-success"
+        render={() => <PaymentSuccess />}
       />
       {/* Last resort path */}
       <Route render={() => <h1>PAGE NOT FOUND :/ Sorry bro</h1>} />}/>

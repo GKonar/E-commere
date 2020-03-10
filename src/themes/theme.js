@@ -1,5 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
+import sun from '../assets/images/hip-square.png';
+
 export default createMuiTheme({
   overrides: {
     MuiButton: {
@@ -32,8 +34,12 @@ export default createMuiTheme({
         borderColor: '#F59486 !important',
       },
     },
-    Mui: {
-      '&:focused': {
+    MuiDialog: {
+      paper: {
+        backgroundImage: `url(${sun})`,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
       }
     }
   }

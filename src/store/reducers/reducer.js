@@ -1,4 +1,4 @@
-import { FETCH_PAGE_ITEMS, ADD_ITEM, REMOVE_ITEM, UPDATE_BASKET, INCREMENT_ITEM_QUANTITY, DECREMENT_ITEM_QUANTITY, SET_DISCOUNT } from '../actions/actions';
+import { FETCH_PAGE_ITEMS, ADD_ITEM, REMOVE_ITEM, UPDATE_BASKET, INCREMENT_ITEM_QUANTITY, DECREMENT_ITEM_QUANTITY, SET_DISCOUNT, CLEAR_BASKET } from '../actions/actions';
 
 const initialState = {
   forHer: [],
@@ -158,6 +158,11 @@ const reducer = (state = initialState, action) => {
         basketValue: Math.round(basketValue * 0.8),
         toFreeDelivery: 0,
         hasDiscount: true
+      }
+    case CLEAR_BASKET:
+      console.log('Basket cleared!');
+      return {
+        ...initialState
       }
     case UPDATE_BASKET:
       console.log('Update basket !');

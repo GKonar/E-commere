@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useHistory } from "react-router-dom";
 
 import Payment from './CheckoutForm/Payment';
-import DeliveryDetails from './CheckoutForm/DeliveryDetails'
+import DeliveryDetails from './CheckoutForm/DeliveryDetails';
+import PaymentSuccess from './PaymentSuccess';
 
 import CustomButton from '../../components/CustomButton';
 
@@ -43,12 +43,19 @@ function ShippingForm() {
     handleChange,
     handleSubmit,
     errors, // pull out errors from form - need this for validation message
-    submitting
+    submitting,
   } = useForm(initialValues, submit, schema); // Add validation schema
-  const history = useHistory();
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+
+  const handleFormSubmit = (e) => {
+    handleSubmit(e)
+    setPaymentSuccess(true);
+  }
+
+
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleFormSubmit}>
       <DeliveryDetails
         errors={errors}
         handleChange={handleChange} />
@@ -64,7 +71,11 @@ function ShippingForm() {
       >
         Process My Order
       </CustomButton>
-      {/* Snackbar */}
+
+      {/* PAYMENT SUCCESS MODAL */}
+      <PaymentSuccess
+        paymentSuccess={paymentSuccess}
+        setPaymentSuccess={setPaymentSuccess} />
     </Form>
   )
 }

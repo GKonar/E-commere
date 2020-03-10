@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 import DiscountCodesForm from '../BasketPage/DiscountCodesForm';
+import uuid from 'uuid';
 
 const OrderContainer = styled.div`
   position: fixed;
@@ -93,8 +94,8 @@ function OrderOverview({ basketItems, basketValue, hasDiscount }) {
             {
               basketItems.map(item => {
                 return (
-                  <>
-                    <Item >
+                  <span key={uuid()}>
+                    <Item>
                       <ImageAndNameWrapper>
                         <ImageContainer>
                           <Image src={item.images[0]} alt="item-overview-img" />
@@ -105,7 +106,7 @@ function OrderOverview({ basketItems, basketValue, hasDiscount }) {
                       <ItemPrice>{item.price}$</ItemPrice>
                     </Item>
                     <Divider />
-                  </>
+                  </span>
                 )
               })
             }
