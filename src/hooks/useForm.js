@@ -35,9 +35,10 @@ export default function useForm(initialValues, onSubmit, schema) {
               errors: {}
             };
           });
-          setSubmitSuccess(true);
           onSubmit();
+          setSubmitSuccess(true);
           setTimeout(() => setSubmitting(false), 500);
+          // setSubmitting(false);
         })
         .catch((err) => {
           for (let value in initialValues) {
@@ -50,6 +51,7 @@ export default function useForm(initialValues, onSubmit, schema) {
             };
           });
         })
+      console.log(state.errors)
       // handleSubmit without schema
     } else if (onSubmit) {
       setSubmitting(true);

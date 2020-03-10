@@ -64,7 +64,11 @@ function ShippingForm() {
       >
         Process My Order
       </CustomButton>
-      {/* Snackbar */}
+
+      {/* PAYMENT SUCCESS MODAL */}
+      <PaymentSuccess
+        paymentSuccess={paymentSuccess}
+        setPaymentSuccess={setPaymentSuccess} />
     </Form>
   )
 }
