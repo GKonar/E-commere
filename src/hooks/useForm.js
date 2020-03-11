@@ -36,9 +36,8 @@ export default function useForm(initialValues, onSubmit, schema) {
             };
           });
           onSubmit();
-          setSubmitSuccess(true);
           setTimeout(() => setSubmitting(false), 500);
-          // setSubmitting(false);
+          setSubmitSuccess(true);
         })
         .catch((err) => {
           for (let value in initialValues) {
@@ -51,18 +50,17 @@ export default function useForm(initialValues, onSubmit, schema) {
             };
           });
         })
-      console.log(state.errors)
       // handleSubmit without schema
     } else if (onSubmit) {
       setSubmitting(true);
       try {
         onSubmit();
+        setSubmitSuccess(true);
         setTimeout(() => setSubmitting(false), 500);
       } catch (e) {
         console.log('Submit error: ', e);
       }
     }
-    console.log(state.errors)
   }
 
   return {
