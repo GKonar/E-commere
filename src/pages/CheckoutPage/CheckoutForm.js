@@ -49,8 +49,13 @@ function ShippingForm() {
 
   const handleFormSubmit = (e) => {
     handleSubmit(e) // DEV
-    setPaymentSuccess(true); // DEV comment this line to validate form  [ in progress ]
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPaymentSuccess(submitSuccess); // DEV
+    }, 500)
+  }, [submitSuccess]);
 
   return (
     <Form onSubmit={handleFormSubmit}>
