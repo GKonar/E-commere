@@ -82,7 +82,7 @@ const DiscountCodes = styled.div`
 
 
 function OrderOverview({ basketItems, basketValue, hasDiscount }) {
-  console.log(basketItems, basketValue, hasDiscount)
+  // console.log(basketItems, basketValue, hasDiscount) DEV
 
   return (
     <OrderContainer>

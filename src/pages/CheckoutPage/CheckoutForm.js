@@ -48,11 +48,14 @@ function ShippingForm() {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   const handleFormSubmit = (e) => {
-    handleSubmit(e)
-    setPaymentSuccess(true);
+    handleSubmit(e) // DEV
   }
 
-
+  useEffect(() => {
+    setTimeout(() => {
+      setPaymentSuccess(submitSuccess); // DEV
+    }, 500)
+  }, [submitSuccess]);
 
   return (
     <Form onSubmit={handleFormSubmit}>
@@ -62,6 +65,7 @@ function ShippingForm() {
       <Payment
         errors={errors}
         handleChange={handleChange} />
+
       {/* Submit Form Button */}
       <br />
       <CustomButton
