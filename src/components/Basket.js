@@ -8,6 +8,8 @@ import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { withStyles } from '@material-ui/core/styles';
 
+import { sizes } from '../helpers/sizes';
+
 const Container = styled.span`
   margin: 0 3rem 0 auto;
   transition: .3s;
@@ -16,6 +18,10 @@ const Container = styled.span`
   }
   &:hover {
     transform: scale(1.1);
+  }
+
+  ${sizes.laptop} {
+    margin: 0 2rem;
   }
 `
 

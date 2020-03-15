@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Basket from './Basket';
+import Logo from './Logo';
+import MobileNav from './MobileNav';
 
 import hipSquare from '../assets/images/hip-square.png';
 
-import Logo from './Logo';
+import { sizes } from '../helpers/sizes';
+
 
 const Nav = styled.nav`
   display: flex;
@@ -19,12 +22,20 @@ const Nav = styled.nav`
   width: 100%;
   z-index: 1000;
   top: 0;
+
+  ${sizes.laptop} {
+    justify-content: space-between;
+  }
 `
 
 const List = styled.ul`
   display: flex;  
   position: relative; 
   margin: ${({ theme }) => theme.margin.default};
+
+  ${sizes.laptop} {
+    display: none;
+  }
 `
 
 const ListItem = styled.li`
@@ -63,6 +74,7 @@ const ListItem = styled.li`
 function Navbar() {
   return (
     <Nav>
+      <MobileNav />
       <Logo />
       <List>
         <ListItem><Link to="/for-him">For Him</Link></ListItem>

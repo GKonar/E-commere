@@ -3,14 +3,34 @@ import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import styled from 'styled-components';
 
 import Logo from './Logo';
 
 import hipSquare from '../assets/images/hip-square.png';
+
+import { sizes } from '../helpers/sizes';
+
+import { ReactComponent as MenuIcon } from '../assets/svg/mobile-menu.svg';
+
+const MenuToggle = styled.div`
+  display: none;
+  margin: .5rem 1rem;
+  margin-bottom: .3rem;
+  cursor: pointer;
+  svg {
+    padding: 1.1rem;
+    width: 35px;
+    height: 35px;
+  }
+
+  ${sizes.laptop} {
+      display: flex;
+    }
+`
 
 const useStyles = makeStyles({
   list: {
@@ -92,7 +112,9 @@ function MobileNav() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('left', true)}>Nav</Button>
+      <MenuToggle>
+        <MenuIcon onClick={toggleDrawer('left', true)} />
+      </MenuToggle>
       <SwipeableDrawer
         open={state.left}
         onClose={toggleDrawer('left', false)}
@@ -107,3 +129,4 @@ function MobileNav() {
 export default MobileNav;
 
             // <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            // <CustomButton onClick={toggleDrawer('left', true)}>Nav</CustomButton>
