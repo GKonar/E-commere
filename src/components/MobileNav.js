@@ -7,11 +7,8 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
 
-import Icon from '../components/Icon';
-
-import styled from 'styled-components';
+import Logo from './Logo';
 
 import hipSquare from '../assets/images/hip-square.png';
 
@@ -29,24 +26,6 @@ const useStyles = makeStyles({
     width: 'auto',
   },
 });
-
-const Logo = styled.span`
-  font-weight: 600;
-  margin-left: ${({ theme }) => theme.margin.medium};
-
-  a {
-    display:flex; 
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-  }
-`
-
-const LogoText = styled.span`
-  margin-right: 2px;
-  letter-spacing: 1px;
-`
 
 function MobileNav() {
   const classes = useStyles();
@@ -70,13 +49,7 @@ function MobileNav() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <Logo>
-          <Link to='/'>
-            <LogoText>hand</LogoText>
-            <Icon icon={'WOOL'} color='#F59486' size={30} />
-            <LogoText>crafted</LogoText>
-          </Link>
-        </Logo>
+        <Logo />
         <br />
         <Link to="/for-him">
           <ListItem button key={'ForHim'}>

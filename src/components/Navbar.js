@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Icon from './Icon';
 import Basket from './Basket';
 
 import hipSquare from '../assets/images/hip-square.png';
+
+import Logo from './Logo';
 
 const Nav = styled.nav`
   display: flex;
@@ -59,34 +60,10 @@ const ListItem = styled.li`
   }
 `
 
-const Logo = styled.span`
-  font-weight: 600;
-  margin-left: ${({ theme }) => theme.margin.medium};
-
-  a {
-    display:flex; 
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-  }
-`
-
-const LogoText = styled.span`
-  margin-right: 2px;
-  letter-spacing: 1px;
-`
-
 function Navbar() {
   return (
     <Nav>
-      <Logo>
-        <Link to='/'>
-          <LogoText>hand</LogoText>
-          <Icon icon={'WOOL'} color='#F59486' size={30} />
-          <LogoText>crafted</LogoText>
-        </Link>
-      </Logo>
+      <Logo />
       <List>
         <ListItem><Link to="/for-him">For Him</Link></ListItem>
         <ListItem><Link to="/for-her">For Her</Link></ListItem>
