@@ -4,7 +4,8 @@ export const sizes = {
   mobileM: `@media(max-width: 375px)`,
   mobileL: `@media(max-width: 425px)`,
   tablet: `@media(max-width: 768px)`,
-  laptop: `@media(max-width: 1024px)`,
+  laptopS: `@media(max-width: 1024px)`,
+  laptopM: `@media(max-width: 1280px)`,
   laptopL: `@media(max-width: 1440px)`,
   desktop: `@media(max-width: 2560px)`,
 }
