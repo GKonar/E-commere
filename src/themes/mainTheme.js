@@ -3,6 +3,7 @@ const theme = {
     small: '8px',
     regular: '12px',
     default: '16px',
+    between: '24px',
     medium: '32px',
     large: '48px',
     xlarge: '64px',
@@ -12,6 +13,7 @@ const theme = {
     small: '8px',
     regular: '12px',
     default: '16px',
+    between: '24px',
     medium: '32px',
     large: '48px',
     xlarge: '64px',
@@ -42,6 +44,7 @@ const theme = {
 
   textSize: {
     huge: '50px',
+    bigger: '36px',
     big: '24px',
     medium: '20px',
     default: '16px',
