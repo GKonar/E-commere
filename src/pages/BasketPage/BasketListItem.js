@@ -9,12 +9,24 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import Fab from '@material-ui/core/Fab';
 
+import { sizes } from '../../helpers/sizes';
 
 const ListItem = styled.li`
   display: flex;
   justify-content: space-between;
   padding: ${({ theme }) => theme.padding.medium};
   background-color: ${({ theme }) => theme.color.white};
+
+  ${sizes.tablet} {
+    padding: ${({ theme }) => theme.padding.default};
+    padding-left: ${({ theme }) => theme.padding.small};
+    padding-right: ${({ theme }) => theme.padding.small};
+    align-items: center;
+  }
+  
+  ${sizes.mobileM} {
+    padding: ${({ theme }) => theme.padding.small} 0;
+  }
 `
 
 const LeftSideWrapper = styled.div`
@@ -24,6 +36,14 @@ const LeftSideWrapper = styled.div`
 `
 const ImageContainer = styled.div`
   width: 150px;
+
+  ${sizes.tablet} {
+    width: 100px;
+  }
+  
+  ${sizes.mobileL} {
+    width: 80px;
+  }
 `
 
 const ItemImage = styled.img`
@@ -36,11 +56,21 @@ const ItemName = styled.div`
   font-size: ${({ theme }) => theme.textSize.big};
   padding-top: ${({ theme }) => theme.padding.small};
   padding-bottom: 12px;
+
+  ${sizes.tablet} {
+    font-size: ${({ theme }) => theme.textSize.medium};
+    padding-top: ${({ theme }) => theme.padding.small};
+    padding-bottom: ${({ theme }) => theme.padding.small};
+  }
 `
 
 const ItemPrice = styled.div`
   font-weight: 600;
   font-size: ${({ theme }) => theme.textSize.big};
+
+  ${sizes.mobileM} {
+    font-size: ${({ theme }) => theme.textSize.medium};
+  }
 `
 const RemoveItemBtn = styled.span`
   cursor: pointer;
@@ -54,17 +84,37 @@ const DescriptonContainer = styled.div`
   flex-direction: column;
   position: relative;
   padding-left: ${({ theme }) => theme.padding.large};
+
+  ${sizes.tablet} {
+    padding-left: ${({ theme }) => theme.padding.medium};
+    align-items: center;
+  }
+  
+  ${sizes.mobileM} {
+    padding-left: ${({ theme }) => theme.padding.default};
+    align-items: center;
+  }
 `
 
 const QuantityWrapper = styled.div`
   display: flex;
   padding: ${({ theme }) => theme.padding.default} 0;
+
+  ${sizes.tablet} {
+    padding: 0;
+  }
 `
 
 const Quantity = styled.span`
   padding:${({ theme }) => theme.padding.small};
   font-size: ${({ theme }) => theme.textSize.medium};
   font-weight: 500;
+
+  ${sizes.mobileM} {
+    font-size: ${({ theme }) => theme.textSize.default};
+    display: flex;
+    align-items: center;
+  }
 `
 
 const Increment = styled(Fab)`

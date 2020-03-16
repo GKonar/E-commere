@@ -12,9 +12,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const ImageContainer = styled.div`
   display: flex;
   width: 100%;
-  max-height: 800px;
   img {
     width: 100%;
+    height: 100%;
   }
 `
 
@@ -24,6 +24,7 @@ const DialogContent = withStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'scrollY',
     '&:first-child': {
       paddingTop: theme.spacing(1),
       paddingBottom: theme.spacing(1),

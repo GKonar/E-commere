@@ -20,7 +20,7 @@ const Container = styled.span`
     transform: scale(1.1);
   }
 
-  ${sizes.laptop} {
+  ${sizes.laptopS} {
     margin: 0 2rem;
   }
 `

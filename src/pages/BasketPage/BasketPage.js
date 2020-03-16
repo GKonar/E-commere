@@ -10,6 +10,9 @@ import dotGrid from '../../assets/images/dot-grid.png';
 
 import { removeItem, incrementItemQuantity, decrementItemQuantity, setDiscount } from '../../store/actions/actions';
 
+import { sizes } from '../../helpers/sizes';
+
+
 import BasketListItem from './BasketListItem';
 import BasketHeader from './BasketHeader';
 import NavigationButtons from './NavigationButtons';
@@ -20,18 +23,35 @@ const Container = styled.section`
   padding: ${({ theme }) => theme.padding.medium};
   color: ${({ theme }) => theme.textColor.primary};
   height: 100%; /* DEV */
+  overflow: hidden;
     a {
       color: inherit;
       text-decoration: none;
       width: 100%;
       height: 100%;
     } 
+
+    ${sizes.tablet} {
+      width: 100%;
+      overflow: hidden;
+      padding-left: ${({ theme }) => theme.padding.small};
+      padding-right: ${({ theme }) => theme.padding.small};
+    }
+    
+    ${sizes.mobileM} {
+      padding: ${({ theme }) => theme.padding.default} 0;
+    }
 `
 
 const BasketItemsContainer = styled.div``
 
 const BasketItemsList = styled.ul`
   padding: ${({ theme }) => theme.padding.medium};
+
+  ${sizes.tablet} {
+    padding-left: ${({ theme }) => theme.padding.small};
+    padding-right: ${({ theme }) => theme.padding.small};
+  }
 `
 
 const ItemListHeader = styled.div`
@@ -39,6 +59,15 @@ const ItemListHeader = styled.div`
   justify-content: space-between;
   padding: ${({ theme }) => theme.padding.medium};
   background-color: ${({ theme }) => theme.color.white};
+
+  ${sizes.tablet} {
+    padding-left: ${({ theme }) => theme.padding.small};
+    padding-right: ${({ theme }) => theme.padding.small};
+  }
+  
+  ${sizes.mobileM} {
+    padding: ${({ theme }) => theme.padding.default};
+  }
 `
 
 const HeaderH3 = styled(H3)`
@@ -55,12 +84,20 @@ const Subtotal = styled.div`
   h3 {
     margin: 0;
   }
+
+  ${sizes.mobileM} {
+    padding: ${({ theme }) => theme.padding.default};
+  }
 `
 
 const BasketSummary = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   padding: ${({ theme }) => theme.padding.medium};
   padding-top: ${({ theme }) => theme.padding.default};
+
+  ${sizes.mobileL} {
+    padding: ${({ theme }) => theme.padding.small};
+  }
 `
 
 const SummaryWrapper = styled.div`
@@ -78,6 +115,12 @@ const DiscountCodes = styled.div`
   padding-bottom: 0;
   margin-right: ${({ theme }) => theme.padding.medium};
   margin-bottom: ${({ theme }) => theme.padding.medium};
+
+  ${sizes.laptopS} {
+    width: 100%;
+    margin: 0;
+    padding: ${({ theme }) => theme.padding.small} 0;
+  }
 `
 
 function BasketPage({

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import LazyLoad from 'react-lazy-load';
 import ImageLoader from './ImageLoader/ImageLoader';
 
+import { sizes } from '../helpers/sizes';
+
 const ProductContainer = styled.div`
   /* padding: 1rem; */
   position: relative;
@@ -24,6 +26,16 @@ const ImageContainer = styled.div`
   max-height: 350px;
   height: 350px;
   overflow: hidden;
+
+  ${sizes.laptopM} {
+    width: 60%;
+    max-height: 100%;
+    height: 100%; 
+  }
+
+  ${sizes.tablet} {
+    width: 100%;
+  }
 `
 
 const SmallDescritpion = styled.span`
@@ -48,7 +60,11 @@ const ProductName = styled.p`
   margin: 1rem;
   margin-top: 0;
   transition: .3s;
-  transform: translateX(-200px);
+  transform: translateX(-250px);
+
+  ${sizes.laptopM} {
+    transform: translateX(0px);
+  }
 `
 
 function Product({ price, name, image }) {

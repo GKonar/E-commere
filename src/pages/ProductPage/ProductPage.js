@@ -19,13 +19,19 @@ import dotGrid from '../../assets/images/dot-grid.png';
 import { connect } from 'react-redux';
 import { addItem } from '../../store/actions/actions';
 
+import { sizes } from '../../helpers/sizes';
+
 const SectionContainer = styled.section`
   color: ${({ theme }) => theme.textColor.primary};
   background-image: url(${dotGrid});
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction:column;
+  flex-direction: column;
+  
+  ${sizes.laptopM} {
+    margin-bottom: ${({ theme }) => theme.margin.medium};
+  }
 `
 
 const ProductContainer = styled.div`
@@ -35,6 +41,12 @@ const ProductContainer = styled.div`
   width: 70%;
   min-height: calc(100vh - 90px);
   background-color: ${({ theme }) => theme.color.white};
+
+  ${sizes.laptopM} {
+    flex-direction: column;
+    width: 85%;
+    overflow: hidden;
+  }
 `
 
 const ImagesContainer = styled.div`
@@ -59,6 +71,11 @@ const ImagesContainer = styled.div`
     border-radius: 5px;
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   }
+
+  ${sizes.laptopM} {
+    width: 100%;
+    margin: ${({ theme }) => theme.margin.default};
+  }
 `
 
 const Image = styled.img`
@@ -79,6 +96,10 @@ const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  
+  ${sizes.laptopM} {
+    width: 100%;
+  }
 `
 
 const IconsContainer = styled.div`
@@ -103,6 +124,16 @@ const IconDescripton = styled.p`
 
 function ProductPage(props) {
   let product = props.products.find(product => product.id === props.match.params.id);
+  // let product = { // DEV
+  //   name: 'Wallet',
+  //   price: 140,
+  //   images: ['https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet2_yjqtmn.png',
+  //     'https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet1_pagtsp.jpg',
+  //     'https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet3_goywci.jpg'],
+  //   description: 'Wallet Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!',
+  //   inStock: true,
+  //   qty: 1
+  // }
   const [toggle, setToggle] = useState(false);
   const [dialogImage, setDialogImage] = useState('');
   const [isSnackbarOpen, setSnackbarOpen] = useState(false);

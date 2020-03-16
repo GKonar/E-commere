@@ -23,7 +23,7 @@ function ForHomePage({ products, onFetchPageItems }) {
       <Grid container spacing={4}>
         {
           products.map(product => (
-            <Grid key={product.id} item xs={12} sm={4}>
+            <Grid key={product.id} item xs={12} md={12} lg={4}>
               <Link to={`/product/${product.id}`}>
                 <Product
                   name={product.name}

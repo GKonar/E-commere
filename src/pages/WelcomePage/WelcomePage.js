@@ -61,7 +61,7 @@ function WelcomePage({ onFetchPageItems, hottest, newest }) {
     <Container>
       <div className={classes.root}>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} md={8}>
             <HeaderProductContainer>
               <LazyLoad
                 debounce={false}
@@ -72,12 +72,11 @@ function WelcomePage({ onFetchPageItems, hottest, newest }) {
               <BigDescription
                 header="Awesome toys"
                 description="For small and big"
-                top="10%"
                 setBackground
               />
             </HeaderProductContainer>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <HeaderProductContainer>
               <LazyLoad
                 debounce={false}
@@ -86,8 +85,6 @@ function WelcomePage({ onFetchPageItems, hottest, newest }) {
                 <ImageLoader src="https://images.pexels.com/photos/2826787/pexels-photo-2826787.jpeg?cs=srgb&dl=rectangular-white-and-black-wooden-display-rack-beside-green-2826787.jpg&fm=jpg" />
               </LazyLoad>
               <BigDescription
-                right="150px"
-                top="30%"
                 header="Decorations"
                 description="Uniqe detailing for Your home"
                 setBackground
@@ -102,7 +99,7 @@ function WelcomePage({ onFetchPageItems, hottest, newest }) {
         <Grid container spacing={3}>
           {
             hottest.map(product => (
-              <Grid key={product.id} item xs={12} sm={4}>
+              <Grid key={product.id} item xs={12} md={12} lg={4}>
                 <Link to={`/product/${product.id}`}>
                   <Product
                     name={product.name}
@@ -118,7 +115,7 @@ function WelcomePage({ onFetchPageItems, hottest, newest }) {
         <Grid container spacing={3}>
           {
             newest.map(product => (
-              <Grid key={product.id} item xs={12} sm={4}>
+              <Grid key={product.id} item xs={12} md={12} lg={4}>
                 <Link to={`/product/${product.id}`}>
                   <Product
                     name={product.name}

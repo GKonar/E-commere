@@ -3,6 +3,8 @@ import './imageAnimation.css';
 
 import { withStyles } from '@material-ui/core/styles';
 
+// import sizesMui from '../../helpers/sizesMui';
+
 const styles = {
   loaded: {
     animation: 'fadeInImg cubic-bezier(0.23, 1, 0.32, 1) 1',
