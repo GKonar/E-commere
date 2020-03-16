@@ -27,7 +27,7 @@ const MenuToggle = styled.div`
     height: 35px;
   }
 
-  ${sizes.laptop} {
+  ${sizes.laptopS} {
       display: flex;
     }
 `

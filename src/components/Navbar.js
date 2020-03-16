@@ -23,7 +23,7 @@ const Nav = styled.nav`
   z-index: 1000;
   top: 0;
 
-  ${sizes.laptop} {
+  ${sizes.laptopS} {
     justify-content: space-between;
   }
 `
@@ -33,7 +33,7 @@ const List = styled.ul`
   position: relative; 
   margin: ${({ theme }) => theme.margin.default};
 
-  ${sizes.laptop} {
+  ${sizes.laptopS} {
     display: none;
   }
 `
