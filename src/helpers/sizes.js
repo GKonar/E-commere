@@ -7,6 +7,7 @@ export const sizes = {
   laptopS: `@media(max-width: 1024px)`,
   laptopM: `@media(max-width: 1280px)`,
   laptopL: `@media(max-width: 1440px)`,
-  desktop: `@media(max-width: 2560px)`,
+  desktopM: `@media(max-width: 1600px)`,
+  desktopL: `@media(max-width: 2560px)`,
 }
 
