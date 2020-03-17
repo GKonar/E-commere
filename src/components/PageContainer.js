@@ -6,6 +6,7 @@ import dotGrid from '../assets/images/dot-grid.png';
 
 const Container = styled.div`
   width: 100%; 
+  padding-bottom: ${({ theme }) => theme.padding.medium};
   a {
     color: inherit;
   } 

@@ -37,7 +37,7 @@ const Products = styled.div`
   background-image: url(${dotGrid});
   margin-top: ${({ theme }) => theme.margin.medium};
   padding: 0  ${({ theme }) => theme.padding.default};
-  padding-bottom: ${({ theme }) => theme.padding.medium};
+  padding-bottom: ${({ theme }) => theme.padding.large};
   overflow: hidden;
 `
 
