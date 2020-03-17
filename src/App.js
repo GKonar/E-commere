@@ -8,6 +8,7 @@ import theme from './themes/theme';
 
 import Routes from './Routes';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 // REDUX
 import { connect } from 'react-redux';
@@ -30,6 +31,7 @@ function App({ forHer, forHim, forHome, toys, hottest, newest }) {
           <div className="App" style={{ marginTop: '80px' }}>
             <Routes products={shopItems} />
           </div>
+          <Footer />
         </ThemeProvider>
       </MuiThemeProvider>
     </div>
