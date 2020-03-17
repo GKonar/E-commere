@@ -32,9 +32,7 @@ const Container = styled.section`
     } 
 
     ${sizes.tablet} {
-      width: 100%;
-      overflow: hidden;
-      padding-left: ${({ theme }) => theme.padding.small};
+      padding-left: ${({ theme }) => theme.padding.small}; 
       padding-right: ${({ theme }) => theme.padding.small};
     }
     
