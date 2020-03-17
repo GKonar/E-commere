@@ -28,8 +28,15 @@ const MenuToggle = styled.div`
   }
 
   ${sizes.laptopS} {
-      display: flex;
+    display: flex;
+  }
+  
+  ${sizes.mobileS} {
+    margin: 0;
+      svg {
+      padding: .5rem;
     }
+  }
 `
 
 const useStyles = makeStyles({
