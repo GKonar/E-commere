@@ -13,10 +13,16 @@ import useForm from '../../hooks/useForm';
 //Validation
 import { schema } from '../../validation/shippingFormSchema';
 
+import { sizes } from '../../helpers/sizes';
+
 const Form = styled.form`
   align-items: center;
   padding: ${({ theme }) => theme.padding.medium};
   padding-top: ${({ theme }) => theme.padding.default};
+
+  ${sizes.mobileL} {
+    padding: ${({ theme }) => theme.padding.small};
+  }
 `
 
 const initialValues = {

@@ -7,10 +7,26 @@ import Paper from '@material-ui/core/Paper';
 import DiscountCodesForm from '../BasketPage/DiscountCodesForm';
 import uuid from 'uuid';
 
+import { sizes } from '../../helpers/sizes';
+
 const OrderContainer = styled.div`
   position: fixed;
   margin-top: ${({ theme }) => theme.margin.default};
   right: 15%;
+  
+  ${sizes.desktopM} {
+    right: 10%;
+  }
+  
+  ${sizes.laptopL} {
+    right: 5%;
+  }
+
+  ${sizes.laptopM} {
+    position: relative;
+    right: 0;
+    width: 100%;
+  }
 `
 
 const Order = styled.div`
@@ -18,6 +34,11 @@ const Order = styled.div`
   padding-top: ${({ theme }) => theme.padding.default};
   font-weight: 500;
   min-width: 450px;
+
+  ${sizes.laptopM} {
+    padding: ${({ theme }) => theme.padding.small};
+    min-width: 0;
+  }
 `
 
 const ItemsContainer = styled.div`
@@ -78,6 +99,10 @@ const ToPay = styled.p`
 
 const DiscountCodes = styled.div`
   padding: ${({ theme }) => theme.padding.small} ${({ theme }) => theme.padding.medium};
+  
+  ${sizes.mobileL} {
+    padding: ${({ theme }) => theme.padding.small};
+  }
 `
 
 

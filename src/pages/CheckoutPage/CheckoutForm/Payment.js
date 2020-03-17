@@ -17,9 +17,16 @@ import { ReactComponent as Hipercard } from '../../../assets/payment/hipercard.s
 import { ReactComponent as PayPal } from '../../../assets/payment/paypal.svg';
 import { ReactComponent as Code } from '../../../assets/payment/code.svg';
 
+import { sizes } from '../../../helpers/sizes';
+
 const PaymentMethods = styled.div`
   display: flex;
   align-items: center;
+
+  ${sizes.mobileL} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `
 
 const SvgContainer = styled.div`
