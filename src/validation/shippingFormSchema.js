@@ -1,13 +1,13 @@
 import * as yup from 'yup';
 
 export const schema = yup.object().shape({
-  // cardSecurityCode: yup.number().required()
-  //   .typeError('security code is required')
-  //   .test('length', 'security code is not correct', val => val.toString().length === 3),
-  // date: yup.string().required(),
-  // cardNumber: yup.number().required()
-  //   .typeError('card number is required')
-  //   .test('length', 'card number is not correct', val => val.toString().length === 18),
+  cardSecurityCode: yup.number().required()
+    .typeError('security code is required')
+    .test('length', 'security code is not correct', val => val.toString().length === 3),
+  date: yup.string().required(),
+  cardNumber: yup.number().required()
+    .typeError('card number is required')
+    .test('length', 'card number is not correct', val => val.toString().length === 18),
   email: yup.string().email().required(),
   number: yup.number().required()
     .typeError('field must be a number')
