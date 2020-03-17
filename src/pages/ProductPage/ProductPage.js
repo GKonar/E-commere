@@ -8,6 +8,7 @@ import ImageDialog from './ImageDialog';
 import H1 from '../../components/H1';
 import H3 from '../../components/H3';
 import Snackbar from '../../components/Snackbar';
+import Tooltip from '../../components/Tooltip';
 
 import AssignmentReturnIcon from '@material-ui/icons/AssignmentReturn';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
@@ -107,6 +108,10 @@ const IconsContainer = styled.div`
   padding: 1.5rem 0;
   display: flex;
   justify-content: space-around;
+
+  /* ${sizes.laptopS} {
+    padding: .5rem 0;
+  } */
 `
 
 const IconWrapper = styled.div`
@@ -120,20 +125,30 @@ const IconDescripton = styled.p`
   width: 120px;
   text-align: center;
   font-size: ${({ theme }) => theme.textSize.secondary};
+  
+  ${sizes.laptopS} {
+    font-size: ${({ theme }) => theme.textSize.tiny};
+    width: 100px;
+  }
+  
+  ${sizes.mobileS} {
+    font-size: ${({ theme }) => theme.textSize.tiny};
+    width: 80px;
+  }
 `
 
 function ProductPage(props) {
-  let product = props.products.find(product => product.id === props.match.params.id);
-  // let product = { // DEV
-  //   name: 'Wallet',
-  //   price: 140,
-  //   images: ['https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet2_yjqtmn.png',
-  //     'https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet1_pagtsp.jpg',
-  //     'https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet3_goywci.jpg'],
-  //   description: 'Wallet Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!',
-  //   inStock: true,
-  //   qty: 1
-  // }
+  // let product = props.products.find(product => product.id === props.match.params.id);
+  let product = { // DEV
+    name: 'Wallet',
+    price: 140,
+    images: ['https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet2_yjqtmn.png',
+      'https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet1_pagtsp.jpg',
+      'https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet3_goywci.jpg'],
+    description: 'Wallet Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!',
+    inStock: true,
+    qty: 1
+  }
   const [toggle, setToggle] = useState(false);
   const [dialogImage, setDialogImage] = useState('');
   const [isSnackbarOpen, setSnackbarOpen] = useState(false);
@@ -181,7 +196,7 @@ function ProductPage(props) {
                 </IconWrapper>
                 <IconWrapper>
                   <EmojiTransportationIcon style={{ fontSize: 60 }} />
-                  <IconDescripton>Free curbside pick up </IconDescripton>
+                  <IconDescripton>Free curbside pick up for You</IconDescripton>
                 </IconWrapper>
               </IconsContainer>
               <CustomButton onClick={handleAddItem}>Add to basket</CustomButton>
