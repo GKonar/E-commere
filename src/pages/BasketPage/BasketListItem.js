@@ -61,6 +61,10 @@ const ItemName = styled.div`
     font-size: ${({ theme }) => theme.textSize.medium};
     padding-top: ${({ theme }) => theme.padding.small};
     padding-bottom: ${({ theme }) => theme.padding.small};
+    text-overflow: ellipsis;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
   }
 `
 
