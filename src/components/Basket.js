@@ -13,6 +13,7 @@ import { sizes } from '../helpers/sizes';
 const Container = styled.span`
   margin: 0 3rem 0 auto;
   transition: .3s;
+  z-index: 10;
   a {
     color: inherit;
   }

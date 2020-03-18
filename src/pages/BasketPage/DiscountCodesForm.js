@@ -11,8 +11,6 @@ import TextField from '@material-ui/core/TextField';
 // REDUX
 import { removeItem, incrementItemQuantity, decrementItemQuantity, setDiscount } from '../../store/actions/actions';
 
-import { sizes } from '../../helpers/sizes';
-
 const DiscountForm = styled.form`
   display: flex;
   align-items: center;

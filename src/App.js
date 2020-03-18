@@ -7,8 +7,8 @@ import mainTheme from './themes/mainTheme';
 import theme from './themes/theme';
 
 import Routes from './Routes';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
 
 // REDUX
 import { connect } from 'react-redux';

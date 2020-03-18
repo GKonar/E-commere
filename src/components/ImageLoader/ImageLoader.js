@@ -9,7 +9,7 @@ const styles = {
     position: 'relative',
     opacity: 0,
     animationFillMode: 'forwards',
-    animationDuration: '.5s',
+    animationDuration: '.3s',
     animationDelay: '0.1s',
   },
   loading: {

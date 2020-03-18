@@ -6,6 +6,7 @@ import Icon from '../components/Icon';
 const Container = styled.span`
   font-weight: 600;
   margin-left: ${({ theme }) => theme.margin.medium};
+  z-index: 10;
   a {
     display:flex; 
     justify-content: center;
