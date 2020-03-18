@@ -41,6 +41,11 @@ export default createMuiTheme({
         justifyContent: 'center',
         alignItems: 'center'
       }
+    },
+    MuiTypography: {
+      body1: {
+        fontSize: '18px',
+      }
     }
   }
 });
