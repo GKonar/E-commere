@@ -7,7 +7,6 @@ import AboutPage from './pages/AboutPage/AboutPage';
 import ForHimPage from './pages/ForHimPage/ForHimPage';
 import ForHerPage from './pages/ForHerPage/ForHerPage';
 import ContactPage from './pages/ContactPage/ContactPage';
-import ShopPage from './pages/ShopPage/ShopPage';
 import ToysPage from './pages/ToysPage/ToysPage';
 import ForHomePage from './pages/ForHomePage/ForHomePage';
 import BasketPage from './pages/BasketPage/BasketPage';
@@ -43,11 +42,6 @@ function Routes({ products }) {
         exact
         path="/toys"
         render={() => <ToysPage />}
-      />
-      <Route
-        exact
-        path="/shop"
-        render={() => <ShopPage />}
       />
       <Route
         exact
