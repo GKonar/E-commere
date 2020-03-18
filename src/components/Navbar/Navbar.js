@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Basket from './Basket';
-import Logo from './Logo';
+import Basket from '../Basket';
+import Logo from '../Logo';
 import MobileNav from './MobileNav';
 
-import hipSquare from '../assets/images/hip-square.png';
+import hipSquare from '../../assets/images/hip-square.png';
 
-import { sizes } from '../helpers/sizes';
+import { sizes } from '../../helpers/sizes';
+
+import NavbarShops from './NavbarShops';
 
 
 const Nav = styled.nav`
@@ -44,6 +46,7 @@ const ListItem = styled.li`
   position: relative;
   font-weight: 500;
   font-size: ${({ theme }) => theme.textSize.default};
+  z-index: 10;
   
   a {
     text-decoration: none;
@@ -72,6 +75,8 @@ const ListItem = styled.li`
 `
 
 function Navbar() {
+  const [shopsVisible, setShopsVisible] = useState(false);
+
   return (
     <Nav>
       <MobileNav />
@@ -81,11 +86,19 @@ function Navbar() {
         <ListItem><Link to="/for-her">For Her</Link></ListItem>
         <ListItem><Link to="/for-home">For Home</Link></ListItem>
         <ListItem><Link to="/toys">Toys</Link></ListItem>
-        <ListItem><Link to="/shop">Shop</Link></ListItem>
+        <ListItem
+          onMouseEnter={() => setShopsVisible(true)}
+          onMouseLeave={() => setShopsVisible(false)}>
+          Shops
+          </ListItem>
         <ListItem><Link to="/contact">Contact</Link></ListItem>
         <ListItem><Link to="/about">About</Link></ListItem>
       </List>
       <Basket />
+      <NavbarShops
+        shopsVisible={shopsVisible}
+        setShopsVisible={setShopsVisible}
+      />
     </Nav>
   )
 }

@@ -6,15 +6,15 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+
 import styled from 'styled-components';
+import Logo from '../Logo';
 
-import Logo from './Logo';
+import hipSquare from '../../assets/images/hip-square.png';
 
-import hipSquare from '../assets/images/hip-square.png';
+import { sizes } from '../../helpers/sizes';
 
-import { sizes } from '../helpers/sizes';
-
-import { ReactComponent as MenuIcon } from '../assets/svg/mobile-menu.svg';
+import { ReactComponent as MenuIcon } from '../../assets/svg/mobile-menu.svg';
 
 const MenuToggle = styled.div`
   display: none;
@@ -41,12 +41,13 @@ const MenuToggle = styled.div`
 
 const useStyles = makeStyles({
   list: {
-    width: 250,
+    width: 300,
     height: '100%',
     backgroundImage: `url(${hipSquare})`,
+    fontSize: '20px',
     "& a": {
       textDecoration: 'none',
-      color: 'inherit'
+      color: 'inherit',
     }
   },
   fullList: {
@@ -98,11 +99,6 @@ function MobileNav() {
             <ListItemText primary={'Toys'} />
           </ListItem>
         </Link>
-        <Link to="/shop">
-          <ListItem button key={'Shop'}>
-            <ListItemText primary={'Shop'} />
-          </ListItem>
-        </Link>
         <Link to="/contact">
           <ListItem button key={'Contact'}>
             <ListItemText primary={'Contact'} />
@@ -134,6 +130,3 @@ function MobileNav() {
 }
 
 export default MobileNav;
-
-            // <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            // <CustomButton onClick={toggleDrawer('left', true)}>Nav</CustomButton>
