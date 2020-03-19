@@ -134,16 +134,6 @@ const IconDescripton = styled.p`
 
 function ProductPage(props) {
   let product = props.products.find(product => product.id === props.match.params.id);
-  // let product = { // DEV
-  //   name: 'Wallet',
-  //   price: 140,
-  //   images: ['https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet2_yjqtmn.png',
-  //     'https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet1_pagtsp.jpg',
-  //     'https://res.cloudinary.com/dee8cfqkb/image/upload/v1582279992/Handcrafted/for-him/wallet/wallet3_goywci.jpg'],
-  //   description: 'Wallet Lorem ipsum dolor sit amet elit. Quis iure eligendi ab, nulla adipisci quos sit molestias, laborum beatae tempore a aspernatur quo laboriosam velit amet, ipsam vitae hic impedit!',
-  //   inStock: true,
-  //   qty: 1
-  // }
   const [toggle, setToggle] = useState(false);
   const [dialogImage, setDialogImage] = useState('');
   const [isSnackbarOpen, setSnackbarOpen] = useState(false);

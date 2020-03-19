@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { ThemeProvider } from 'styled-components';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
@@ -13,7 +13,7 @@ import Footer from './components/Footer/Footer';
 // REDUX
 import { connect } from 'react-redux';
 
-function App({ forHer, forHim, forHome, toys, hottest, newest }) {
+function App({ forHer, forHim, forHome, toys, hottest, newest, basketItems }) {
   const shopItems = {
     forHim,
     forHer,
@@ -22,6 +22,11 @@ function App({ forHer, forHim, forHome, toys, hottest, newest }) {
     hottest,
     newest
   }
+
+  useEffect(() => {
+    console.log('BASKET:', basketItems);
+    localStorage.setItem('basketItems', JSON.stringify(basketItems));
+  })
 
   return (
     <div>
@@ -45,7 +50,8 @@ const mapStateToProps = state => {
     forHome: state.forHome,
     toys: state.toys,
     hottest: state.hottest,
-    newest: state.newest
+    newest: state.newest,
+    basketItems: state.basketItems
   }
 }
 
