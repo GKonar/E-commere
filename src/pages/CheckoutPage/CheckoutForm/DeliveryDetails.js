@@ -40,16 +40,16 @@ const CityState = styled.div`
 `
 
 const Field = styled.div`
-width: 100%;
-display: flex;
-flex-direction: column;
-margin: 22px 0;
-position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 22px 0;
+  position: relative;
 `
 
 const InnerField = styled.div`
-display: flex;
-margin: 0;
+  display: flex;
+  margin: 0;
 `
 
 function CredentialsForm({ errors, handleChange }) {
