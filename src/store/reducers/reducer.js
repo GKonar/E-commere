@@ -1,4 +1,15 @@
-import { FETCH_PAGE_ITEMS, ADD_ITEM, REMOVE_ITEM, UPDATE_BASKET, INCREMENT_ITEM_QUANTITY, DECREMENT_ITEM_QUANTITY, SET_DISCOUNT, CLEAR_BASKET } from '../actions/actions';
+import {
+  FETCH_PAGE_ITEMS,
+  ADD_ITEM,
+  REMOVE_ITEM,
+  INCREMENT_ITEM_QUANTITY,
+  DECREMENT_ITEM_QUANTITY,
+  SET_DISCOUNT,
+  CLEAR_BASKET,
+  AUTH_START,
+  AUTH_SUCCESS,
+  AUTH_FAIL
+} from '../actions/actions';
 
 const initialState = {
   forHer: [],
@@ -23,6 +34,11 @@ const initialState = {
   numOfBasketItems: 0,
   toFreeDelivery: 150,
   hasDiscount: false,
+  // auth - create a new reducer TODO
+  token: null,
+  userId: null,
+  error: null,
+  loading: false
 }
 
 const reducer = (state = initialState, action) => {
