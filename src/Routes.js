@@ -12,6 +12,8 @@ import ForHomePage from './pages/ForHomePage/ForHomePage';
 import BasketPage from './pages/BasketPage/BasketPage';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 import PaymentSuccess from './pages/CheckoutPage/PaymentSuccess';
+import Login from './pages/Authentication/Login';
+import Signup from './pages/Authentication/Signup';
 
 function Routes({ products }) {
   const { forHer, forHim, forHome, toys, newest, hottest } = products;
@@ -73,6 +75,17 @@ function Routes({ products }) {
         path="/payment-success"
         render={() => <PaymentSuccess />}
       />
+      <Route
+        exact
+        path="/auth/login"
+        render={() => <Login />}
+      />
+      <Route
+        exact
+        path="/auth/signup"
+        render={() => <Signup />}
+      />
+
       {/* Last resort path */}
       <Route render={() => <h1>PAGE NOT FOUND :/ Sorry bro</h1>} />}/>
     </Switch>
