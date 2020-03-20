@@ -93,6 +93,7 @@ function Navbar() {
           </ListItem>
         <ListItem><Link to="/contact">Contact</Link></ListItem>
         <ListItem><Link to="/about">About</Link></ListItem>
+        <ListItem><Link to="/auth/login">LogIn</Link></ListItem>
       </List>
       <Basket />
       <NavbarShops
