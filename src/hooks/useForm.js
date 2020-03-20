@@ -36,7 +36,7 @@ export default function useForm(initialValues, onSubmit, schema) {
             };
           });
           onSubmit();
-          setTimeout(() => setSubmitting(false), 500);
+          setSubmitting(false)
           setSubmitSuccess(true);
         })
         .catch((err) => {
@@ -56,7 +56,7 @@ export default function useForm(initialValues, onSubmit, schema) {
       try {
         onSubmit();
         setSubmitSuccess(true);
-        setTimeout(() => setSubmitting(false), 500);
+        setSubmitting(false);
       } catch (e) {
         console.log('Submit error: ', e);
       }
