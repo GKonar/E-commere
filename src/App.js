@@ -23,8 +23,8 @@ function App({ forHer, forHim, forHome, toys, hottest, newest, basketItems }) {
     newest
   }
 
-  useEffect(() => {
-    console.log('BASKET:', basketItems);
+  useEffect(() => { // DEV
+    // console.log('BASKET:', basketItems);
     localStorage.setItem('basketItems', JSON.stringify(basketItems));
   })
 

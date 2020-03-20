@@ -22,8 +22,6 @@ const database = firebase.database();
 
 export default database;
 
-
-
 // ***** USERS MANUAL *****
 
 // ** PUSH ITEMS TO FIREBASE
