@@ -164,10 +164,28 @@ const reducer = (state = initialState, action) => {
       return {
         ...initialState
       }
-    case UPDATE_BASKET:
-      console.log('Update basket !');
+    case AUTH_START:
       return {
-        ...state
+        ...state,
+        error: null,
+        loading: true
+      }
+    case AUTH_SUCCESS:
+      console.log(action.idToken, action.userId);
+      return {
+        ...state,
+        idToken: action.idToken,
+        userId: action.userId,
+        error: null,
+        loading: false
+      }
+    case AUTH_FAIL:
+      // console.log('ACTION ERROR: ', action.error); DEV
+      const error = action.error.message;
+      return {
+        ...state,
+        error: error,
+        loading: false
       }
 
     default: return state;
