@@ -12,6 +12,7 @@ export const CLEAR_BASKET = 'CLEAR_BASKET';
 export const AUTH_START = 'AUTH_START';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAIL = 'AUTH_FAIL';
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
 // sync action creators 
 const savePageItems = (data, page) => {
@@ -84,7 +85,22 @@ export const authFail = (error) => {
   }
 }
 
+export const logout = () => {
+  return {
+    type: AUTH_LOGOUT
+  }
+}
+
 // async action creators
+export const checkAuthTimeout = (expirationTime) => {
+  return dispatch => {
+    // auto logout after expiration time pass
+    setTimeout(() => {
+      dispatch(logout());
+    }, expirationTime * 1000)
+  }
+}
+
 export const auth = (email, password, mode) => { // mode - singup or login
   // console.log(email, password, mode) // DEV
   return dispatch => {
@@ -102,6 +118,7 @@ export const auth = (email, password, mode) => { // mode - singup or login
       .then((response) => {
         // console.log(response) // DEV
         dispatch(authSuccess(response.data.idToken, response.data.localId))
+        dispatch(checkAuthTimeout(response.data.expiresIn));
       })
       .catch((err) => {
         // console.log(err.response.data.error.message); // DEV

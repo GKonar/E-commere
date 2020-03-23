@@ -8,7 +8,8 @@ import {
   CLEAR_BASKET,
   AUTH_START,
   AUTH_SUCCESS,
-  AUTH_FAIL
+  AUTH_FAIL,
+  AUTH_LOGOUT
 } from '../actions/actions';
 
 const initialState = {
@@ -35,7 +36,7 @@ const initialState = {
   toFreeDelivery: 150,
   hasDiscount: false,
   // auth - create a new reducer TODO
-  token: null,
+  idToken: null,
   userId: null,
   error: null,
   loading: false
@@ -202,6 +203,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         error: error,
         loading: false
+      }
+    case AUTH_LOGOUT:
+      return {
+        ...state,
+        idToken: null,
+        userId: null,
       }
 
     default: return state;
