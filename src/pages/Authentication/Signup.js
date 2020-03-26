@@ -8,8 +8,9 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 
 import CustomButton from '../../components/CustomButton';
-import H2 from '../../components/H2';
+import H1 from '../../components/H1';
 import CredentialsError from '../../components/CredentialsError';
+import Redirect from './RedirectParagraph';
 
 import useForm from '../../hooks/useForm';
 import dotGrid from '../../assets/images/dot-grid.png';
@@ -36,6 +37,7 @@ const FormWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: ${({ theme }) => theme.padding.medium} ${({ theme }) => theme.padding.small};
+  padding-bottom: ${({ theme }) => theme.padding.small};
 `
 
 const Form = styled.form`
@@ -74,7 +76,7 @@ function Signup({ onAuth, loading, authError }) {
     <Container>
       <Paper elevation={3}>
         <FormWrapper>
-          <H2>Sign-up</H2>
+          <H1>Sign-up</H1>
           <Form onSubmit={handleSubmit}>
             <Field>
               <TextField
@@ -103,7 +105,7 @@ function Signup({ onAuth, loading, authError }) {
         </CustomButton>
           </Form>
         </FormWrapper>
-        <p>Already get account ?<Link to="/auth/login"> Log-in now</Link></p>
+        <Redirect>Already get account ?<Link to="/auth/login"> Log-in now</Link></Redirect>
       </Paper>
     </Container>
   )
