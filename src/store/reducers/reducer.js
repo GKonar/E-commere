@@ -39,7 +39,8 @@ const initialState = {
   idToken: null,
   userId: null,
   error: null,
-  loading: false
+  loading: false,
+  loggedIn: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -194,7 +195,8 @@ const reducer = (state = initialState, action) => {
         idToken: action.idToken,
         userId: action.userId,
         error: null,
-        loading: false
+        loading: false,
+        loggedIn: true
       }
     case AUTH_FAIL:
       // console.log('ACTION ERROR: ', action.error); DEV
@@ -209,6 +211,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         idToken: null,
         userId: null,
+        loggedIn: false
       }
 
     default: return state;
