@@ -42,7 +42,7 @@ const FormWrapper = styled.div`
 
 const Form = styled.form`
   min-width: 300px;
-  padding: ${({ theme }) => theme.padding.medium};
+  padding: ${({ theme }) => theme.padding.default} ${({ theme }) => theme.padding.medium} ;
   padding-top: ${({ theme }) => theme.padding.default};
 `
 
@@ -101,7 +101,7 @@ function Signup({ onAuth, loading, authError }) {
               isWorking={loading}
               disabled={loading}
             >
-              submit
+              singup
         </CustomButton>
           </Form>
         </FormWrapper>

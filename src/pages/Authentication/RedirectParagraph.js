@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Redirect = styled.p`
   font-size: ${({ theme }) => theme.textSize.readable};
   margin: ${({ theme }) => theme.margin.default};
+  text-align: center;
 
   a {
     text-decoration: none;
