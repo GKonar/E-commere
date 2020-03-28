@@ -30,7 +30,8 @@ const theme = {
     primary: '#2f3542',
     secondary: '#f1f2f6',
     white: '#FFFFFF',
-    error: '#e74c3c'
+    error: '#e74c3c',
+    success: '#32ff7e'
   },
 
   textColor: {
