@@ -59,7 +59,7 @@ const initialValues = {
   password: ''
 }
 
-function Login({ onAuth, loading, authError }) {
+function Login({ onAuth, loading, authError, loggedIn }) {
   const submit = () => {
     onAuth(values.email, values.password, 'login');
   };
@@ -107,6 +107,7 @@ function Login({ onAuth, loading, authError }) {
         </FormWrapper>
         <Redirect>Create account to get better offer <Link to="/auth/signup"> Sign-up now</Link></Redirect>
       </Paper>
+      {loggedIn ? console.log('GO AWAY') : console.log('CHUJ')}
     </Container>
   )
 }
@@ -114,7 +115,8 @@ function Login({ onAuth, loading, authError }) {
 const mapStateToProps = state => {
   return {
     loading: state.loading,
-    authError: state.error
+    authError: state.error,
+    loggedIn: state.loggedIn
   }
 }
 
