@@ -5,12 +5,15 @@ import styled from 'styled-components';
 import Basket from '../Basket';
 import Logo from '../Logo';
 import MobileNav from './MobileNav';
+import Login from './Login';
 
 import hipSquare from '../../assets/images/hip-square.png';
 
 import { sizes } from '../../helpers/sizes';
 
 import NavbarShops from './NavbarShops';
+
+import Tooltip from '../../components/Tooltip';
 
 
 const Nav = styled.nav`
@@ -28,6 +31,12 @@ const Nav = styled.nav`
   ${sizes.laptopS} {
     justify-content: space-between;
   }
+`
+
+const NavRight = styled.div`
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 `
 
 const List = styled.ul`
@@ -93,9 +102,11 @@ function Navbar() {
           </ListItem>
         <ListItem><Link to="/contact">Contact</Link></ListItem>
         <ListItem><Link to="/about">About</Link></ListItem>
-        <ListItem><Link to="/auth/login">LogIn</Link></ListItem>
       </List>
-      <Basket />
+      <NavRight>
+        <Link to="/auth/login"><Login /></Link>
+        <Basket />
+      </NavRight>
       <NavbarShops
         shopsVisible={shopsVisible}
         setShopsVisible={setShopsVisible}
