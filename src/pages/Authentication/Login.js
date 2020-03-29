@@ -107,7 +107,7 @@ function Login({ onAuth, loading, authError, loggedIn }) {
         </FormWrapper>
         <Redirect>Create account to get better offer <Link to="/auth/signup"> Sign-up now</Link></Redirect>
       </Paper>
-      {loggedIn ? console.log('GO AWAY') : console.log('CHUJ')}
+      {loggedIn ? console.log('GO AWAY') : console.log('MMMHHMM')}
     </Container>
   )
 }
