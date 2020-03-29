@@ -14,6 +14,8 @@ import hipSquare from '../../assets/images/hip-square.png';
 
 import { sizes } from '../../helpers/sizes';
 
+import Login from './Login';
+
 import { ReactComponent as MenuIcon } from '../../assets/svg/mobile-menu.svg';
 
 const MenuToggle = styled.div`
@@ -79,6 +81,11 @@ function MobileNav() {
       <List>
         <Logo />
         <br />
+        <Link to="/auth/login">
+          <ListItem button key={'Login'}>
+            <Login />
+          </ListItem>
+        </Link>
         <Link to="/for-him">
           <ListItem button key={'ForHim'}>
             <ListItemText primary={'For Him'} />
