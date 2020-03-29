@@ -13,7 +13,7 @@ import { sizes } from '../../helpers/sizes';
 
 import NavbarShops from './NavbarShops';
 
-import Tooltip from '../../components/Tooltip';
+// import Tooltip from '../../components/Tooltip';
 
 
 const Nav = styled.nav`
@@ -37,6 +37,16 @@ const NavRight = styled.div`
   margin-left: auto;
   display: flex;
   align-items: center;
+
+  ${sizes.laptopS} {
+    margin: 0;
+  }
+`
+
+const LoginWrap = styled.span`
+   ${sizes.laptopS} {
+      display: none;
+  }
 `
 
 const List = styled.ul`
@@ -104,7 +114,9 @@ function Navbar() {
         <ListItem><Link to="/about">About</Link></ListItem>
       </List>
       <NavRight>
-        <Link to="/auth/login"><Login /></Link>
+        <LoginWrap>
+          <Link to="/auth/login"><Login /></Link>
+        </LoginWrap>
         <Basket />
       </NavRight>
       <NavbarShops
