@@ -71,7 +71,6 @@ function ShippingForm() {
       <Payment
         errors={errors}
         handleChange={handleChange} />
-
       {/* Submit Form Button */}
       <br />
       <CustomButton
