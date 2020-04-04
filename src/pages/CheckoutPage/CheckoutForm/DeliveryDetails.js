@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
@@ -52,8 +52,7 @@ const InnerField = styled.div`
   margin: 0;
 `
 
-function CredentialsForm({ errors, handleChange }) {
-  // Country list select
+const CredentialsForm = React.forwardRef(({ errors, handleChange }, ref) => {
   const options = countryList().getData();
   const [country, setCountry] = useState(null);
 
@@ -61,16 +60,13 @@ function CredentialsForm({ errors, handleChange }) {
     setCountry(value);
   }
 
-  const inputRef = useRef();
-
   return (
     <>
-      {console.log(errors)}
       <H2>2. Who You Are</H2>
       <Divider />
       <Field>
         <TextField
-          inputRef={errors.name ? inputRef : null}
+          inputRef={errors.name ? ref : null}
           name="name"
           type="text"
           variant="outlined"
@@ -88,7 +84,7 @@ function CredentialsForm({ errors, handleChange }) {
       </Field>
       <Field>
         <TextField
-          inputRef={errors.adresse ? inputRef : null}
+          inputRef={errors.adresse ? ref : null}
           name="adresse"
           type="text"
           variant="outlined"
@@ -99,7 +95,7 @@ function CredentialsForm({ errors, handleChange }) {
       <CityState>
         <InnerField>
           <TextField
-            inputRef={errors.city ? inputRef : null}
+            inputRef={errors.city ? ref : null}
             name="city"
             type="text"
             variant="outlined"
@@ -109,7 +105,7 @@ function CredentialsForm({ errors, handleChange }) {
         </InnerField>
         <InnerField>
           <TextField
-            inputRef={errors.state ? inputRef : null}
+            inputRef={errors.state ? ref : null}
             name="state"
             type="text"
             variant="outlined"
@@ -120,7 +116,7 @@ function CredentialsForm({ errors, handleChange }) {
       </CityState>
       <Field>
         <TextField
-          inputRef={errors.postal ? inputRef : null}
+          inputRef={errors.postal ? ref : null}
           name="postal"
           type="text"
           variant="outlined"
@@ -139,7 +135,7 @@ function CredentialsForm({ errors, handleChange }) {
       </Field>
       <Field>
         <TextField
-          inputRef={errors.number ? inputRef : null}
+          inputRef={errors.number ? ref : null}
           name="number"
           type="text"
           variant="outlined"
@@ -149,7 +145,7 @@ function CredentialsForm({ errors, handleChange }) {
       </Field>
       <Field>
         <TextField
-          inputRef={errors.email ? inputRef : null}
+          inputRef={errors.email ? ref : null}
           name="email"
           type="email"
           variant="outlined"
@@ -157,12 +153,17 @@ function CredentialsForm({ errors, handleChange }) {
           onChange={handleChange} />
         <CredentialsError>{errors.email ? errors.email : ''}</CredentialsError>
       </Field>
-      <button onClick={() => {
-        console.log(inputRef);
-        if (inputRef.current !== undefined) inputRef.current.focus();
-      }}>LOG REFERENCE</button>
+      {
+        // <button onClick={() => { // DEV
+        // Set timeout to make sure that errors object is not empty by moving focus() on bottom of call stack 
+        // setTimeout(() => {
+        //   if (inputRef.current) inputRef.current.focus()
+        // }, 0)
+        // }}>FOCUS ON ERROR</button>
+      }
     </>
   )
-}
+})
 
 export default CredentialsForm;
+

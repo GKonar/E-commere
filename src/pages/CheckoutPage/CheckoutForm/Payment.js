@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components';
 
 import H2 from '../../../components/H2';
@@ -80,7 +80,7 @@ const CodeSvg = styled.div`
     }
 `
 
-function PaymentForm({ errors, handleChange }) {
+const PaymentForm = React.forwardRef(({ errors, handleChange }, ref) => {
   const [selectedValue, setSelectedValue] = useState('card');
 
   const handleRadio = (event) => {
@@ -131,6 +131,7 @@ function PaymentForm({ errors, handleChange }) {
       </PaymentMethods>
       <Field>
         <TextField
+          inputRef={errors.cardNumber ? ref : null}
           name="cardNumber"
           type="text"
           variant="outlined"
@@ -140,6 +141,7 @@ function PaymentForm({ errors, handleChange }) {
       </Field>
       <Field>
         <TextField
+          inputRef={errors.date ? ref : null}
           name="date"
           id="date"
           label="Expiration Date"
@@ -155,6 +157,7 @@ function PaymentForm({ errors, handleChange }) {
       <SecurityCode>
         <InnerField>
           <TextField
+            inputRef={errors.cardSecurityCode ? ref : null}
             name="cardSecurityCode"
             type="text"
             variant="outlined"
@@ -168,6 +171,6 @@ function PaymentForm({ errors, handleChange }) {
       </SecurityCode>
     </>
   )
-}
+})
 
 export default PaymentForm;

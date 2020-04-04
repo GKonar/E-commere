@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import Payment from './CheckoutForm/Payment';
@@ -57,6 +57,15 @@ function ShippingForm() {
     handleSubmit(e) // DEV
   }
 
+  const inputRef = useRef();
+
+  const handleClick = () => {
+    // Set timeout to make sure that errors object is not empty by moving focus() on bottom of call stack 
+    setTimeout(() => {
+      if (inputRef.current) inputRef.current.focus()
+    }, 0)
+  }
+
   useEffect(() => {
     setTimeout(() => {
       setPaymentSuccess(submitSuccess); // DEV
@@ -66,9 +75,11 @@ function ShippingForm() {
   return (
     <Form onSubmit={handleFormSubmit}>
       <DeliveryDetails
+        ref={inputRef}
         errors={errors}
         handleChange={handleChange} />
       <Payment
+        ref={inputRef}
         errors={errors}
         handleChange={handleChange} />
       {/* Submit Form Button */}
@@ -77,10 +88,10 @@ function ShippingForm() {
         type='submit'
         isWorking={submitting}
         disabled={submitting}
+        onClick={handleClick}
       >
         Process My Order
       </CustomButton>
-
       {/* PAYMENT SUCCESS MODAL */}
       <PaymentSuccess
         paymentSuccess={paymentSuccess}
