@@ -48,17 +48,14 @@ function ShippingForm() {
     submitSuccess,
     handleChange,
     handleSubmit,
-    errors, // pull out errors from form - need this for validation message
+    errors,
     submitting,
-  } = useForm(initialValues, submit, schema); // Add validation schema
+  } = useForm(initialValues, submit, schema);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
-
+  const inputRef = useRef();
   const handleFormSubmit = (e) => {
     handleSubmit(e) // DEV
   }
-
-  const inputRef = useRef();
-
   const handleClick = () => {
     // Set timeout to make sure that errors object is not empty by moving focus() on bottom of call stack 
     setTimeout(() => {
