@@ -44,7 +44,8 @@ const NavRight = styled.div`
 `
 
 const LoginWrap = styled.span`
-   ${sizes.laptopS} {
+  z-index: 1000;
+  ${sizes.laptopS} {
       display: none;
   }
 `
