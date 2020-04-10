@@ -189,7 +189,7 @@ const reducer = (state = initialState, action) => {
         loading: true
       }
     case AUTH_SUCCESS:
-      console.log(action.idToken, action.userId);
+      // console.log(action.idToken, action.userId); DEV
       return {
         ...state,
         idToken: action.idToken,

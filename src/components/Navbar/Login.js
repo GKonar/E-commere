@@ -23,9 +23,10 @@ const IconWrapper = styled.div`
 function Login({ loggedIn }) {
   console.log('LOGGED IN: ', loggedIn);
   return (
-    <IconWrapper style={{ backgroundColor: loggedIn ? "#32ff7e" : "#FFF" }}>
+    <IconWrapper style={{ backgroundColor: loggedIn ? "#b8e994" : "#FFF" }}>
       <LoginIcon />
     </IconWrapper>
+
   )
 }
 
