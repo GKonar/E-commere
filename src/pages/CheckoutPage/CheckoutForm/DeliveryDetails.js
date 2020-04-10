@@ -37,6 +37,7 @@ const customStyles = {
 const CityState = styled.div`
   display: flex;
   justify-content: space-around;
+  position: relative;
 `
 
 const Field = styled.div`

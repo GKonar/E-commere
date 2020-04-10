@@ -54,6 +54,7 @@ function DiscountCodesForm({
       setSnackbarOpen(true);
     } else {
       setInputState('error');
+      setSnackbarOpen(true);
     }
   }
 
@@ -86,7 +87,7 @@ function DiscountCodesForm({
       <Snackbar
         isSnackbarOpen={isSnackbarOpen}
         setSnackbarOpen={setSnackbarOpen}
-        message={"You got discount!"}
+        message={inputState !== 'error' ? "You got discount!" : "Discount code is invalid"}
         variant='success'
         time={2500}
       />
