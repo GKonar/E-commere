@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import TextField from '@material-ui/core/TextField';
@@ -60,6 +60,7 @@ const initialValues = {
 }
 
 function Login({ onAuth, loading, authError, loggedIn }) {
+  let history = useHistory();
   const submit = () => {
     onAuth(values.email, values.password, 'login');
   };
@@ -71,6 +72,10 @@ function Login({ onAuth, loading, authError, loggedIn }) {
   } = useForm(initialValues, submit, schema); // Add validation schema
 
   checkLoginAuthErrors(authError, errors);
+
+  const handleLogin = () => {
+    history.push('/')
+  }
 
   return (
     <Container>
@@ -107,7 +112,7 @@ function Login({ onAuth, loading, authError, loggedIn }) {
         </FormWrapper>
         <Redirect>Create account to get better offer <Link to="/auth/signup"> Sign-up now</Link></Redirect>
       </Paper>
-      {loggedIn ? console.log('GO AWAY') : console.log('MMMHHMM')}
+      {loggedIn ? handleLogin() : null}
     </Container>
   )
 }
